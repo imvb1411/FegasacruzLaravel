@@ -1,5 +1,9 @@
 <?php
+
+use App\Persona;
 use Illuminate\Support\Facades\Route;
+use Spatie\Searchable\Search;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,3 +26,11 @@ Route::post('personal_login','PersonalController@login')->name('personal.login')
 Route::get('personal_logout','PersonalController@logout')->name('personal.logout');
 
 Route::resource('cliente', 'PersonaController');
+
+Route::get('/search/{s}',function($s){
+    $searchResults = (new Search())
+            ->registerModel(Persona::class, 'nombre')
+            ->search($s);
+    //dd(Response::json($searchResults));
+        return Response::json($searchResults);;
+})->name('search');
