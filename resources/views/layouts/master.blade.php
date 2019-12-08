@@ -31,68 +31,66 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Home</a>
-                <a href="#" id="warning"><i class="fa fa-eye"></i></a>
+                <a href="#" class="form-control" id="warning"><i class="fa fa-eye"></i></a>
             </li>
         </ul>
+        <div class="col-5" style="float: right;margin-left: 45%">
+            <input type="text" class="form-control" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+            <div id="myDropdown" class="dropdown-content">
 
+            </div>
+        </div>
+        <script>
+            function filterFunction() {
+                var mydiv = document.getElementById("myDropdown");
+                var xhttp=new XMLHttpRequest();
+                xhttp.onreadystatechange=function () {
+                    if(this.readyState==4 && this.status==200){
+                        mydiv.innerHTML="";
+                        var data=JSON.parse(this.responseText);
+                        console.log(data[0]);
+                        data.forEach(function(item){
+                            var aTag = document.createElement('a');
+                            aTag.setAttribute('href',item.url);
+                            aTag.innerText = item.title;
+                            mydiv.appendChild(aTag);
+                        });
+                        mydiv.classList.toggle("show");
+                    }
+                };
+                var input=document.getElementById('myInput').value;
+                xhttp.open('GET','/search/'+input,true);
+                xhttp.send();
+            }
+        </script>
+        <style type="text/css">
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
+            /* Dropdown Content (Hidden by Default) */
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f6f6f6;
+                min-width: 230px;
+                border: 1px solid #ddd;
+                z-index: 1;
+            }
+            /* Links inside the dropdown */
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+            /* Change color of dropdown links on hover */
+            .dropdown-content a:hover {background-color: #f1f1f1}
+            /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+            .show {display:block;}
+        </style>
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
-            <!-- Messages Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="/img/user.png" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    Brad Diesel
-                                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">Call me whenever you can...</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="/img/user.png" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    John Pierce
-                                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">I got your message bro</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="/img/user.png" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    Nora Silvester
-                                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">The subject goes here</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                </div>
-            </li>
-            <!-- Notifications Dropdown Menu -->
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
                     <i class="far fa-bell"></i>
