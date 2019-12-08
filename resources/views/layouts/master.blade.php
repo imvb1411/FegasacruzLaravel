@@ -353,8 +353,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     });
 </script>
 
-@include('modal.cliente')
-
 {{--<script src="/plugins/jquery/jquery.min.js"></script>--}}
 {{--<!-- Bootstrap 4 -->--}}
 {{--<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>--}}
