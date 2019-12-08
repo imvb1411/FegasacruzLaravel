@@ -1,7 +1,7 @@
 <script>
     var action=1;
     $(function () {
-        $("#userTable").DataTable();
+        $("#clientTable").DataTable();
     });
     var inputs=document.querySelectorAll('input:not([type="submit"])');
     var flag=true;
@@ -20,8 +20,8 @@
 
     function validate(input){
         switch (input.id) {
-            case 'password':
-                if(!input.value.match(/[\!\@\#\$\%\^\&\*]/g) &&input.value.length>=3){
+            case 'ci':
+                if(input.value.match(/^[0-9]+$/)){
                     input.className='form-control is-valid';
                     flag=true;
                 }else{
@@ -29,8 +29,17 @@
                     input.className='form-control is-invalid';
                 }
                 break;
-            case 'nick':
-                if(input.value.match(/^[a-zA-Z0-9]+$/)){
+            case 'telefono':
+                if(input.value.match(/^[0-9]+$/)){
+                    input.className='form-control is-valid';
+                    flag=true;
+                }else{
+                    flag=false;
+                    input.className='form-control is-invalid';
+                }
+                break;
+            case 'email':
+                if(input.value.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)){
                     input.className='form-control is-valid';
                     flag=true;
                 }else{
@@ -61,7 +70,7 @@
     $('#new').click(function () {
         action=1;
         var form= document.getElementById('userForm');
-        form.action='{{route('users.store')}}';
+        form.action='{{route('clientes.store')}}';
         form.method='post';
         var inputMethod=document.getElementsByName('_method');
 
@@ -71,7 +80,7 @@
                 inputMethod[i].value='POST';
             }
         }
-        document.getElementById('htitle').innerText='Nuevo usuario';
+        document.getElementById('htitle').innerText='Nuevo Cliente';
         document.getElementById('btn').innerText='Guardar'
 
     });
@@ -79,36 +88,33 @@
     function editClick(){
         action=2;
         var form= document.getElementById('userForm');
-        form.action='{{route('users.update',0)}}';
+        form.action='{{route('clientes.update',0)}}';
         form.method='post';
         //if(_iMethod.toString().length>0){
         _iMethod.value='PUT';
         console.log(_iMethod.value);
         //}
-        document.getElementById('htitle').innerText='Editar usuario';
+        document.getElementById('htitle').innerText='Editar Cliente';
         document.getElementById('btn').innerText='Editar';
     }
 
     $('#edit').on('show.bs.modal',function(event){
         if(action===2) {
             var button = $(event.relatedTarget);
-            var iduser = button.data('iduser');
-            var personid = button.data('personid');
-            var nick = button.data('nick');
-            var password = button.data('password');
-            var fullname=button.data('name');
+            var id= button.data('idcliente')
+            var ci = button.data('ci')
+            var nombre = button.data('nombre')
+            var apellido_pat = button.data('apellido_pat')
+            var apellido_mat = button.data('apellido_mat')
+            var telefono = button.data('telefono')
+            var email = button.data('email')
             var modal = $(this);
-            modal.find('.modal-body #iduser').val(iduser);
-            modal.find('.modal-body #nick').val(nick);
-            modal.find('.modal-body #personid').val(personid);
-            modal.find('.modal-body #password').val(password);
-            $("#personid").children('option:first').remove();
-            $("#personid").append(new Option(fullname, personid));
-        }else{
-            var modal = $(this);
-            modal.find('.modal-body #iduser').val('');
-            modal.find('.modal-body #nick').val('');
-            modal.find('.modal-body #password').val('');
-        }
+            modal.find('.modal-body #ci').val(ci);
+            modal.find('.modal-body #nombre').val(nombre);
+            modal.find('.modal-body #apellido_pat').val(apellido_pat);
+            modal.find('.modal-body #apellido_mat').val(apellido_mat);
+            modal.find('.modal-body #telefono').val(telefono);
+            modal.find('.modal-body #email').val(email);
+            modal.find('modal-body $id').val(id);
     })
 </script>
