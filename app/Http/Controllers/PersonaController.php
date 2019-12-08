@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Persona;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class PersonaController extends Controller
 {
@@ -12,9 +14,20 @@ class PersonaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+            // $persona = Persona::all()->where('estado',1);
+            
+            if($request){
+                $sql=trim($request->get('buscarTexto'));
+                $personas=DB::table('persona')
+                ->where('nombre','LIKE','%'.$sql.'%')
+                ->where('tipo_persona','CLI')
+                ->orderBy('id','desc')
+                ->paginate(3);
+                return view('cliente.index',["personas"=>$personas,"buscarTexto"=>$sql]);
+                // return $personas;
+            }
     }
 
     /**
@@ -36,6 +49,16 @@ class PersonaController extends Controller
     public function store(Request $request)
     {
         //
+        $persona= new Persona();
+        $persona->ci = $request->ci;
+        $persona->nombre = $request->nombre;
+        $persona->apellido_pat = $request->apellido_pat;
+        $persona->apellido_mat = $request->apellido_mat;
+        $persona->telefono = $request->telefono;
+        $persona->email = $request->email;
+        $persona->tipo_persona = 'CLI';
+        $persona->save();
+        return Redirect::to("cliente");
     }
 
     /**
@@ -67,9 +90,17 @@ class PersonaController extends Controller
      * @param  \App\Persona  $persona
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Persona $persona)
+    public function update(Request $request)
     {
-        //
+        $persona= Persona::findOrFail($request->id);
+        $persona->ci = $request->ci;
+        $persona->nombre = $request->nombre;
+        $persona->apellido_pat = $request->apellido_pat;
+        $persona->apellido_mat = $request->apellido_mat;
+        $persona->telefono = $request->telefono;
+        $persona->email = $request->email;
+        $persona->save();
+        return Redirect::to("cliente");
     }
 
     /**
