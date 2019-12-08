@@ -1,7 +1,23 @@
 @extends('layouts.master')
-
 @section('title','Clientes')
 @section('header-title','Listado de Clientes')
+@section('vistas')
+    <div class="row">
+        <div class="col-md-3 col-sm-6 col-12 float-sm-right">
+            <div class="info-box bg-success">
+                <span class="info-box-icon"><i class="far fa-flag"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Visitas</span>
+                    {{-- <span class="info-box-number">{{$view->views}}</span> --}}
+                    <span class="info-box-number">total</span>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 70%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
 @section('header-content')
     <div class="row">
         <div class="col-3">
@@ -9,36 +25,22 @@
                     <i class="fa fa-plus fa-1x"></i>&nbsp;&nbsp;Agregar
                 </button>
         </div>
-        <div class="col-9">
-            <div class="col-md-3 col-sm-6 col-12 float-sm-right">
-                <div class="info-box bg-success">
-                    <span class="info-box-icon"><i class="far fa-flag"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Visitas</span>
-                        {{-- <span class="info-box-number">{{$view->views}}</span> --}}
-                        <span class="info-box-number">total</span>
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 70%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
 @endsection
 
 @section('content')
-    <div class="form-group row">
-        <div class="col-md-6">
-        {!!Form::open(array('url'=>'cliente','method'=>'GET','autocomplete'=>'off','role'=>'search'))!!} 
-            <div class="input-group">
-            
-                <input type="text" name="buscarTexto" class="form-control" placeholder="Buscar texto" value="{{$buscarTexto}}">
-                <button type="submit"  class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
-            </div>
-        {{Form::close()}}
-        </div>
-    </div>
+    {{--<div class="form-group row">--}}
+        {{--<div class="col-md-6">--}}
+        {{--{!!Form::open(array('url'=>'cliente','method'=>'GET','autocomplete'=>'off','role'=>'search'))!!} --}}
+            {{--<div class="input-group">--}}
+            {{----}}
+                {{--<input type="text" name="buscarTexto" class="form-control" placeholder="Buscar texto" value="{{$buscarTexto}}">--}}
+                {{--<button type="submit"  class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>--}}
+            {{--</div>--}}
+        {{--{{Form::close()}}--}}
+        {{--</div>--}}
+    {{--</div>--}}
     <table id="userTable" class="table table-bordered table-hover">
             <thead>
             <tr>
@@ -97,7 +99,15 @@
                 </tr>
             </tbody>
         </table>
-        {{$personas->render()}}
+        {{--{{$personas->render()}}--}}
+    @push('scripts')
+    <script>
+        $(function () {
+            $("#userTable").DataTable();
+        });
+    </script>
+    @endpush
         @include('cliente.add')
         @include('cliente.update')
+
 @endsection

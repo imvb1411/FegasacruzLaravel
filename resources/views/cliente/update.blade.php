@@ -9,20 +9,14 @@
             </div>
         
             <div class="modal-body">
-              
-                
-
                 <form action="{{route('cliente.update','test')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                     {{method_field('patch')}}
                     {{-- para evitar ataques --}}
                     {{csrf_field()}}
 
                     <input type="hidden" id="id" name="id" value=" ">
-
                     {{-- para incluir el formulario --}}
                     @include('cliente.form')
-
-
                 </form>
             </div>
            
