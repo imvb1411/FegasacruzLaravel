@@ -10,7 +10,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Sistema de Gestion Veterinario</title>
+    <title>Sistema de Gestion FEGASACRUZ</title>
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="/css/app.css">
@@ -39,12 +39,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
             <!-- Messages Dropdown Menu -->
-            {{--<a href="{{route('users.logout')}}">Cerrar sesion</a>--}}
             <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-comments"></i>
-                    <span class="badge badge-danger navbar-badge">3</span>
-                </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
@@ -101,27 +96,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
                     <i class="far fa-bell"></i>
-                    <span class="badge badge-warning navbar-badge">15</span>
+                    <span class="badge badge-success navbar-badge">{{\Illuminate\Support\Facades\Auth::user()->nick}}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-header">15 Notifications</span>
                     <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-envelope mr-2"></i> 4 new messages
-                        <span class="float-right text-muted text-sm">3 mins</span>
+                    <a href="{{route('personal.logout')}}" class="dropdown-item">
+                        <i class="fas fa-envelope mr-2"></i> Logout
+                        <span class="float-right text-muted text-sm">Salir</span>
                     </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-users mr-2"></i> 8 friend requests
-                        <span class="float-right text-muted text-sm">12 hours</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-file mr-2"></i> 3 new reports
-                        <span class="float-right text-muted text-sm">2 days</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -139,7 +121,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <img src="/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">VETCHACO</span>
+            <span class="brand-text font-weight-light">FEGASACRUZ</span>
         </a>
 
         <!-- Sidebar -->
@@ -305,7 +287,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                @yield('title','Sistema de gestion VETCHACO')
+                @yield('title','Sistema de gestion FEGASACRUZ')
                 <small>@yield('description','')</small>
             </h1>
         </section>

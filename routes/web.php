@@ -12,5 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('layouts.master');
-});
+    return view('layouts.login');
+})->name('login');
+Route::get('/home', function () {
+        return view('layouts.master');
+})->middleware('auth')->name('home');
+Route::resource('users','PersonalController');
+Route::post('personal_login','PersonalController@login')->name('personal.login');
+Route::get('personal_logout','PersonalController@logout')->name('personal.logout');
