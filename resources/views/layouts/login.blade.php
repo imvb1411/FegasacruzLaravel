@@ -8,8 +8,8 @@
         <div class="card-body login-card-body">
             <p class="login-box-msg">Inicia sesion para empezar</p>
 
-            {{--{!! Form::open(['route' => ['users.login'],'method'=>'POST']) !!}--}}
-            {{--{{Form::token()}}--}}
+            {!! Form::open(['route' => ['personal.login'],'method'=>'POST']) !!}
+            {{Form::token()}}
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" name="nick" placeholder="Nick">
                     <div class="input-group-append input-group-text">
