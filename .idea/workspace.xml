@@ -3,18 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6cb3871f-16de-4ad9-8760-6c88a37b3b33" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Actividad.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actividad.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ActividadController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ActividadController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UbicacionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UbicacionController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Actividad/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Actividad/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Actividad/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Actividad/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Actividad/modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Actividad/modal.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Ubicacion/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Ubicacion/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Ubicacion/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Ubicacion/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Ubicacion/modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Ubicacion/modal.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/rubro/modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/rubro/modal.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -187,6 +178,14 @@
       <workItem from="1575729289978" duration="12134000" />
       <workItem from="1575835255191" duration="12839000" />
     </task>
+    <task id="LOCAL-00001" summary="Merge branch 'master' of https://github.com/imvb1411/FegasacruzLaravel&#10;&#10;# Conflicts:&#10;#&#9;resources/views/cliente/index.blade.php&#10;#&#9;resources/views/cliente/update.blade.php&#10;#&#9;resources/views/layouts/master.blade.php">
+      <created>1575862427291</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1575862427291</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
