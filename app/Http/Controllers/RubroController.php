@@ -12,16 +12,8 @@ class RubroController extends Controller
 {
     public function index(Request $request)
     {       
-            if($request){
-                $sql=trim($request->get('buscarTexto'));
-                $rubros=DB::table('rubro')
-                ->where('nombre','LIKE','%'.$sql.'%')
-                ->where('estado',1)
-                ->orderBy('id','asc')
-                ->paginate(5);
-                return view('rubro.index',["rubros"=>$rubros,"buscarTexto"=>$sql]);
-                // return $rubros;
-            }
+            $rubros=Rubro::all()->where('estado',1);
+            return view('rubro.index',compact('rubros'));
     }
 
     public function store(Request $request)
@@ -48,13 +40,29 @@ class RubroController extends Controller
             $rubro=Rubro::findOrFail($request->id);
             $rubro->nombre = $request->nombre;
             $rubro->descripcion = $request->descripcion;
+            $rubro->save();
             Session::put('success','Rubro '.$rubro->nombre.' actualizado correctamente');
             DB::commit();
         }catch (\Exception $exception){
             Session::put('danger','Ocurrio un problema al actualizar el rubro '.$request->nombre);
             DB::rollBack();
         }
-        // return redirect()->route('clientes.index');
-        return $request;
+        return redirect()->route('rubros.index');
+    }
+    public function destroy($id)
+    {
+        //
+        try{
+            DB::beginTransaction();
+            $rubro=Rubro::findOrFail($id);
+            $rubro->estado=0;
+            $rubro->update();
+            Session::put('success','Rubro '.$rubro->nombre.' eliminado correctamente');
+            DB::commit();
+        }catch (\Exception $exception){
+            Session::put('danger','Ocurrio un problema al eliminar el rubro nro:'.$id);
+            DB::rollBack();
+        }
+        return redirect()->route('rubros.index');
     }
 }

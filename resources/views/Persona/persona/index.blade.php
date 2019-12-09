@@ -69,7 +69,7 @@
                 </tr>
             </tbody>
         </table>
-        {{$clientes->render()}}
+        {{-- {{$clientes->render()}} --}}
     <div id="edit" class="modal fade" role="dialog">
         {!! Form::open(['route' => ['clientes.update','0'],'method'=>'PUT','id'=>"userForm"]) !!}
         {{Form::token()}}
