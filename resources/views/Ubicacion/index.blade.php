@@ -26,13 +26,14 @@
 </div>
 @endsection
 @section('content')
-<table id="clientTable" class="table table-bordered table-hover">
+<table id="ubicacionTable" class="table table-bordered table-hover">
     <thead>
     <tr>
         <th>ID</th>
         <th>UBICACION_ID</th>
         <th>NOMBRE</th>
         <th>TIPO</th>
+        <th>OPERACIONES</th>
     </tr>
     </thead>
     <tbody>
@@ -73,7 +74,7 @@
     {!! Form::close() !!}
 </div>
 @push('scripts')
-@include('Ubicacion.modal')
+    @include('Ubicacion.modal')
 @endpush
 
 @endsection

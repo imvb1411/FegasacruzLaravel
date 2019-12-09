@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Ubicacion;
 use App\Vista;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 use test\Mockery\TestIncreasedVisibilityChild;
 
 class UbicacionController extends Controller
@@ -20,9 +19,16 @@ class UbicacionController extends Controller
         $view=Vista::where('nombre','=','ubicacion')->first();
         $view->vistas=$view->vistas+1;
         $view->update();
-        $ubicaciones=Ubicacion::all()->where('estado',1)->sortBy("id");;
-        $departamentos=Ubicacion::all()->where('ubicacion_id',0)->where('estado',1)->sortBy("id");
+        $ubicaciones=Ubicacion::all()->where('estado',1);
+        $departamentos=Ubicacion::all()->where('ubicacion_id',0)->where('estado',1);
         //dd($departamentos);
+        return view('ubicacion.index',compact('ubicaciones','departamentos','view'));
+    }
+
+    public function buscar($texto){
+        $view=Vista::where('nombre','=','ubicacion')->first();
+        $ubicaciones=Ubicacion::where('estado',1)->where('nombre','ilike','%'.$texto.'%')->get();
+        $departamentos=Ubicacion::all()->where('ubicacion_id',0)->where('estado',1);
         return view('ubicacion.index',compact('ubicaciones','departamentos','view'));
     }
 
@@ -91,19 +97,14 @@ class UbicacionController extends Controller
      */
     public function update(Request $request)
     {
-        //dd($request);
         $ubicacion=Ubicacion::findOrFail($request->id);
         $ubicacion->tipo=$request->tipo;
-        if($ubicacion->tipo==1){
-        $ubicacion->ubicacion_id=0;
-    }else{
         $ubicacion->ubicacion_id=$request->ubicacion_id;
-    }
         $ubicacion->nombre=$request->nombre;
         if($ubicacion->update()){
-            Session::put('success','Ubicacion '.$ubicacion->nombre.' actualizado correctamente');
+           // Session::put('success','Producto '.$ubicacion->productname.' actualizado correctamente');
         }else{
-            Session::put('danger','Ocurrio un error al actualizar la Ubicacion '.$ubicacion->nombre);
+            //Session::put('danger','Ocurrio un error al actualizar el producto '.$ubicacion->productname);
         }
         return redirect()->route('ubicacion.index');
     }
@@ -119,9 +120,9 @@ class UbicacionController extends Controller
         $ubicacion=Ubicacion::findOrFail($ubicacion->id);
         $ubicacion->estado=0;
         if($ubicacion->update()){
-            Session::put('success','Ubicacion '.$ubicacion->nombre.' eliminado correctamente');
+           // Session::put('success','Producto '.$ubicacion->productname.' eliminado correctamente');
         }else{
-            Session::put('danger','Ocurrio un error al eliminar la Ubicacion '.$ubicacion->nombre);
+            //Session::put('danger','Ocurrio un error al eliminar el producto '.$ubicacion->productname);
         }
 
         return redirect()->route('ubicacion.index');
