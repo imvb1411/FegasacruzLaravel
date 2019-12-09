@@ -176,9 +176,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link">
+                                <a href="{{route('actividad.index')}}" class="nav-link">
                                     <i class="fas fa-sticky-note"></i>
-                                    <p>Especies</p>
+                                    <p>Actividades</p>
                                 </a>
                             </li>
                             <li class="nav-item">

@@ -1,5 +1,6 @@
 <div class="modal-body">
     <input type="hidden" name="id" id="id" class="form-control">
+<<<<<<< HEAD
     <div class="row">
         <div class="col-6">
             <label for="tipo">TIPO</label>
@@ -19,6 +20,22 @@
         <div class="col-3">
             <label for="nombre">Nombre</label>
             <input type="text" name="nombre" id="nombre" class="form-control" step="any" required>
+=======
+    <div class="form-group row">
+        <div class="col-md-12">
+        <label class="form-control-label" for="codigo">CODIGOS</label>
+        <input type="text" name="codigo" id="codigo" class="form-control" required placeholder="Ingrese un codigo">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-12">
+            <label class="form-control-label" for="nombre">NOMBRE</label>
+            <input type="descripcion" class="form-control" id="nombre" name="nombre" required placeholder="Nombre de la actividad">
+        </div>
+        <div class="col-md-12">
+            <label class="form-control-label" for="descripcion">Descripcion</label>
+            <input type="descripcion" class="form-control" id="descripcion" name="descripcion" required placeholder="Escriba una descripcion">
+>>>>>>> origin/master
         </div>
     </div>
 </div>

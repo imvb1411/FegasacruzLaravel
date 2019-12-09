@@ -45,11 +45,6 @@
         <td>{{$ubicacion->tipo}}</td>
         <td >
             <a class="btn btn-info"
-               {{--data-idcliente="{{$ubicacion->id}}"--}}
-               {{--data-ci="{{$ubicacion->ubicacion_id}}" --}}
-               {{--data-nombre="{{$ubicacion->nombre}}"--}}
-               {{--data-apellido_pat="{{$ubicacion->tipo}}"--}}
-               {{--data-toggle="modal" id="btnedit" data-target="#edit" --}}
                onclick='editar({{ json_encode($ubicacion) }})'>
                 Edit
             </a>
