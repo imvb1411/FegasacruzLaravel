@@ -11,13 +11,13 @@
                 validate(this);
             });
         }
-    
+
         submit.addEventListener('click', function() {
             for (var i = 0; i < inputs.length; i++) {
                 validate(inputs[i]);
             }
         });
-    
+
         function validate(input){
             switch (input.id) {
                 case 'descripcion':
@@ -55,7 +55,7 @@
             form.action='{{route('rubros.store')}}';
             form.method='post';
             var inputMethod=document.getElementsByName('_method');
-    
+
             for(var i=0;i<inputMethod.length;i++){
                 if(inputMethod[i].value==='PUT'){
                     _iMethod=inputMethod[i];
@@ -64,9 +64,9 @@
             }
             document.getElementById('htitle').innerText='Nuevo Rubro';
             document.getElementById('btn').innerText='Guardar'
-    
+
         });
-    
+
         function editar($rubro){
             console.log($rubro);
             action=2;

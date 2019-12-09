@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Vista;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\Actividad;
@@ -11,9 +12,12 @@ use Illuminate\Http\Request;
 class ActividadController extends Controller
 {
     public function index()
-    {       
-            $actividades=Actividad::all()->where('estado',1);
-            return view('actividades.index',compact('actividades'));
+    {
+        $view=Vista::where('nombre','=','ubicacion')->first();
+        $view->vistas=$view->vistas+1;
+        $view->update();
+        $actividades=Actividad::all()->where('estado',1)->sortBy("id");
+        return view('actividad.index',compact('actividades','view'));
     }
 
     public function store(Request $request)
@@ -31,7 +35,7 @@ class ActividadController extends Controller
             Session::put('danger','Ocurrio un problema al crear la actividad '.$request->nombre);
             DB::rollBack();
         }
-        return redirect()->route('actividades.index');
+        return redirect()->route('actividad.index');
     }
 
     public function update(Request $request)
@@ -49,7 +53,7 @@ class ActividadController extends Controller
             Session::put('danger','Ocurrio un problema al actualizar la actividad '.$request->nombre);
             DB::rollBack();
         }
-        return redirect()->route('actividades.index');
+        return redirect()->route('actividad.index');
     }
     public function destroy($id)
     {
@@ -65,6 +69,6 @@ class ActividadController extends Controller
             Session::put('danger','Ocurrio un problema al eliminar la Actividad nro:'.$id);
             DB::rollBack();
         }
-        return redirect()->route('actividades.index');
+        return redirect()->route('actividad.index');
     }
 }

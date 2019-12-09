@@ -3,14 +3,14 @@
     <div class="row">
         <div class="col-6">
             <label for="tipo">TIPO</label>
-            <select name="tipo" class="form-control" id="tipo" onchange="changeTipo()">
+            <select name="tipo" class="form-control" id="tipo" onchange="changeTipo()" required >
                 <option value="1">Departamentos</option>
                 <option value="2">Provincia</option>
             </select>
         </div>
         <div id="divDep" class="col-6" style="display:none">
             <label for="ubicacion_id">DEPARTAMENTO</label>
-            <select name="ubicacion_id" id="ubicacion_id" class="form-control" >
+            <select name="ubicacion_id" class="form-control" id="ubicacion_id" required>
                 @foreach($departamentos as $dep)
                 <option value="{{$dep->id}}">{{$dep->nombre}}</option>
                 @endforeach
