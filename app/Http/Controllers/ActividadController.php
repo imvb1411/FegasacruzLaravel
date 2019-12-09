@@ -13,7 +13,12 @@ class ActividadController extends Controller
     public function index()
     {       
             $actividades=Actividad::all()->where('estado',1);
-            return view('actividades.index',compact('actividades'));
+            return view('actividad.index',compact('actividades'));
+    }
+
+    public function buscar($texto){
+        $actividades=Actividad::all()->where('estado',1)->where('nombre',$texto);
+        return view('actividad.index',compact('actividades'));
     }
 
     public function store(Request $request)

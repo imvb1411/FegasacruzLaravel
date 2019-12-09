@@ -15,13 +15,15 @@ class PersonaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
            $clientes=Persona::all()->where('estado',1)->where('tipo_persona','CLI');
            return view('Persona.persona.index',compact('clientes'));
-
     }
 
+    public function buscar($texto){
+        $clientes=Persona::where('estado',1)->where('tipo_persona','like','CLI')->where('nombre','ilike','%'.$texto.'%')->get();
+        return view('Persona.persona.index',compact('clientes'));
+    }
     /**
      * Show the form for creating a new resource.
      *

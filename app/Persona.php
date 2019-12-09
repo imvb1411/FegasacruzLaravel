@@ -15,7 +15,7 @@ class Persona extends Model implements Searchable
     public function getSearchResult(): SearchResult
     {
         //$url = route('cliente.index',$this->nombre);
-        $url='/cliente?buscarTexto='.$this->nombre;
+        $url=route('cliente.buscar',$this->nombre);
 
         return new \Spatie\Searchable\SearchResult(
             $this,

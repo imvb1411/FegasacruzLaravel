@@ -3,16 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 
-class Actividad extends Model
+class Actividad extends Model implements Searchable
 {
-<<<<<<< HEAD
-    //
     protected $table='actividad';
-
     public $timestamps = false;
-=======
-    protected $table='actividad';
     protected $primaryKey='id';
     protected $fillable=[
         'nombre',
@@ -22,6 +19,15 @@ class Actividad extends Model
         'fecha_mod',
         'estado'
     ];
-    public $timestamps=false;
->>>>>>> 620bfe4c4c6c479abc7048de253d9ee031eb563a
+
+    public function getSearchResult(): SearchResult
+    {
+        $url=route('actividad.buscar',$this->nombre);
+
+        return new \Spatie\Searchable\SearchResult(
+            $this,
+            $this->nombre,
+            $url
+        );
+    }
 }

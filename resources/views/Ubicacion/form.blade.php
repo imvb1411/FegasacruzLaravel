@@ -12,7 +12,7 @@
             <label for="ubicacion_id">DEPARTAMENTO</label>
             <select name="ubicacion_id" class="form-control" id="ubicacion_id" required>
                 @foreach($departamentos as $dep)
-                <option value="{{$dep->id}}">{{$dep->nombre}}</option>
+                    <option value="{{$dep->id}}">{{$dep->nombre}}</option>
                 @endforeach
             </select>
         </div>

@@ -25,6 +25,13 @@ class UbicacionController extends Controller
         return view('ubicacion.index',compact('ubicaciones','departamentos','view'));
     }
 
+    public function buscar($texto){
+        $view=Vista::where('nombre','=','ubicacion')->first();
+        $ubicaciones=Ubicacion::where('estado',1)->where('nombre','ilike','%'.$texto.'%')->get();
+        $departamentos=Ubicacion::all()->where('ubicacion_id',0)->where('estado',1);
+        return view('ubicacion.index',compact('ubicaciones','departamentos','view'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -88,10 +95,9 @@ class UbicacionController extends Controller
      * @param  \App\Ubicacion  $ubicacion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ubicacion $ubicacion)
+    public function update(Request $request)
     {
-        dd($request);
-        $ubicacion=Product::findOrFail($request->idproduct);
+        $ubicacion=Ubicacion::findOrFail($request->id);
         $ubicacion->tipo=$request->tipo;
         $ubicacion->ubicacion_id=$request->ubicacion_id;
         $ubicacion->nombre=$request->nombre;
