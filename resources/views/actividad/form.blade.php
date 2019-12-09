@@ -2,7 +2,7 @@
     <input type="hidden" name="id" id="id" class="form-control">
     <div class="form-group row">
         <div class="col-md-12">
-        <label class="form-control-label" for="codigo">CODIGO</label>
+        <label class="form-control-label" for="codigo">CODIGOS</label>
         <input type="text" name="codigo" id="codigo" class="form-control" required placeholder="Ingrese un codigo">
         </div>
     </div>
