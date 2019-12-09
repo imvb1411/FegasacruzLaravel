@@ -12,7 +12,7 @@
                     <span class="info-box-icon"><i class="far fa-flag"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">Visitas</span>
-                        <span class="info-box-number">{{$view->views}}</span>
+                        <span class="info-box-number">{{$view->vistas}}</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 70%"></div>
                         </div>

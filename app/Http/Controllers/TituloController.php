@@ -6,19 +6,21 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Titulo;
 use Illuminate\Support\Facades\Session;
+use App\Vista;
 class TituloController extends Controller
 {
     public function index(Request $request)
-    {       
-        if($request){    
-            $sql=trim($request->get('buscarTexto'));
-            $titulos=DB::table('titulo')
-            ->where('descripcion','LIKE','%'.$sql.'%')
-            ->where('estado',1)
-            ->orderBy('id','desc')
-            ->paginate();
-            return view('titulo.index',["titulos"=>$titulos,"buscarTexto"=>$sql]);
-        }
+    {    
+        $view=Vista::where('nombre','=','titulo')->first();
+        $view->vistas=$view->vistas+1;
+        $view->update();
+        $titulos=Titulo::all()->where('estado',1);
+        return view('titulo.index',compact('titulos','view'));
+    }
+
+    public function buscar($texto){
+        $titulos=Titulo::where('estado',1)->where('descripcion','ilike','%'.$texto.'%')->get();
+        return view('titulo.index',compact('titulos'));
     }
     public function store(Request $request)
     {

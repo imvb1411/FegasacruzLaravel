@@ -5,15 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Rubro;
+use App\Vista;
 use Illuminate\Support\Facades\Session;
 
 
 class RubroController extends Controller
 {
     public function index(Request $request)
-    {       
+    {       $view=Vista::where('nombre','=','rubro')->first();
+            $view->vistas=$view->vistas+1;
+            $view->update();
             $rubros=Rubro::all()->where('estado',1);
-            return view('rubro.index',compact('rubros'));
+            return view('rubro.index',compact('rubros','view'));
+    }
+
+    public function buscar($texto){
+        $rubros=Rubro::where('estado',1)->where('nombre','ilike','%'.$texto.'%')->get();
+        return view('rubro.index',compact('rubros'));
     }
 
     public function store(Request $request)

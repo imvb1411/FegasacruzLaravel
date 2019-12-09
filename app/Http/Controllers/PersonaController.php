@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use App\Vista;
 
 class PersonaController extends Controller
 {
@@ -16,8 +17,11 @@ class PersonaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
+            $view=Vista::where('nombre','=','cliente')->first();
+            $view->vistas=$view->vistas+1;
+            $view->update();
            $clientes=Persona::all()->where('estado',1)->where('tipo_persona','CLI');
-           return view('Persona.persona.index',compact('clientes'));
+           return view('Persona.persona.index',compact('clientes','view'));
     }
 
     public function buscar($texto){
