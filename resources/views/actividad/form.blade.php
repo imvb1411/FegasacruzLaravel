@@ -23,7 +23,7 @@
 =======
     <div class="form-group row">
         <div class="col-md-12">
-        <label class="form-control-label" for="codigo">CODIGOS</label>
+        <label class="form-control-label" for="codigo">CODIGO</label>
         <input type="text" name="codigo" id="codigo" class="form-control" required placeholder="Ingrese un codigo">
         </div>
     </div>
