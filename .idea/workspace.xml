@@ -2,10 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6cb3871f-16de-4ad9-8760-6c88a37b3b33" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/Actividad/form.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Actividad/modal.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Actividad.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actividad.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ActividadController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ActividadController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UbicacionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UbicacionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Actividad/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Actividad/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Actividad/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Actividad/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Actividad/modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Actividad/modal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Ubicacion/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Ubicacion/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Ubicacion/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Ubicacion/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Ubicacion/modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Ubicacion/modal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/rubro/modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/rubro/modal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,6 +41,11 @@
     </commandsHistory>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Haiden &lt;kevin.haiden96@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">

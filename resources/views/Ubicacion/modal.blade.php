@@ -68,13 +68,15 @@
     });
 
     function editar($ubicacion){
-        console.log($ubicacion);
         action=2;
         var form= document.getElementById('ubicacionForm');
         form.action='{{route('ubicacion.update',0)}}';
         form.method='post';
+        //if(_iMethod.toString().length>0){
         _iMethod.value='PUT';
         console.log(_iMethod.value);
+        console.log($ubicacion);
+        //}
         $('#edit').modal('show');
         document.getElementById('htitle').innerText='Editar Ubicacion';
         document.getElementById('btn').innerText='Editar';
