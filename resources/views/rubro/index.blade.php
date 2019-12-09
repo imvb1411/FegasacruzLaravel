@@ -1,6 +1,6 @@
 @extends('layouts.master')
-@section('title', 'Clientes')
-    @section('header-title','Listado de clientes')
+@section('title', 'rubros')
+    @section('header-title','Listado de rubros')
 @section('header-content')
     <div class="row">
         <div class="col-3">
@@ -27,36 +27,26 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>CI</th>
                 <th>NOMBRE</th>
-                <th>APELLIDOS</th>
-                <th>TELEFONO</th>
-                <th>EMAIL</th>
+                <th>DESCRIPCION</th>
                 <th>OPERACIONES</th>
             </tr>
             </thead>
             <tbody>
-                @foreach($clientes as $person)
+                @foreach($rubros as $rubro)
                 <tr>
-                    <td>{{$person->id}}</td>
-                    <td>{{$person->ci}}</td>
-                    <td>{{$person->nombre}}</td>
-                    <td>{{$person->apellido_pat}} {{$person->apellido_mat}}</td>
-                    <td>{{$person->telefono}}</td>
-                    <td>{{$person->email}}</td>
+                    <td>{{$rubro->id}}</td>
+                    <td>{{$rubro->nombre}}</td>
+                    <td>{{$rubro->descripcion}}</td>
                     <td >
                         <a class="btn btn-info"
-                        data-idcliente="{{$person->id}}"
-                        data-ci="{{$person->ci}}" 
-                        data-nombre="{{$person->nombre}}"
-                        data-apellido_pat="{{$person->apellido_pat}}"
-                        data-apellido_mat="{{$person->apellido_mat}}"
-                        data-telefono="{{$person->telefono}}"
-                        data-email="{{$person->email}}"
+                        data-idcliente="{{$rubro->id}}"
+                        data-nombre="{{$rubro->nombre}}"
+                        data-email="{{$rubro->descripcion}}"
                         data-toggle="modal" id="btnedit" data-target="#edit" onclick="editClick();">
                             Edit
                         </a>
-                        {!! Form::open(['route' => ['clientes.destroy',$person->id],'method'=>'DELETE','style'=>'display: inline']) !!}
+                        {!! Form::open(['route' => ['rubros.destroy',$rubro->id],'method'=>'DELETE','style'=>'display: inline']) !!}
                         {{Form::token()}}
                         <button onclick="return confirm('¿Estas seguro?')" type="submit" class="btn btn-danger">Delete</button>
                         {!! Form::close() !!}
@@ -65,9 +55,9 @@
                 </tr>
             </tbody>
         </table>
-        {{$clientes->render()}}
+        {{$rubros->render()}}
     <div id="edit" class="modal fade" role="dialog">
-        {!! Form::open(['route' => ['clientes.update','0'],'method'=>'PUT','id'=>"userForm"]) !!}
+        {!! Form::open(['route' => ['rubros.update','0'],'method'=>'PUT','id'=>"userForm"]) !!}
         {{Form::token()}}
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -77,7 +67,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                    @include('Persona.persona.form')
+                    @include('rubro.form')
             </div>
         </div>
         {!! Form::close() !!}
@@ -85,6 +75,6 @@
     @push('scripts')
         {{--<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>--}}
         {{--{!! JsValidator::formRequest('App\Http\Requests\UserRequest', '#userForm'); !!}--}}
-        @include('Persona.persona.modal')
+        @include('rubro.modal')
     @endpush
 @endsection

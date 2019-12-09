@@ -26,6 +26,7 @@ Route::post('personal_login','PersonalController@login')->name('personal.login')
 Route::get('personal_logout','PersonalController@logout')->name('personal.logout');
 
 Route::resource('clientes', 'PersonaController');
+Route::resource('rubros', 'RubroController');
 
 Route::get('/search/{s}',function($s){
     $searchResults = (new Search())

@@ -19,18 +19,19 @@ class PersonaController extends Controller
     {
             // $persona = Persona::all()->where('estado',1);
             
-            // if($request){
-            //     $sql=trim($request->get('buscarTexto'));
-            //     $clientes=DB::table('persona')
-            //     ->where('nombre','LIKE','%'.$sql.'%')
-            //     ->where('tipo_persona','CLI')
-            //     ->orderBy('id','desc')
-            //     ->paginate(3);
-            //     return view('Persona.persona.index',["clientes"=>$clientes,"buscarTexto"=>$sql]);
-            // }
+            if($request){
+                $sql=trim($request->get('buscarTexto'));
+                $clientes=DB::table('persona')
+                ->where('nombre','LIKE','%'.$sql.'%')
+                ->where('tipo_persona','CLI')
+                ->where('estado',1)
+                ->orderBy('id','desc')
+                ->paginate(5);
+                return view('Persona.persona.index',["clientes"=>$clientes,"buscarTexto"=>$sql]);
+            }
 
-            $clientes=Persona::all()->where('estado',1)->where('tipo_persona','CLI');
-            return view('Persona.persona.index',compact('clientes'));
+            // $clientes=Persona::all()->where('estado',1)->where('tipo_persona','CLI');
+            // return view('Persona.persona.index',compact('clientes'));
 
     }
 
@@ -52,18 +53,6 @@ class PersonaController extends Controller
      */
     public function store(Request $request)
     {
-        // //
-        // $persona= new Persona();
-        // $persona->ci = $request->ci;
-        // $persona->nombre = $request->nombre;
-        // $persona->apellido_pat = $request->apellido_pat;
-        // $persona->apellido_mat = $request->apellido_mat;
-        // $persona->telefono = $request->telefono;
-        // $persona->email = $request->email;
-        // $persona->tipo_persona = 'CLI';
-        // $persona->save();
-        // return Redirect::to("cliente");
-
         DB::beginTransaction();
         try {
             $persona=new Persona();
@@ -116,16 +105,6 @@ class PersonaController extends Controller
      */
     public function update(Request $request)
     {
-        // $persona= Persona::findOrFail($request->id);
-        // $persona->ci = $request->ci;
-        // $persona->nombre = $request->nombre;
-        // $persona->apellido_pat = $request->apellido_pat;
-        // $persona->apellido_mat = $request->apellido_mat;
-        // $persona->telefono = $request->telefono;
-        // $persona->email = $request->email;
-        // $persona->save();
-        // return Redirect::to("cliente");
-
         try{
             DB::beginTransaction();
             $persona=Persona::findOrFail($request->id);
