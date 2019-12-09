@@ -15,20 +15,8 @@ class PersonaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-            // $persona = Persona::all()->where('estado',1);
-            
-            //  if($request){
-            //      $sql=trim($request->get('buscarTexto'));
-            //      $clientes=DB::table('persona')
-            //      ->where('nombre','LIKE','%'.$sql.'%')
-            //      ->where('tipo_persona','CLI')
-            //      ->orderBy('id','desc')
-            //      ->paginate(3);
-            //      return view('Persona.persona.index',["clientes"=>$clientes,"buscarTexto"=>$sql]);
-            //  }
-
            $clientes=Persona::all()->where('estado',1)->where('tipo_persona','CLI');
            return view('Persona.persona.index',compact('clientes'));
 
