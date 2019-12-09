@@ -4,15 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Rubro;
-use Illuminate\Support\Facades\Session;
+use App\Titulo;
 
-
-class RubroController extends Controller
+class TituloController extends Controller
 {
     public function index(Request $request)
     {       
-            $rubros=Rubro::all()->where('estado',1);
+            $titulos=Titulo::all()->where('estado',1);
             return view('rubro.index',compact('rubros'));
     }
 

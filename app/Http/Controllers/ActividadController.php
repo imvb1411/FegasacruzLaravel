@@ -2,88 +2,69 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use App\Actividad;
+
 use Illuminate\Http\Request;
 
 class ActividadController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
-    {
-        $view=View::where('nombre','=','actividad')->first();
-        $view->vistas=$view->vistas+1;
-        $view->update();
-        $actividad=Actividad::all()->where('estado',1);
-        return view('actividad.index',compact('actividad','view'));
+    {       
+            $actividades=Actividad::all()->where('estado',1);
+            return view('actividades.index',compact('actividades'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $actividad=new Actividad();
+            $actividad->codigo = $request->codigo;
+            $actividad->nombre = $request->nombre;
+            $actividad->descripcion = $request->descripcion;
+            $actividad->save();
+            Session::put('success','Actividad '.$actividad->nombre.' creado correctamente');
+            DB::commit();
+        }catch (\Exception $exception) {
+            Session::put('danger','Ocurrio un problema al crear la actividad '.$request->nombre);
+            DB::rollBack();
+        }
+        return redirect()->route('actividades.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Actividad  $actividad
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Actividad $actividad)
+    public function update(Request $request)
     {
-        //
+        try{
+            DB::beginTransaction();
+            $actividad=Actividad::findOrFail($request->id);
+            $actividad->codigo = $request->codigo;
+            $actividad->nombre = $request->nombre;
+            $actividad->descripcion = $request->descripcion;
+            $actividad->save();
+            Session::put('success','Actividad '.$actividad->nombre.' actualizado correctamente');
+            DB::commit();
+        }catch (\Exception $exception){
+            Session::put('danger','Ocurrio un problema al actualizar la actividad '.$request->nombre);
+            DB::rollBack();
+        }
+        return redirect()->route('actividades.index');
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Actividad  $actividad
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Actividad $actividad)
+    public function destroy($id)
     {
         //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Actividad  $actividad
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Actividad $actividad)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Actividad  $actividad
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Actividad $actividad)
-    {
-        //
+        try{
+            DB::beginTransaction();
+            $actividad=Actividad::findOrFail($id);
+            $actividad->estado=0;
+            $actividad->update();
+            Session::put('success','Actividad '.$actividad->nombre.' eliminado correctamente');
+            DB::commit();
+        }catch (\Exception $exception){
+            Session::put('danger','Ocurrio un problema al eliminar la Actividad nro:'.$id);
+            DB::rollBack();
+        }
+        return redirect()->route('actividades.index');
     }
 }
