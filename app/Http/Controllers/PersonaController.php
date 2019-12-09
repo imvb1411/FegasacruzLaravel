@@ -19,18 +19,18 @@ class PersonaController extends Controller
     {
             // $persona = Persona::all()->where('estado',1);
             
-            // if($request){
-            //     $sql=trim($request->get('buscarTexto'));
-            //     $clientes=DB::table('persona')
-            //     ->where('nombre','LIKE','%'.$sql.'%')
-            //     ->where('tipo_persona','CLI')
-            //     ->orderBy('id','desc')
-            //     ->paginate(3);
-            //     return view('Persona.persona.index',["clientes"=>$clientes,"buscarTexto"=>$sql]);
-            // }
+             if($request){
+                 $sql=trim($request->get('buscarTexto'));
+                 $clientes=DB::table('persona')
+                 ->where('nombre','LIKE','%'.$sql.'%')
+                 ->where('tipo_persona','CLI')
+                 ->orderBy('id','desc')
+                 ->paginate(3);
+                 return view('Persona.persona.index',["clientes"=>$clientes,"buscarTexto"=>$sql]);
+             }
 
-            $clientes=Persona::all()->where('estado',1)->where('tipo_persona','CLI');
-            return view('Persona.persona.index',compact('clientes'));
+//            $clientes=Persona::all()->where('estado',1)->where('tipo_persona','CLI');
+//            return view('Persona.persona.index',compact('clientes'));
 
     }
 
@@ -125,7 +125,6 @@ class PersonaController extends Controller
         // $persona->email = $request->email;
         // $persona->save();
         // return Redirect::to("cliente");
-
         try{
             DB::beginTransaction();
             $persona=Persona::findOrFail($request->id);
@@ -135,6 +134,7 @@ class PersonaController extends Controller
             $persona->apellido_mat = $request->apellido_mat;
             $persona->telefono = $request->telefono;
             $persona->email = $request->email;
+            $persona->save();
             Session::put('success','Cliente '.$persona->nombre.' actualizado correctamente');
             DB::commit();
         }catch (\Exception $exception){
@@ -142,7 +142,7 @@ class PersonaController extends Controller
             DB::rollBack();
         }
         // return redirect()->route('clientes.index');
-        return $request;
+        return redirect()->route('clientes.index');
     }
 
     /**

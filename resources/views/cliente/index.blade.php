@@ -107,7 +107,7 @@
         });
     </script>
     @endpush
-        @include('cliente.add')
-        @include('cliente.update')
+        {{--@include('cliente.add')--}}
+        {{--@include('cliente.update')--}}
 
 @endsection

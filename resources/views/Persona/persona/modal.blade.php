@@ -85,7 +85,8 @@
 
     });
 
-    function editClick(){
+    function editar($cliente){
+        console.log($cliente);
         action=2;
         var form= document.getElementById('userForm');
         form.action='{{route('clientes.update',0)}}';
@@ -94,27 +95,37 @@
         _iMethod.value='PUT';
         console.log(_iMethod.value);
         //}
+        $('#edit').modal('show');
         document.getElementById('htitle').innerText='Editar Cliente';
         document.getElementById('btn').innerText='Editar';
+        $('#edit').find('.modal-body #ci').val($cliente.ci);
+        $('#edit').find('.modal-body #nombre').val($cliente.nombre);
+        $('#edit').find('.modal-body #apellido_pat').val($cliente.apellido_pat);
+        $('#edit').find('.modal-body #apellido_mat').val($cliente.apellido_mat);
+        $('#edit').find('.modal-body #telefono').val($cliente.telefono);
+        $('#edit').find('.modal-body #email').val($cliente.email);
+        $('#edit').find('.modal-body #id').val($cliente.id);
     }
 
-    $('#edit').on('show.bs.modal',function(event){
-        if(action===2) {
-            var button = $(event.relatedTarget);
-            var id= button.data('idcliente')
-            var ci = button.data('ci')
-            var nombre = button.data('nombre')
-            var apellido_pat = button.data('apellido_pat')
-            var apellido_mat = button.data('apellido_mat')
-            var telefono = button.data('telefono')
-            var email = button.data('email')
-            var modal = $(this);
-            modal.find('.modal-body #ci').val(ci);
-            modal.find('.modal-body #nombre').val(nombre);
-            modal.find('.modal-body #apellido_pat').val(apellido_pat);
-            modal.find('.modal-body #apellido_mat').val(apellido_mat);
-            modal.find('.modal-body #telefono').val(telefono);
-            modal.find('.modal-body #email').val(email);
-            modal.find('modal-body $id').val(id);
-    })
+    // $('#edit').on('show.bs.modal',function(event){
+    //     if(action===2) {
+    //         var button = $(event.relatedTarget);
+    //         var id = button.data('idcliente');
+    //         alert(id);
+    //         var ci = button.data('ci');
+    //         var nombre = button.data('nombre');
+    //         var apellido_pat = button.data('apellido_pat');
+    //         var apellido_mat = button.data('apellido_mat');
+    //         var telefono = button.data('telefono');
+    //         var email = button.data('email');
+    //         var modal = $(this);
+    //         modal.find('.modal-body #ci').val(ci);
+    //         modal.find('.modal-body #nombre').val(nombre);
+    //         modal.find('.modal-body #apellido_pat').val(apellido_pat);
+    //         modal.find('.modal-body #apellido_mat').val(apellido_mat);
+    //         modal.find('.modal-body #telefono').val(telefono);
+    //         modal.find('.modal-body #email').val(email);
+    //         modal.find('modal-body $id').val(id);
+    //     }
+    // });
 </script>
