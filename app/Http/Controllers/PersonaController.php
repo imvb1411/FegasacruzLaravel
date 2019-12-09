@@ -19,34 +19,18 @@ class PersonaController extends Controller
     {
             // $persona = Persona::all()->where('estado',1);
             
-<<<<<<< HEAD
-            if($request){
-                $sql=trim($request->get('buscarTexto'));
-                $clientes=DB::table('persona')
-                ->where('nombre','LIKE','%'.$sql.'%')
-                ->where('tipo_persona','CLI')
-                ->where('estado',1)
-                ->orderBy('id','desc')
-                ->paginate(5);
-                return view('Persona.persona.index',["clientes"=>$clientes,"buscarTexto"=>$sql]);
-            }
+            //  if($request){
+            //      $sql=trim($request->get('buscarTexto'));
+            //      $clientes=DB::table('persona')
+            //      ->where('nombre','LIKE','%'.$sql.'%')
+            //      ->where('tipo_persona','CLI')
+            //      ->orderBy('id','desc')
+            //      ->paginate(3);
+            //      return view('Persona.persona.index',["clientes"=>$clientes,"buscarTexto"=>$sql]);
+            //  }
 
-            // $clientes=Persona::all()->where('estado',1)->where('tipo_persona','CLI');
-            // return view('Persona.persona.index',compact('clientes'));
-=======
-             if($request){
-                 $sql=trim($request->get('buscarTexto'));
-                 $clientes=DB::table('persona')
-                 ->where('nombre','LIKE','%'.$sql.'%')
-                 ->where('tipo_persona','CLI')
-                 ->orderBy('id','desc')
-                 ->paginate(3);
-                 return view('Persona.persona.index',["clientes"=>$clientes,"buscarTexto"=>$sql]);
-             }
-
-//            $clientes=Persona::all()->where('estado',1)->where('tipo_persona','CLI');
-//            return view('Persona.persona.index',compact('clientes'));
->>>>>>> 29dbe4d61598ebbbf0b5992eb387381f636f7fac
+           $clientes=Persona::all()->where('estado',1)->where('tipo_persona','CLI');
+           return view('Persona.persona.index',compact('clientes'));
 
     }
 
