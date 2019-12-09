@@ -18,7 +18,7 @@ class PersonaController extends Controller
     public function index(Request $request)
     {
             // $persona = Persona::all()->where('estado',1);
-            
+
 <<<<<<< HEAD
             if($request){
                 $sql=trim($request->get('buscarTexto'));

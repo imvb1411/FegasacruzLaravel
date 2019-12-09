@@ -4,13 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Vista extends Model
+class Actividad extends Model
 {
-    protected $table='vistas';
+    protected $table='actividad';
     protected $primaryKey='id';
     protected $fillable=[
         'nombre',
-        'vistas',
+        'codigo',
+        'descripcion',
         'fecha_reg',
         'fecha_mod',
         'estado'
