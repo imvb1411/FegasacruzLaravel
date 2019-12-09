@@ -4,16 +4,18 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Vista extends Model
+class Ubicacion extends Model
 {
-    protected $table='vistas';
+    protected $table='ubicacion';
     protected $primaryKey='id';
     protected $fillable=[
+        'ubicacion_id',
         'nombre',
-        'vistas',
+        'tipo',
         'fecha_reg',
         'fecha_mod',
         'estado'
     ];
     public $timestamps=false;
+
 }

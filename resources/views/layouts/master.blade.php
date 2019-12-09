@@ -170,9 +170,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="" class="nav-link">
+                                <a href="{{route('ubicacion.index')}}" class="nav-link">
                                     <i class="fas fa-sticky-note"></i>
-                                    <p>Categorias de prod.</p>
+                                    <p>Ubicaciones</p>
                                 </a>
                             </li>
                             <li class="nav-item">
