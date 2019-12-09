@@ -306,7 +306,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!--------------------------
               | Your Page Content Here |
               -------------------------->
-
+            @yield('vistas')
         </section>
         <!-- /.content -->
     </div>
@@ -321,7 +321,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
     </aside>
     <!-- /.control-sidebar -->
-
     <!-- Main Footer -->
     <footer class="main-footer">
         <!-- To the right -->
@@ -341,16 +340,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="/js/app.js"></script>
 <script src="/js/jquery/jquery.min.js"></script>
 @stack('scripts')
-{{--<script src="/js/bootstrap/js/bootstrap.bundle.min.js"></script>--}}
-{{--<script src="/js/datatables/jquery.dataTables.js"></script>--}}
-{{--<script src="/js/datatables/dataTables.bootstrap4.js"></script>--}}
+<script src="/js/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/js/datatables/jquery.dataTables.js"></script>
+<script src="/js/datatables/dataTables.bootstrap4.js"></script>
 <script>
     var sidebar=document.getElementById('sidebar');
     $('#warning').click(function () {
        sidebar.className='main-sidebar sidebar-dark-secondary elevation-4'
     });
 </script>
-
 {{--<script src="/plugins/jquery/jquery.min.js"></script>--}}
 {{--<!-- Bootstrap 4 -->--}}
 {{--<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>--}}

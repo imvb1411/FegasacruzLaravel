@@ -19,6 +19,7 @@ class PersonaController extends Controller
     {
             // $persona = Persona::all()->where('estado',1);
             
+<<<<<<< HEAD
             if($request){
                 $sql=trim($request->get('buscarTexto'));
                 $clientes=DB::table('persona')
@@ -32,6 +33,20 @@ class PersonaController extends Controller
 
             // $clientes=Persona::all()->where('estado',1)->where('tipo_persona','CLI');
             // return view('Persona.persona.index',compact('clientes'));
+=======
+             if($request){
+                 $sql=trim($request->get('buscarTexto'));
+                 $clientes=DB::table('persona')
+                 ->where('nombre','LIKE','%'.$sql.'%')
+                 ->where('tipo_persona','CLI')
+                 ->orderBy('id','desc')
+                 ->paginate(3);
+                 return view('Persona.persona.index',["clientes"=>$clientes,"buscarTexto"=>$sql]);
+             }
+
+//            $clientes=Persona::all()->where('estado',1)->where('tipo_persona','CLI');
+//            return view('Persona.persona.index',compact('clientes'));
+>>>>>>> 29dbe4d61598ebbbf0b5992eb387381f636f7fac
 
     }
 
@@ -105,6 +120,15 @@ class PersonaController extends Controller
      */
     public function update(Request $request)
     {
+        // $persona= Persona::findOrFail($request->id);
+        // $persona->ci = $request->ci;
+        // $persona->nombre = $request->nombre;
+        // $persona->apellido_pat = $request->apellido_pat;
+        // $persona->apellido_mat = $request->apellido_mat;
+        // $persona->telefono = $request->telefono;
+        // $persona->email = $request->email;
+        // $persona->save();
+        // return Redirect::to("cliente");
         try{
             DB::beginTransaction();
             $persona=Persona::findOrFail($request->id);
@@ -114,6 +138,7 @@ class PersonaController extends Controller
             $persona->apellido_mat = $request->apellido_mat;
             $persona->telefono = $request->telefono;
             $persona->email = $request->email;
+            $persona->save();
             Session::put('success','Cliente '.$persona->nombre.' actualizado correctamente');
             DB::commit();
         }catch (\Exception $exception){
@@ -121,7 +146,7 @@ class PersonaController extends Controller
             DB::rollBack();
         }
         // return redirect()->route('clientes.index');
-        return $request;
+        return redirect()->route('clientes.index');
     }
 
     /**
