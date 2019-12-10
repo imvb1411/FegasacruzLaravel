@@ -53,6 +53,9 @@ Route::get('/buscar_ubicacion/{t}','UbicacionController@buscar')->name('ubicacio
 Route::resource('actividad', 'ActividadController');
 Route::get('/buscar_actividad/{t}','ActividadController@buscar')->name('actividad.buscar');
 
+Route::resource('solicitudes', 'SolicitudController');
+Route::get('/buscar_solicitud/{t}','SolicitudController@buscar')->name('solicitud.buscar');
+
 Route::get('/search/{s}',function($s){
     $searchResults = (new Search())
             ->registerModel(Persona::class, 'nombre')
