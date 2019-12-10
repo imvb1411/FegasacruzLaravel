@@ -1,6 +1,6 @@
 @extends('layouts.master')
-@section('title', 'Titulos')
-    @section('header-title','Listado de Titulos')
+@section('title', 'Planos')
+    @section('header-title','Listado de Planos')
 @section('vistas')
     <div class="row">
         <div class="col-md-3 col-sm-6 col-12 float-sm-right">
@@ -26,7 +26,7 @@
     </div>
 @endsection
 @section('content')
-        <table id="tituloTable" class="table table-bordered table-hover">
+        <table id="planoTable" class="table table-bordered table-hover">
             <thead>
             <tr>
                 <th>ID</th>
@@ -41,19 +41,19 @@
             </tr>
             </thead>
             <tbody>
-                @foreach($titulos as $titulo)
+                @foreach($planos as $plano)
                 <tr>
-                    <td>{{$titulo->id}}</td>
-                    <td>{{$titulo->solicitud->id}}</td>
+                    <td>{{$plano->id}}</td>
+                    <td>{{$plano->solicitud->id}}</td>
                     <td> 
-                        <a href="titulo/img/{{ $titulo->id }}" target="_blank"><img src="data:{{$titulo->mime}};base64, {{$titulo->data}}" width="100"> </td></a>
-                    <td>{{$titulo->descripcion}}</td>
+                        <a href="plano/img/{{ $plano->id }}" target="_blank"><img src="data:{{$plano->mime}};base64, {{$plano->data}}" width="100"> </td></a>
+                    <td>{{$plano->descripcion}}</td>
                     <td >
                         <a class="btn btn-info"
-                           onclick='editar({{ json_encode($titulo) }})'>
+                           onclick='editar({{ json_encode($plano) }})'>
                             Edit
                         </a>
-                        {!! Form::open(['route' => ['titulos.destroy',$titulo->id],'method'=>'DELETE','style'=>'display: inline']) !!}
+                        {!! Form::open(['route' => ['planos.destroy',$plano->id],'method'=>'DELETE','style'=>'display: inline']) !!}
                         {{Form::token()}}
                         <button onclick="return confirm('¿Estas seguro?')" type="submit" class="btn btn-danger">Delete</button>
                         {!! Form::close() !!}
@@ -63,23 +63,23 @@
             </tbody>
         </table>
     <div id="edit" class="modal fade" role="dialog">
-        {!! Form::open(['route' => ['titulos.update','0'],'method'=>'PUT','id'=>"userForm"]) !!}
+        {!! Form::open(['route' => ['planos.update','0'],'method'=>'PUT','id'=>"userForm"]) !!}
         {{Form::token()}}
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="htitle">Editar titulo</h4>
+                    <h4 class="modal-title" id="htitle">Editar plano</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                    @include('titulo.form')
+                    @include('plano.form')
             </div>
         </div>
         {!! Form::close() !!}
     </div>
     @push('scripts')
-        @include('titulo.modal')
+        @include('plano.modal')
     @endpush
 
 @endsection

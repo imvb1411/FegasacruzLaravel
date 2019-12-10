@@ -1,7 +1,7 @@
 <script>
         var action=1;
         $(function () {
-            $("#tituloTable").DataTable();
+            $("#planoTable").DataTable();
         });
         var inputs=document.querySelectorAll('input:not([type="submit"])');
         var flag=true;
@@ -52,7 +52,7 @@
         $('#new').click(function () {
             action=1;
             var form= document.getElementById('userForm');
-            form.action='{{route('titulos.store')}}';
+            form.action='{{route('planos.store')}}';
             form.method='post';
             form.enctype="multipart/form-data";
             var inputMethod=document.getElementsByName('_method');
@@ -63,16 +63,16 @@
                     inputMethod[i].value='POST';
                 }
             }
-            document.getElementById('htitle').innerText='Nuevo titulo';
+            document.getElementById('htitle').innerText='Nuevo Plano';
             document.getElementById('btn').innerText='Guardar'
 
         });
 
-        function editar($titulo){
-            console.log($titulo.solicitud_id);
+        function editar($plano){
+            console.log($plano.solicitud_id);
             action=2;
             var form= document.getElementById('userForm');
-            form.action='{{route('titulos.update',0)}}';
+            form.action='{{route('planos.update',0)}}';
             form.method='post';
             // form.files='true';
             form.enctype="multipart/form-data";
@@ -81,10 +81,10 @@
             // console.log(_iMethod.value);
             //}
             $('#edit').modal('show');
-            document.getElementById('htitle').innerText='Editar titulo';
+            document.getElementById('htitle').innerText='Editar plano';
             document.getElementById('btn').innerText='Editar';
-            $('#edit').find('.modal-body #descripcion').val($titulo.descripcion);
-            $('#edit').find('.modal-body #solicitud_id').val($titulo.solicitud_id);
-            $('#edit').find('.modal-body #id').val($titulo.id);
+            $('#edit').find('.modal-body #descripcion').val($plano.descripcion);
+            $('#edit').find('.modal-body #solicitud_id').val($plano.solicitud_id);
+            $('#edit').find('.modal-body #id').val($plano.id);
         }
     </script>

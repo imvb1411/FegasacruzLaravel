@@ -1,14 +1,15 @@
 <?php
 
 namespace App;
+
+use Illuminate\Database\Eloquent\Model;
 use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
-use Illuminate\Database\Eloquent\Model;
 
-class Titulo extends Model implements Searchable
+class Plano extends Model implements Searchable
 {
     //
-    protected $table='titulo';
+    protected $table='plano';
 
     public $timestamps = false;
 

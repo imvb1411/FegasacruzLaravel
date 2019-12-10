@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Titulo;
 use Illuminate\Support\Facades\Session;
 use App\Vista;
+use App\Solicitud;
 class TituloController extends Controller
 {
     public function index(Request $request)
@@ -15,7 +16,9 @@ class TituloController extends Controller
         $view->vistas=$view->vistas+1;
         $view->update();
         $titulos=Titulo::all()->where('estado',1);
-        return view('titulo.index',compact('titulos','view'));
+        $solicitudes=Solicitud::all()->where('estado',1);
+        // return $solicitudes;
+        return view('titulo.index',compact('titulos','solicitudes','view'));
     }
 
     public function buscar($texto){
@@ -44,10 +47,13 @@ class TituloController extends Controller
                 $titulo->name = $name;
                 $titulo->mime = $mime;
                 $titulo->data = $data;
+                $titulo->solicitud_id = $request->solicitud_id;
                 $titulo->estado = 1;
                 $titulo->save();
                 Session::put('success','Titulo creado correctamente');
                 DB::commit();
+            }else{
+                throw new \Exception;
             }
         }catch (\Exception $exception) {
             Session::put('danger','Ocurrio un problema al crear el titulo ');
@@ -69,9 +75,12 @@ class TituloController extends Controller
                 $titulo->name = $name;
                 $titulo->mime = $mime;
                 $titulo->data = $data;
+                $titulo->solicitud_id = $request->solicitud_id;
                 $titulo->save();
                 Session::put('success','Titulo actualizado correctamente');
                 DB::commit();
+            }else{
+                throw new \Exception;
             }
         }catch (\Exception $exception){
             Session::put('danger','Ocurrio un problema al actualizar el titulo');

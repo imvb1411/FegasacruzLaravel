@@ -39,8 +39,9 @@ Route::resource('titulos', 'TituloController');
 Route::get('/titulo/img/{t}','TituloController@showImg')->name('titulo.imagen');
 Route::get('/buscar_titulo/{t}','TituloController@buscar')->name('titulo.buscar');
 
-Route::resource('pruebas', 'PruebaController');
-Route::get('/prueba/img/{t}','PruebaController@showImg')->name('prueba');
+Route::resource('planos', 'PlanoController');
+Route::get('/plano/img/{t}','PlanoController@showImg')->name('plano.imagen');
+Route::get('/buscar_plano/{t}','PlanoController@buscar')->name('plano.buscar');
 
 Route::resource('ubicacion', 'UbicacionController');
 Route::get('/buscar_ubicacion/{t}','UbicacionController@buscar')->name('ubicacion.buscar');
