@@ -6,17 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
 
-class Plano extends Model implements Searchable
+class Marca extends Model implements Searchable
 {
     //
-    protected $table='plano';
+    protected $table='marca';
 
     public $timestamps = false;
 
     public function getSearchResult(): SearchResult
     {
-        //$url = route('cliente.index',$this->nombre);
-        $url=route('plano.buscar',$this->descripcion);
+    $url=route('marca.buscar',$this->descripcion);
 
         return new \Spatie\Searchable\SearchResult(
             $this,

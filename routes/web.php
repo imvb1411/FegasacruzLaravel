@@ -43,6 +43,10 @@ Route::resource('planos', 'PlanoController');
 Route::get('/plano/img/{t}','PlanoController@showImg')->name('plano.imagen');
 Route::get('/buscar_plano/{t}','PlanoController@buscar')->name('plano.buscar');
 
+Route::resource('marcas', 'MarcaController');
+Route::get('/marca/img/{t}','MarcaController@showImg')->name('marca.imagen');
+Route::get('/buscar_marca/{t}','PlanoController@buscar')->name('marca.buscar');
+
 Route::resource('ubicacion', 'UbicacionController');
 Route::get('/buscar_ubicacion/{t}','UbicacionController@buscar')->name('ubicacion.buscar');
 
