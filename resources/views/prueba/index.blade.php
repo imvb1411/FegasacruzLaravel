@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title', 'Titulos')
-    @section('header-title','Listado de Titulos')
+    @section('header-title','Listado de pruebas')
 @section('vistas')
     <div class="row">
         <div class="col-md-3 col-sm-6 col-12 float-sm-right">
@@ -26,7 +26,7 @@
     </div>
 @endsection
 @section('content')
-        <table id="tituloTable" class="table table-bordered table-hover">
+        <table id="pruebaTable" class="table table-bordered table-hover">
             <thead>
             <tr>
                 <th>ID</th>
@@ -36,12 +36,12 @@
             </tr>
             </thead>
             <tbody>
-                @foreach($titulos as $titulo)
+                @foreach($pruebas as $titulo)
                 <tr>
                     <td>{{$titulo->id}}</td>
                     <td> 
                         <div class="row">
-                                <a href="titulo/img/{{ $titulo->id }}" target="_blank"> {{ $titulo->name }} </a>
+                                <a href="prueba/img/{{ $titulo->id }}" target="_blank"> {{ $titulo->name }} </a>
                         </div>
                         <div class="row">
                                 <img src="data:{{$titulo->mime}};base64, {{$titulo->data}}" width="100"> </td>
@@ -52,7 +52,7 @@
                            onclick='editar({{ json_encode($titulo) }})'>
                             Edit
                         </a>
-                        {!! Form::open(['route' => ['titulos.destroy',$titulo->id],'method'=>'DELETE','style'=>'display: inline']) !!}
+                        {!! Form::open(['route' => ['pruebas.destroy',$titulo->id],'method'=>'DELETE','style'=>'display: inline']) !!}
                         {{Form::token()}}
                         <button onclick="return confirm('¿Estas seguro?')" type="submit" class="btn btn-danger">Delete</button>
                         {!! Form::close() !!}
@@ -62,7 +62,7 @@
             </tbody>
         </table>
     <div id="edit" class="modal fade" role="dialog">
-        {!! Form::open(['route' => ['titulos.update','0'],'method'=>'PUT','id'=>"userForm"]) !!}
+        {!! Form::open(['route' => ['pruebas.update','0'],'method'=>'PUT','id'=>"userForm"]) !!}
         {{Form::token()}}
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -72,13 +72,13 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                    @include('titulo.form')
+                    @include('prueba.form')
             </div>
         </div>
         {!! Form::close() !!}
     </div>
     @push('scripts')
-        @include('titulo.modal')
+        @include('prueba.modal')
     @endpush
 
 @endsection

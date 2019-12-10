@@ -22,16 +22,33 @@ class TituloController extends Controller
         $titulos=Titulo::where('estado',1)->where('descripcion','ilike','%'.$texto.'%')->get();
         return view('titulo.index',compact('titulos'));
     }
+
+    public function showImg($id)
+    {
+        $titulo = Titulo::find($id);
+
+        $data = base64_decode($titulo->data);
+        return response($data)->header('Content-Type', $titulo->mime); // thanks to Devon
+    }
+
     public function store(Request $request)
     {
         DB::beginTransaction();
         try {
-            $titulo=new Titulo();
-            $titulo->descripcion = $request->descripcion;
-            $titulo->estado = 1;
-            $titulo->save();
-            Session::put('success','Titulo creado correctamente');
-            DB::commit();
+            $name = $_FILES['imagen']['name'];
+            $mime = $_FILES['imagen']['type'];
+            if ($mime === 'image/jpeg' || $mime === 'image/png') {
+                $data = base64_encode(file_get_contents($_FILES['imagen']['tmp_name']));
+                $titulo=new Titulo();
+                $titulo->descripcion = $request->descripcion;
+                $titulo->name = $name;
+                $titulo->mime = $mime;
+                $titulo->data = $data;
+                $titulo->estado = 1;
+                $titulo->save();
+                Session::put('success','Titulo creado correctamente');
+                DB::commit();
+            }
         }catch (\Exception $exception) {
             Session::put('danger','Ocurrio un problema al crear el titulo ');
             DB::rollBack();
@@ -43,11 +60,19 @@ class TituloController extends Controller
     {
         try{
             DB::beginTransaction();
-            $titulo=Titulo::findOrFail($request->id);
-            $titulo->descripcion = $request->descripcion;
-            $titulo->save();
-            Session::put('success','Titulo actualizado correctamente');
-            DB::commit();
+            $name = $_FILES['imagen']['name'];
+            $mime = $_FILES['imagen']['type'];
+            if ($mime === 'image/jpeg' || $mime === 'image/png') {
+                $data = base64_encode(file_get_contents($_FILES['imagen']['tmp_name']));
+                $titulo=Titulo::findOrFail($request->id);
+                $titulo->descripcion = $request->descripcion;
+                $titulo->name = $name;
+                $titulo->mime = $mime;
+                $titulo->data = $data;
+                $titulo->save();
+                Session::put('success','Titulo actualizado correctamente');
+                DB::commit();
+            }
         }catch (\Exception $exception){
             Session::put('danger','Ocurrio un problema al actualizar el titulo');
             DB::rollBack();

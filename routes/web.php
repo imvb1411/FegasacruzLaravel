@@ -36,7 +36,11 @@ Route::resource('rubros', 'RubroController');
 Route::get('/buscar_rubro/{t}','RubroController@buscar')->name('rubro.buscar');
 
 Route::resource('titulos', 'TituloController');
+Route::get('/titulo/img/{t}','TituloController@showImg')->name('titulo.imagen');
 Route::get('/buscar_titulo/{t}','TituloController@buscar')->name('titulo.buscar');
+
+Route::resource('pruebas', 'PruebaController');
+Route::get('/prueba/img/{t}','PruebaController@showImg')->name('prueba');
 
 Route::resource('ubicacion', 'UbicacionController');
 Route::get('/buscar_ubicacion/{t}','UbicacionController@buscar')->name('ubicacion.buscar');

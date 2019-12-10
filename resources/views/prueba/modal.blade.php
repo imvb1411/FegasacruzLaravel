@@ -1,7 +1,7 @@
 <script>
         var action=1;
         $(function () {
-            $("#tituloTable").DataTable();
+            $("#pruebaTable").DataTable();
         });
         var inputs=document.querySelectorAll('input:not([type="submit"])');
         var flag=true;
@@ -52,7 +52,7 @@
         $('#new').click(function () {
             action=1;
             var form= document.getElementById('userForm');
-            form.action='{{route('titulos.store')}}';
+            form.action='{{route('pruebas.store')}}';
             form.method='post';
             form.enctype="multipart/form-data";
             var inputMethod=document.getElementsByName('_method');
@@ -72,7 +72,7 @@
             console.log($titulo);
             action=2;
             var form= document.getElementById('userForm');
-            form.action='{{route('titulos.update',0)}}';
+            form.action='{{route('pruebas.update',0)}}';
             form.method='post';
             // form.files='true';
             form.enctype="multipart/form-data";
