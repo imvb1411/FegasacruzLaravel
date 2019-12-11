@@ -8,7 +8,6 @@
                 <span class="info-box-icon"><i class="far fa-flag"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Visitas</span>
-                    {{-- <span class="info-box-number">{{$view->vistas}}</span> --}}
                     <span class="info-box-number">{{$view->vistas}}</span>
                     <div class="progress">
                         <div class="progress-bar" style="width: 70%"></div>
@@ -28,7 +27,7 @@
 @endsection
 @section('content')
 
-<table id="clientTable" class="table table-bordered table-hover">
+<table id="actividadTable" class="table table-bordered table-hover">
     <thead>
     <tr>
         <th>ID</th>
@@ -46,11 +45,6 @@
         <td>{{$ubicacion->descripcion}}</td>
         <td >
             <a class="btn btn-info"
-               {{--data-idcliente="{{$ubicacion->id}}"--}}
-               {{--data-ci="{{$ubicacion->codigo}}" --}}
-               {{--data-nombre="{{$ubicacion->nombre}}"--}}
-               {{--data-apellido_pat="{{$ubicacion->descripcion}}"--}}
-               {{--data-toggle="modal" id="btnedit" data-target="#edit" --}}
                onclick='editar({{ json_encode($ubicacion) }})'>
                 Edit
             </a>
@@ -76,7 +70,6 @@
                     </button>
                 </div>
                     @include('actividad.form')
-
             </div>
         </div>
         {!! Form::close() !!}

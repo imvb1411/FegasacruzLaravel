@@ -23,7 +23,11 @@ class PersonalController extends Controller
         $view->views=$view->views+1;
         $view->update();
         $personales=Personal::all()->where('estado',1);
-        return view('Persona.personal.index',compact('personales','view'));
+        $configuracion = Configuracion::where('personal_id', '=', Auth::user()->id)->first();
+        if ($configuracion == null) {
+            $configuracion = Configuracion::where('personal_id', '=', 0)->first();
+        }
+        return view('Persona.personal.index',compact('personales','view','configuracion'));
     }
 
     /**
@@ -138,7 +142,7 @@ class PersonalController extends Controller
         if($personal!=null){
             if($personal->password===$request->password){
                 Auth::login($personal);
-                return redirect()->route('home');
+                return redirect()->route('home.index');
             }else{
                 return redirect()->route('login');
             }

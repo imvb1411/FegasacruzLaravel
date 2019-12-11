@@ -11,24 +11,28 @@ use Illuminate\Support\Facades\Session;
 class RubroController extends Controller
 {
     public function index(Request $request)
-    {       
-            $rubros=Rubro::all()->where('estado',1);
-            return view('rubro.index',compact('rubros'));
+    {
+        $rubros = Rubro::all()->where('estado', 1);
+        $configuracion = Configuracion::where('personal_id', '=', Auth::user()->id)->first();
+        if ($configuracion == null) {
+            $configuracion = Configuracion::where('personal_id', '=', 0)->first();
+        }
+        return view('rubro.index', compact('rubros','configuracion'));
     }
 
     public function store(Request $request)
     {
         DB::beginTransaction();
         try {
-            $rubro=new Rubro();
+            $rubro = new Rubro();
             $rubro->nombre = $request->nombre;
             $rubro->descripcion = $request->descripcion;
             $rubro->estado = 1;
             $rubro->save();
-            Session::put('success','Rubro '.$rubro->nombre.' creado correctamente');
+            Session::put('success', 'Rubro ' . $rubro->nombre . ' creado correctamente');
             DB::commit();
-        }catch (\Exception $exception) {
-            Session::put('danger','Ocurrio un problema al crear el rubro '.$request->nombre);
+        } catch (\Exception $exception) {
+            Session::put('danger', 'Ocurrio un problema al crear el rubro ' . $request->nombre);
             DB::rollBack();
         }
         return redirect()->route('rubros.index');
@@ -36,32 +40,33 @@ class RubroController extends Controller
 
     public function update(Request $request)
     {
-        try{
+        try {
             DB::beginTransaction();
-            $rubro=Rubro::findOrFail($request->id);
+            $rubro = Rubro::findOrFail($request->id);
             $rubro->nombre = $request->nombre;
             $rubro->descripcion = $request->descripcion;
             $rubro->save();
-            Session::put('success','Rubro '.$rubro->nombre.' actualizado correctamente');
+            Session::put('success', 'Rubro ' . $rubro->nombre . ' actualizado correctamente');
             DB::commit();
-        }catch (\Exception $exception){
-            Session::put('danger','Ocurrio un problema al actualizar el rubro '.$request->nombre);
+        } catch (\Exception $exception) {
+            Session::put('danger', 'Ocurrio un problema al actualizar el rubro ' . $request->nombre);
             DB::rollBack();
         }
         return redirect()->route('rubros.index');
     }
+
     public function destroy($id)
     {
         //
-        try{
+        try {
             DB::beginTransaction();
-            $rubro=Rubro::findOrFail($id);
-            $rubro->estado=0;
+            $rubro = Rubro::findOrFail($id);
+            $rubro->estado = 0;
             $rubro->update();
-            Session::put('success','Rubro '.$rubro->nombre.' eliminado correctamente');
+            Session::put('success', 'Rubro ' . $rubro->nombre . ' eliminado correctamente');
             DB::commit();
-        }catch (\Exception $exception){
-            Session::put('danger','Ocurrio un problema al eliminar el rubro nro:'.$id);
+        } catch (\Exception $exception) {
+            Session::put('danger', 'Ocurrio un problema al eliminar el rubro nro:' . $id);
             DB::rollBack();
         }
         return redirect()->route('rubros.index');

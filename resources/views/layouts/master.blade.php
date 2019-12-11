@@ -24,17 +24,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <div class="wrapper">
 
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light border-bottom">
+    {{--<nav class="main-header navbar navbar-expand navbar-white navbar-light border-bottom" id="navbar">--}}
+    <nav class="{{$configuracion->ui->navbar}}" id="navbar">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="form-control" id="warning"><i class="fa fa-eye"></i></a>
+
             </li>
         </ul>
-        <div class="col-5" style="float: right;margin-left: 45%">
+        {{--<div class="col-2">--}}
+            {{--<a href="#" class="form-control" id="ui_dark" style="display: inline; background: #1a2226"><i class="fa fa-eye"></i></a>--}}
+            {{--<a href="#" class="form-control" id="ui_orange" style="display: inline;background: orange"><i class="fa fa-eye"></i></a>--}}
+            {{--<a href="#" class="form-control" id="ui_green" style="display: inline;background: #0f6674"><i class="fa fa-eye"></i></a>--}}
+        {{--</div>--}}
+        <div class="col-5" style="float: right;margin-left: 30%">
             <input type="text" class="form-control" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
             <div id="myDropdown" class="dropdown-content">
 
@@ -113,11 +119,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4" id="sidebar">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="index3.html" class="brand-link">
+        {{--<a href="#" class="brand-link" id="sidebar">--}}
+        <a href="#" class="{{$configuracion->ui->sidebar}}" id="sidebar">
 
-            <img src="/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+            <img src="{{asset('img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
             <span class="brand-text font-weight-light">FEGASACRUZ</span>
         </a>
@@ -127,7 +134,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="/img/user.png" class="img-circle elevation-2" alt="User Image">
+                    <img src="{{asset('img/user.png')}}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
                     <a href="#" class="d-block">TecnologiaWeb</a>
@@ -316,8 +323,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->
         <div class="p-3">
-            <h5>Title</h5>
-            <p>Sidebar content</p>
+            <h5>Look and Feel</h5>
+            <p>Estilos</p>
+            {{--<div class="col-2">--}}
+            {{--{!! Form::open(['route' => ['configuracion.store'],'method'=>'POST','id'=>"configuracionForm"]) !!}--}}
+            {{--{{Form::token()}}--}}
+                {{--<a href="#" class="form-control" id="ui_dark" style="background: #1a2226;width: 40px"><i class="fa fa-eye"></i></a>UI Dark<br>--}}
+                {{--<a href="#" class="form-control" id="ui_orange" style="background: orange;width: 40px"><i class="fa fa-eye"></i></a>UI Orange<br>--}}
+                {{--<a href="#" class="form-control" id="ui_green" style="background: #0f6674;width: 40px"><i class="fa fa-eye"></i></a>UI Green<br>--}}
+                {{--<button type="submit" class="btn btn-info">Guardar</button>--}}
+            {{--{!! Form::close() !!}--}}
+            {{--</div>--}}
         </div>
     </aside>
     <!-- /.control-sidebar -->
@@ -337,16 +353,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- jQuery -->
 
-<script src="/js/app.js"></script>
-<script src="/js/jquery/jquery.min.js"></script>
+<script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/jquery/jquery.min.js')}}"></script>
 @stack('scripts')
-<script src="/js/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/js/datatables/jquery.dataTables.js"></script>
-<script src="/js/datatables/dataTables.bootstrap4.js"></script>
+<script src="{{asset('js/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('js/datatables/jquery.dataTables.js')}}"></script>
+<script src="{{asset('js/datatables/dataTables.bootstrap4.js')}}"></script>
 <script>
     var sidebar=document.getElementById('sidebar');
-    $('#warning').click(function () {
-       sidebar.className='main-sidebar sidebar-dark-secondary elevation-4'
+    var navbar=document.getElementById('navbar');
+    $('#ui_dark').click(function () {
+        sidebar.className='brand-link navbar-dark';
+        navbar.className='main-header navbar navbar-expand border-bottom navbar-dark';
+    });
+    $('#ui_orange').click(function () {
+        sidebar.className='brand-link navbar-orange';
+        navbar.className='main-header navbar navbar-expand border-bottom navbar-light navbar-orange';
+    });
+    $('#ui_green').click(function () {
+        sidebar.className='brand-link navbar-info';
+        navbar.className='main-header navbar navbar-expand border-bottom navbar-dark navbar-info';
     });
 </script>
 {{--<script src="/plugins/jquery/jquery.min.js"></script>--}}

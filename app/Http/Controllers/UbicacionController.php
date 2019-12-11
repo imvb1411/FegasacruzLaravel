@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Configuracion;
 use App\Ubicacion;
 use App\Vista;
 use Illuminate\Http\Request;
@@ -21,8 +22,11 @@ class UbicacionController extends Controller
         $view->update();
         $ubicaciones=Ubicacion::all()->where('estado',1);
         $departamentos=Ubicacion::all()->where('ubicacion_id',0)->where('estado',1);
-        //dd($departamentos);
-        return view('ubicacion.index',compact('ubicaciones','departamentos','view'));
+        $configuracion = Configuracion::where('personal_id', '=', Auth::user()->id)->first();
+        if ($configuracion == null) {
+            $configuracion = Configuracion::where('personal_id', '=', 0)->first();
+        }
+        return view('ubicacion.index',compact('ubicaciones','departamentos','view','configuracion'));
     }
 
     public function buscar($texto){

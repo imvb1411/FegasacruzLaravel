@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/app.css">
+<link rel="stylesheet" href="{{asset('css/app.css')}}">
 <div class="login-box">
     <div class="login-logo">
         <a href="#"><b>FEGA</b>SACRUZ</a>

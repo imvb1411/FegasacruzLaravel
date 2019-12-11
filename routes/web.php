@@ -20,11 +20,13 @@ use Spatie\Searchable\Search;
 Route::get('/', function () {
     return view('layouts.login');
 })->name('login');
-Route::get('/home', function () {
-        return view('layouts.master');
-})->middleware('auth')->name('home');
+
+Route::resource('home', 'HomeController')->middleware('auth');
+
 Route::resource('users','PersonalController');
+
 Route::post('personal_login','PersonalController@login')->name('personal.login');
+
 Route::get('personal_logout','PersonalController@logout')->name('personal.logout');
 
 Route::resource('clientes', 'PersonaController');
