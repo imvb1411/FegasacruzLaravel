@@ -61,13 +61,6 @@
     var _iMethod='';
     $('#new').click(function () {
         action=1;
-
-        var form= document.getElementById('ubicacionForm');
-        form.action='{{route('ubicacion.store')}}';
-        form.method='post';
-        var inputMethod=document.getElementsByName('_method');
-
-
         var form= document.getElementById('userForm');
         form.action='{{route('actividad.store')}}';
         form.method='post';
