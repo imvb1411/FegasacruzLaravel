@@ -78,16 +78,6 @@
 
     });
 
-    function changeTipo() {
-        var x = document.getElementById("tipo").value;
-        if (x==1){
-            document.getElementById("divDep").style.display = "none";
-        }else{
-            document.getElementById("divDep").style.display = "block";
-        }
-        document.getElementById('htitle').innerText='Nueva Actividad';
-        document.getElementById('btn').innerText='Guardar'
-    }
     function editar($actividad) {
         console.log($actividad);
         action = 2;
