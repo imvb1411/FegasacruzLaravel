@@ -12,12 +12,15 @@ class RubroController extends Controller
 {
     public function index(Request $request)
     {
+        $view=Vista::where('nombre','=','rubro')->first();
+        $view->vistas=$view->vistas+1;
+        $view->update();
         $rubros = Rubro::all()->where('estado', 1);
         $configuracion = Configuracion::where('personal_id', '=', Auth::user()->id)->first();
         if ($configuracion == null) {
             $configuracion = Configuracion::where('personal_id', '=', 0)->first();
         }
-        return view('rubro.index', compact('rubros','configuracion'));
+        return view('rubro.index', compact('rubros','configuracion','view'));
     }
 
     public function store(Request $request)

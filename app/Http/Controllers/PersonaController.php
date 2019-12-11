@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Configuracion;
 use App\Persona;
+use App\Vista;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
@@ -18,12 +19,15 @@ class PersonaController extends Controller
      */
     public function index()
     {
+        $view=Vista::where('nombre','=','cliente')->first();
+        $view->vistas=$view->vistas+1;
+        $view->update();
         $clientes = Persona::all()->where('estado', 1)->where('tipo_persona', 'CLI');
         $configuracion = Configuracion::where('personal_id', '=', Auth::user()->id)->first();
         if ($configuracion == null) {
             $configuracion = Configuracion::where('personal_id', '=', 0)->first();
         }
-        return view('Persona.persona.index', compact('clientes', 'configuracion'));
+        return view('Persona.persona.index', compact('clientes', 'configuracion','view'));
     }
 
     public function buscar($texto)
