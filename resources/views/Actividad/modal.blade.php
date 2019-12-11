@@ -1,7 +1,7 @@
 <script>
     var action=1;
     $(function () {
-        $("#clientTable").DataTable();
+        $("#actividadTable").DataTable();
     });
     var inputs=document.querySelectorAll('input:not([type="submit"])');
     var flag=true;
