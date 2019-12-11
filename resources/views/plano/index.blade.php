@@ -1,6 +1,6 @@
 @extends('layouts.master')
-@section('title', 'Clientes')
-    @section('header-title','Listado de clientes')
+@section('title', 'Planos')
+    @section('header-title','Listado de Planos')
 @section('vistas')
     <div class="row">
         <div class="col-md-3 col-sm-6 col-12 float-sm-right">
@@ -26,41 +26,34 @@
     </div>
 @endsection
 @section('content')
-        <table id="clientTable" class="table table-bordered table-hover">
+        <table id="planoTable" class="table table-bordered table-hover">
             <thead>
             <tr>
                 <th>ID</th>
-                <th>CI</th>
-                <th>NOMBRE</th>
-                <th>APELLIDOS</th>
-                <th>TELEFONO</th>
-                <th>EMAIL</th>
+                <th>
+                    NRO. 
+                    <br>
+                    SOLICITUD
+                </th>
+                <th>IMAGEN</th>
+                <th>DESCRIPCION</th>
                 <th>OPERACIONES</th>
             </tr>
             </thead>
             <tbody>
-                @foreach($clientes as $person)
+                @foreach($planos as $plano)
                 <tr>
-                    <td>{{$person->id}}</td>
-                    <td>{{$person->ci}}</td>
-                    <td>{{$person->nombre}}</td>
-                    <td>{{$person->apellido_pat}} {{$person->apellido_mat}}</td>
-                    <td>{{$person->telefono}}</td>
-                    <td>{{$person->email}}</td>
+                    <td>{{$plano->id}}</td>
+                    <td>{{$plano->solicitud->id}}</td>
+                    <td> 
+                        <a href="plano/img/{{ $plano->id }}" target="_blank"><img src="data:{{$plano->mime}};base64, {{$plano->data}}" width="100"> </td></a>
+                    <td>{{$plano->descripcion}}</td>
                     <td >
                         <a class="btn btn-info"
-                        {{--data-idcliente="{{$person->id}}"--}}
-                        {{--data-ci="{{$person->ci}}" --}}
-                        {{--data-nombre="{{$person->nombre}}"--}}
-                        {{--data-apellido_pat="{{$person->apellido_pat}}"--}}
-                        {{--data-apellido_mat="{{$person->apellido_mat}}"--}}
-                        {{--data-telefono="{{$person->telefono}}"--}}
-                        {{--data-email="{{$person->email}}"--}}
-                        {{--data-toggle="modal" id="btnedit" data-target="#edit" --}}
-                           onclick='editar({{ json_encode($person) }})'>
+                           onclick='editar({{ json_encode($plano) }})'>
                             Edit
                         </a>
-                        {!! Form::open(['route' => ['clientes.destroy',$person->id],'method'=>'DELETE','style'=>'display: inline']) !!}
+                        {!! Form::open(['route' => ['planos.destroy',$plano->id],'method'=>'DELETE','style'=>'display: inline']) !!}
                         {{Form::token()}}
                         <button onclick="return confirm('¿Estas seguro?')" type="submit" class="btn btn-danger">Delete</button>
                         {!! Form::close() !!}
@@ -69,25 +62,24 @@
                 </tr>
             </tbody>
         </table>
-        {{-- {{$clientes->render()}} --}}
     <div id="edit" class="modal fade" role="dialog">
-        {!! Form::open(['route' => ['clientes.update','0'],'method'=>'PUT','id'=>"userForm"]) !!}
+        {!! Form::open(['route' => ['planos.update','0'],'method'=>'PUT','id'=>"userForm"]) !!}
         {{Form::token()}}
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="htitle">Editar Cliente</h4>
+                    <h4 class="modal-title" id="htitle">Editar plano</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                    @include('Persona.persona.form')
+                    @include('plano.form')
             </div>
         </div>
         {!! Form::close() !!}
     </div>
     @push('scripts')
-        @include('Persona.persona.modal')
+        @include('plano.modal')
     @endpush
 
 @endsection

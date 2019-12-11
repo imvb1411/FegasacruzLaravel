@@ -1,26 +1,30 @@
 <?php
 
 namespace App;
+
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
 
-class Rubro extends Model implements Searchable
+class Marca extends Model implements Searchable
 {
     //
-    protected $table='rubro';
+    protected $table='marca';
 
     public $timestamps = false;
 
     public function getSearchResult(): SearchResult
     {
-        //$url = route('cliente.index',$this->nombre);
-        $url=route('rubro.buscar',$this->nombre);
+    $url=route('marca.buscar',$this->descripcion);
 
         return new \Spatie\Searchable\SearchResult(
             $this,
-            $this->nombre,
+            $this->descripcion,
             $url
         );
+    }
+
+    public function solicitud(){
+        return $this->belongsTo('App\Solicitud','solicitud_id','id');
     }
 }

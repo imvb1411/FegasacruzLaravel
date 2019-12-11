@@ -20,7 +20,7 @@ class PersonalController extends Controller
     public function index()
     {
         $view=Vista::where('nombre','=','Usuarios')->first();
-        $view->views=$view->views+1;
+        $view->vistas=$view->vistas+1;
         $view->update();
         $personales=Personal::all()->where('estado',1);
         $configuracion = Configuracion::where('personal_id', '=', Auth::user()->id)->first();
