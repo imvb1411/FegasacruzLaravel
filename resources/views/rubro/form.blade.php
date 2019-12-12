@@ -10,7 +10,7 @@
     <div class="form-group row">
         <div class="col-md-12">
             <label class="form-control-label" for="descripcion">Descripcion</label>
-            <input type="descripcion" class="form-control" id="descripcion" name="descripcion" required placeholder="Detalle el rubro">    
+            <input type="text" class="form-control" id="descripcion" name="descripcion" required placeholder="Detalle el rubro">    
         </div>
     </div>
 </div>

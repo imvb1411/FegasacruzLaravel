@@ -45,14 +45,14 @@
                 <tr>
                     <td>{{$solicitud->id}}</td>
                     <td>{{$solicitud->nro_orden}}</td>
-                    <td>{{$solicitud->cliente_id}}</td>
+                    <td>{{$solicitud->cliente->nombre}}</td>
                     <td>{{$solicitud->registrador_id}}</td>
                     <td>{{$solicitud->gestion}}</td>
                     <td>{{$solicitud->nro_hectareas}}</td>
                     <td>{{$solicitud->fecha_solicitud}}</td>
                     <td>{{$solicitud->fecha_finalizacion}}</td>
                     <td>{{$solicitud->tipo_solicitud}}</td>
-                    {{-- <td >
+                    <td >
                         <a class="btn btn-info"
                            onclick='editar({{ json_encode($solicitud) }})'>
                             Edit
@@ -61,7 +61,7 @@
                         {{Form::token()}}
                         <button onclick="return confirm('¿Estas seguro?')" type="submit" class="btn btn-danger">Delete</button>
                         {!! Form::close() !!}
-                    </td> --}}
+                    </td>
                 @endforeach
                 </tr>
             </tbody>
@@ -72,7 +72,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="htitle">Editar Rubro</h4>
+                    <h4 class="modal-title" id="htitle">Editar Solicitud</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

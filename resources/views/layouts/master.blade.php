@@ -24,7 +24,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Navbar -->
     {{--<nav class="main-header navbar navbar-expand navbar-white navbar-light border-bottom" id="navbar">--}}
-    <nav class="{{$configuracion->ui->navbar}}" id="navbar">
+        {{-- <nav class="{{$configuracion ?? ''->ui->navbar}}" id="navbar"> --}}
+        <nav class="navbar" id="navbar">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -126,8 +127,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        {{--<a href="#" class="brand-link" id="sidebar">--}}
-        <a href="#" class="{{$configuracion->ui->sidebar}}" id="sidebar">
+        <a href="#" class="brand-link" id="sidebar">
+        {{-- <a href="#" class="{{$configuracion ?? ''->ui->sidebar}}" id="sidebar"> --}}
 
             <img src="{{asset('img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">

@@ -24,4 +24,16 @@ class Solicitud extends Model implements Searchable
             $url
         );
     }
+    public function cliente(){
+        return $this->belongsTo('App\Persona','cliente_id','id');
+    }
+    public function actividad(){
+        return $this->belongsTo('App\Actividad','actividad_id','id');
+    }
+    public function Personal(){
+        return $this->belongsTo('App\Personal','registrador_id','id');
+    }
+    public function Ubicacion(){
+        return $this->belongsTo('App\Ubicacion','ubicacion_id','id');
+    }
 }
