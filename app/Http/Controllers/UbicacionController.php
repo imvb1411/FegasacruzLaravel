@@ -6,6 +6,7 @@ use App\Configuracion;
 use App\Ubicacion;
 use App\Vista;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use test\Mockery\TestIncreasedVisibilityChild;
 
 class UbicacionController extends Controller
@@ -22,7 +23,7 @@ class UbicacionController extends Controller
         $view->update();
         $ubicaciones=Ubicacion::all()->where('estado',1);
         $departamentos=Ubicacion::all()->where('ubicacion_id',0)->where('estado',1);
-        $configuracion = Configuracion::where('personal_id', '=', Auth::user()->id)->first();
+        $configuracion=Configuracion::where('personal_id','=',Auth::user()->id)->where('estado',1)->first();
         if ($configuracion == null) {
             $configuracion = Configuracion::where('personal_id', '=', 0)->first();
         }

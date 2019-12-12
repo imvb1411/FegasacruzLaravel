@@ -14,7 +14,7 @@ class HomeController extends Controller
         $v=Vista::where('nombre','ilike','principal')->first();
         $v->vistas=$v->vistas+1;
         $v->save();
-        $configuracion=Configuracion::where('personal_id','=',Auth::user()->id)->first();
+        $configuracion=Configuracion::where('personal_id','=',Auth::user()->id)->where('estado',1)->first();
         if($configuracion==null){
             $configuracion=Configuracion::where('personal_id','=',0)->first();
         }

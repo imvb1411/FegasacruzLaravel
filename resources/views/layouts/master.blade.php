@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -36,9 +35,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li>
         </ul>
         {{--<div class="col-2">--}}
-            {{--<a href="#" class="form-control" id="ui_dark" style="display: inline; background: #1a2226"><i class="fa fa-eye"></i></a>--}}
-            {{--<a href="#" class="form-control" id="ui_orange" style="display: inline;background: orange"><i class="fa fa-eye"></i></a>--}}
-            {{--<a href="#" class="form-control" id="ui_green" style="display: inline;background: #0f6674"><i class="fa fa-eye"></i></a>--}}
+        {{--<a href="#" class="form-control" id="ui_dark" style="display: inline; background: #1a2226"><i class="fa fa-eye"></i></a>--}}
+        {{--<a href="#" class="form-control" id="ui_orange" style="display: inline;background: orange"><i class="fa fa-eye"></i></a>--}}
+        {{--<a href="#" class="form-control" id="ui_green" style="display: inline;background: #0f6674"><i class="fa fa-eye"></i></a>--}}
         {{--</div>--}}
         <div class="col-5" style="float: right;margin-left: 30%">
             <input type="text" class="form-control" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
@@ -49,23 +48,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script>
             function filterFunction() {
                 var mydiv = document.getElementById("myDropdown");
-                var xhttp=new XMLHttpRequest();
-                xhttp.onreadystatechange=function () {
-                    if(this.readyState==4 && this.status==200){
-                        mydiv.innerHTML="";
-                        var data=JSON.parse(this.responseText);
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        mydiv.innerHTML = "";
+                        var data = JSON.parse(this.responseText);
                         console.log(data[0]);
-                        data.forEach(function(item){
+                        data.forEach(function (item) {
                             var aTag = document.createElement('a');
-                            aTag.setAttribute('href',item.url);
+                            aTag.setAttribute('href', item.url);
                             aTag.innerText = item.title;
                             mydiv.appendChild(aTag);
                         });
                         mydiv.classList.toggle("show");
                     }
                 };
-                var input=document.getElementById('myInput').value;
-                xhttp.open('GET','/search/'+input,true);
+                var input = document.getElementById('myInput').value;
+                xhttp.open('GET', '/search/' + input, true);
                 xhttp.send();
             }
         </script>
@@ -74,6 +73,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 position: relative;
                 display: inline-block;
             }
+
             /* Dropdown Content (Hidden by Default) */
             .dropdown-content {
                 display: none;
@@ -83,6 +83,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 border: 1px solid #ddd;
                 z-index: 1;
             }
+
             /* Links inside the dropdown */
             .dropdown-content a {
                 color: black;
@@ -90,31 +91,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 text-decoration: none;
                 display: block;
             }
+
             /* Change color of dropdown links on hover */
-            .dropdown-content a:hover {background-color: #f1f1f1}
+            .dropdown-content a:hover {
+                background-color: #f1f1f1
+            }
+
             /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-            .show {display:block;}
+            .show {
+                display: block;
+            }
         </style>
         <!-- Right navbar links -->
+        {{--        <a href="{{route('personal.logout')}}" class="btn btn-danger" style="display: inline; margin-left: 20%">Logout</a>--}}
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-bell"></i>
-                    <span class="badge badge-success navbar-badge">{{\Illuminate\Support\Facades\Auth::user()->nick}}</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <div class="dropdown-divider"></div>
-                    <a href="{{route('personal.logout')}}" class="dropdown-item">
-                        <i class="fas fa-envelope mr-2"></i> Logout
-                        <span class="float-right text-muted text-sm">Salir</span>
-                    </a>
-                </div>
+                {{--<a class="nav-link" data-toggle="dropdown" href="#">--}}
+
+                {{--</a>--}}
+
             </li>
+            <a disabled class="btn btn-info" href="#"
+               style="display: inline">{{\Illuminate\Support\Facades\Auth::user()->nick}}</a>
+            <a href="{{route('personal.logout')}}" class="btn btn-danger" style="display: inline; margin-left: 0%">Logout</a>
             <li class="nav-item">
                 <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
                             class="fas fa-th-large"></i></a>
             </li>
         </ul>
+
     </nav>
     <!-- /.navbar -->
 
@@ -143,7 +148,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
                     {{--@if(\Illuminate\Support\Facades\Auth::user()->getRole()==='ADMINISTRADOR')--}}
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link active">
@@ -325,15 +331,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="p-3">
             <h5>Look and Feel</h5>
             <p>Estilos</p>
-            {{--<div class="col-2">--}}
-            {{--{!! Form::open(['route' => ['configuracion.store'],'method'=>'POST','id'=>"configuracionForm"]) !!}--}}
-            {{--{{Form::token()}}--}}
-                {{--<a href="#" class="form-control" id="ui_dark" style="background: #1a2226;width: 40px"><i class="fa fa-eye"></i></a>UI Dark<br>--}}
-                {{--<a href="#" class="form-control" id="ui_orange" style="background: orange;width: 40px"><i class="fa fa-eye"></i></a>UI Orange<br>--}}
-                {{--<a href="#" class="form-control" id="ui_green" style="background: #0f6674;width: 40px"><i class="fa fa-eye"></i></a>UI Green<br>--}}
-                {{--<button type="submit" class="btn btn-info">Guardar</button>--}}
-            {{--{!! Form::close() !!}--}}
-            {{--</div>--}}
+            <div class="col-4">
+                {!! Form::open(['route' => ['configuracion.store'],'method'=>'POST','id'=>"configuracionForm"]) !!}
+                {{Form::token()}}
+                <input type="hidden" id="estilo" name="estilo" value="default">
+
+                <label for="ui_default">UI Default</label>
+                <a href="#" class="form-control" id="ui_default"
+                   style="background: #7a8793;width: 40px"><i class="fa fa-eye"></i></a><br>
+
+                <label for="ui_dark">UI Dark</label>
+                <a href="#" class="form-control" id="ui_dark" style="background: #1a2226;width: 40px"><i
+                            class="fa fa-eye"></i></a><br>
+
+                <label for="ui_orange">UI Orange</label>
+                <a href="#" class="form-control" id="ui_orange" style="background: orange;width: 40px"><i
+                            class="fa fa-eye"></i></a><br>
+
+                <label for="ui_green">UI Green</label>
+                <a href="#" class="form-control" id="ui_green" style="background: #0f6674;width: 40px"><i
+                            class="fa fa-eye"></i></a><br>
+                <button type="submit" class="btn btn-info">Guardar</button>
+                {!! Form::close() !!}
+            </div>
         </div>
     </aside>
     <!-- /.control-sidebar -->
@@ -360,19 +380,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{asset('js/datatables/jquery.dataTables.js')}}"></script>
 <script src="{{asset('js/datatables/dataTables.bootstrap4.js')}}"></script>
 <script>
-    var sidebar=document.getElementById('sidebar');
-    var navbar=document.getElementById('navbar');
+    var sidebar = document.getElementById('sidebar');
+    var navbar = document.getElementById('navbar');
+    var input = document.getElementById('estilo');
+    $('#ui_default').click(function () {
+        sidebar.className = '"brand-link"';
+        navbar.className = '"main-header navbar navbar-expand navbar-white navbar-light border-bottom"';
+        input.value = 'default';
+    });
     $('#ui_dark').click(function () {
-        sidebar.className='brand-link navbar-dark';
-        navbar.className='main-header navbar navbar-expand border-bottom navbar-dark';
+        sidebar.className = 'brand-link navbar-dark';
+        navbar.className = 'main-header navbar navbar-expand border-bottom navbar-dark';
+        input.value = 'dark';
     });
     $('#ui_orange').click(function () {
-        sidebar.className='brand-link navbar-orange';
-        navbar.className='main-header navbar navbar-expand border-bottom navbar-light navbar-orange';
+        sidebar.className = 'brand-link navbar-orange';
+        navbar.className = 'main-header navbar navbar-expand border-bottom navbar-light navbar-orange';
+        input.value = 'orange';
     });
     $('#ui_green').click(function () {
-        sidebar.className='brand-link navbar-info';
-        navbar.className='main-header navbar navbar-expand border-bottom navbar-dark navbar-info';
+        sidebar.className = 'brand-link navbar-info';
+        navbar.className = 'main-header navbar navbar-expand border-bottom navbar-dark navbar-info';
+        input.value = 'green';
     });
 </script>
 {{--<script src="/plugins/jquery/jquery.min.js"></script>--}}

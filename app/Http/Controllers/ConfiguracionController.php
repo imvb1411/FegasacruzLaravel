@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Configuracion;
+use App\UI;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class ConfiguracionController extends Controller
 {
@@ -39,12 +41,17 @@ class ConfiguracionController extends Controller
     {
         DB::beginTransaction();
         try {
-            $conf_aux=Configuracion::where('personal_id','=',Auth::user()->id);
-            $conf_aux->estado=0;
-            $conf_aux->save();
+            $conf_aux=Configuracion::where('personal_id','=',Auth::user()->id)->where('estado',1)->first();
+            if($conf_aux!=null){
+                $conf_aux->estado=0;
+                $conf_aux->save();
+            }
+
             $conf=new Configuracion();
             $conf->personal_id=Auth::user()->id;
-            $conf->estilo=$request->estilo;
+            $ui=UI::where('estilo','like',$request->estilo)->first();
+            $conf->ui_id=$ui->id;
+            //dd($conf);
             $conf->save();
             Session::put('success','Estilo '.$conf->estilo.' guardado correctamente');
             DB::commit();
@@ -52,7 +59,7 @@ class ConfiguracionController extends Controller
             Session::put('danger','Ocurrio un problema al guardar el estilo '.$request->estilo);
             DB::rollBack();
         }
-        return $request;
+        return redirect()->route('home.index');
     }
 
     /**

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Configuracion;
+use App\Vista;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\Actividad;
@@ -13,12 +15,15 @@ class ActividadController extends Controller
 {
     public function index()
     {
+        $view=Vista::where('nombre','=','actividad')->first();
+        $view->vistas=$view->vistas+1;
+        $view->update();
         $actividades = Actividad::all()->where('estado', 1);
-        $configuracion = Configuracion::where('personal_id', '=', Auth::user()->id)->first();
+        $configuracion=Configuracion::where('personal_id','=',Auth::user()->id)->where('estado',1)->first();
         if ($configuracion == null) {
             $configuracion = Configuracion::where('personal_id', '=', 0)->first();
         }
-        return view('actividad.index', compact('actividades', 'configuracion'));
+        return view('actividad.index', compact('actividades', 'configuracion','view'));
     }
 
     public function buscar($texto)

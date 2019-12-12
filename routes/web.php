@@ -29,6 +29,8 @@ Route::resource('users','PersonalController');
 
 Route::post('personal_login','PersonalController@login')->name('personal.login');
 
+Route::resource('configuracion','ConfiguracionController');
+
 Route::get('personal_logout','PersonalController@logout')->name('personal.logout');
 
 Route::resource('clientes', 'PersonaController');

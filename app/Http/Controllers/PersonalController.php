@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Configuracion;
 use App\Persona;
 use App\Personal;
 use Illuminate\Http\Request;
@@ -23,7 +24,7 @@ class PersonalController extends Controller
         $view->vistas=$view->vistas+1;
         $view->update();
         $personales=Personal::all()->where('estado',1);
-        $configuracion = Configuracion::where('personal_id', '=', Auth::user()->id)->first();
+        $configuracion=Configuracion::where('personal_id','=',Auth::user()->id)->where('estado',1)->first();
         if ($configuracion == null) {
             $configuracion = Configuracion::where('personal_id', '=', 0)->first();
         }
