@@ -12,7 +12,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <title>Sistema de Gestion FEGASACRUZ</title>
 
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
     {{--<link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">--}}
     {{--<!-- Theme style -->--}}
     {{--<link rel="stylesheet" href="dist/css/adminlte.min.css">--}}
@@ -24,8 +24,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Navbar -->
     {{--<nav class="main-header navbar navbar-expand navbar-white navbar-light border-bottom" id="navbar">--}}
-        {{-- <nav class="{{$configuracion ?? ''->ui->navbar}}" id="navbar"> --}}
-        <nav class="navbar" id="navbar">
+    <nav class="{{$configuracion->ui->navbar}}" id="navbar">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -41,7 +40,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         {{--<a href="#" class="form-control" id="ui_green" style="display: inline;background: #0f6674"><i class="fa fa-eye"></i></a>--}}
         {{--</div>--}}
         <div class="col-5" style="float: right;margin-left: 30%">
-            <input type="text" class="form-control" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+            <input type="text" class="form-control" placeholder="Search.." id="myInput" style="float: left; width: 300px">
+            <button class="btn btn-success" onclick="filterFunction()" style="display: inline">Buscar</button>
             <div id="myDropdown" class="dropdown-content">
 
             </div>
@@ -51,15 +51,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 var mydiv = document.getElementById("myDropdown");
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function () {
-                    if (this.readyState == 4 && this.status == 200) {
+                    if (this.readyState === 4 && this.status === 200) {
                         mydiv.innerHTML = "";
                         var data = JSON.parse(this.responseText);
-                        console.log(data[0]);
                         data.forEach(function (item) {
+                            console.log(item.searchable);
                             var aTag = document.createElement('a');
                             aTag.setAttribute('href', item.url);
-                            aTag.innerText = item.title;
-                            mydiv.appendChild(aTag);
+                            aTag.innerText = item.title + " -> Formulario: " + item.type;
+                            if (item.type === 'Persona') {
+                                if (item.searchable.tipo_persona === 'CLI') {
+                                    aTag.innerText = item.title + " -> Formulario: Clientes";
+                                    mydiv.appendChild(aTag);
+                                }
+                            } else {
+                                mydiv.appendChild(aTag);
+                            }
                         });
                         mydiv.classList.toggle("show");
                     }
@@ -127,8 +134,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="#" class="brand-link" id="sidebar">
-        {{-- <a href="#" class="{{$configuracion ?? ''->ui->sidebar}}" id="sidebar"> --}}
+        {{--<a href="#" class="brand-link" id="sidebar">--}}
+        <a href="#" class="{{$configuracion->ui->sidebar}}" id="sidebar">
 
             <img src="{{asset('img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
@@ -155,21 +162,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link active">
                             <i class="fas fa-shield-alt"></i>
-                            <p>Administracion
+                            <p>AdministracionRRHH
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="" class="nav-link">
+                                <a href="{{route('users.index')}}" class="nav-link">
                                     <i class="fas fa-users"></i>
-                                    <p>Empleados</p>
+                                    <p>Personal</p>
                                 </a>
                             </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="" class="nav-link">
+                                <a href="{{route('clientes.index')}}" class="nav-link">
                                     <i class="fas fa-users"></i>
-                                    <p>Usuarios</p>
+                                    <p>Clientes</p>
                                 </a>
                             </li>
                         </ul>
@@ -195,66 +204,44 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <p>Actividades</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="" class="nav-link">
-                                    <i class="fas fa-sticky-note"></i>
-                                    <p>Razas</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="" class="nav-link">
-                                    <i class="fas fa-sticky-note"></i>
-                                    <p>Unidades</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="" class="nav-link">
-                                    <i class="fas fa-syringe"></i>
-                                    <p>Vacunas</p>
-                                </a>
-                            </li>
                         </ul>
                     </li>
                     {{--@endif--}}
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="fas fa-store-alt"></i>
-                            <p>Compras
+                            <p>Procesos
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="" class="nav-link">
+                                <a href="{{route('solicitudes.index')}}" class="nav-link">
                                     <i class="fas fa-box"></i>
-                                    <p>Productos</p>
+                                    <p>Solicitud</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link">
+                                <a href="{{route('titulos.index')}}" class="nav-link">
                                     <i class="fas fa-shopping-cart"></i>
-                                    <p>Compras</p>
+                                    <p>Titulo</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('marcas.index')}}" class="nav-link">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    <p>Marca</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('planos.index')}}" class="nav-link">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    <p>Plano</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
 
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-clinic-medical"></i>
-                            <p>Clinica
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="" class="nav-link">
-                                    <i class="fas fa-briefcase-medical"></i>
-                                    <p>Historiales clinicos</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="fas fa-file-contract"></i>

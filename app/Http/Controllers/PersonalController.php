@@ -139,7 +139,7 @@ class PersonalController extends Controller
     }
 
     public function login(Request $request) {
-        $personal=Personal::all()->first();
+        $personal=Personal::all()->where('nick','like',trim($request->nick))->first();
         if($personal!=null){
             if($personal->password===$request->password){
                 Auth::login($personal);
