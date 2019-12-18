@@ -92,7 +92,7 @@
     <div class="form-group row">
         <div class="col-md-12">
             <label class="form-control-label" for="cliente_id">DOCUMENTO PRESENTADO A LA EMPRESA: </label>
-            <input type="text" class="form-control" name="registrador_id" id="registrador_id" placeholder="{{$solicitud->titulo->descripcion}}" disabled="">
+            <input type="text" class="form-control" name="registrador_id" id="registrador_id" placeholder="{{$solicitud280->documento_empresa}}" disabled="">
         </div>
     </div>
 

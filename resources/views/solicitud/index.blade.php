@@ -37,6 +37,7 @@
                 <th>HECTAREAS</th>
                 <th>FECHA  <br> SOLICITUD</th>
                 <th>TIPO <br> SOLICITUD</th>
+                <th>ACCIONES</th>
             </tr>
             </thead>
             <tbody>

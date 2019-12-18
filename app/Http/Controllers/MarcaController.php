@@ -60,7 +60,16 @@ class MarcaController extends Controller
                 $marca->save();
                 Session::put('success','Marca creada correctamente con id=');
                 DB::commit();
-            }else{
+            }elseif ($mime === '') {
+                $marca=new Marca();
+                $marca->descripcion = $request->descripcion;
+                $marca->solicitud_id = $request->solicitud_id;
+                $marca->estado = 1;
+                $marca->save();
+                Session::put('success','Marca creada correctamente con id=');
+                DB::commit();
+            }
+            else{
                 throw new \Exception;
             }
         }catch (\Exception $exception) {

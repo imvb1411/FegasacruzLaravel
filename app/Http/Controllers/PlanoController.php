@@ -60,7 +60,16 @@ class PlanoController extends Controller
                 $plano->save();
                 Session::put('success','Plano creado correctamente');
                 DB::commit();
-            }else{
+            }elseif ($mime === '') {
+                $plano=new Plano();
+                $plano->descripcion = $request->descripcion;
+                $plano->solicitud_id = $request->solicitud_id;
+                $plano->estado = 1;
+                $plano->save();
+                Session::put('success','Plano creado correctamente');
+                DB::commit();
+            }
+            else{
                 throw new \Exception;
             }
         }catch (\Exception $exception) {

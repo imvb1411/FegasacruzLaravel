@@ -58,7 +58,16 @@ class TituloController extends Controller
                 $titulo->save();
                 Session::put('success','Titulo creado correctamente');
                 DB::commit();
-            }else{
+            }elseif( $mime === '' ){
+                $titulo=new Titulo();
+                $titulo->descripcion = $request->descripcion;
+                $titulo->solicitud_id = $request->solicitud_id;
+                $titulo->estado = 1;
+                $titulo->save();
+                Session::put('success','Titulo creado correctamente');
+                DB::commit();
+            }
+            else{
                 throw new \Exception;
             }
         }catch (\Exception $exception) {

@@ -55,14 +55,15 @@ class Solicitud extends Model implements Searchable
     public function titulo(){
         return $this->hasOne(Titulo::class);
     }
-    public function Personal(){
+    public function personal(){
         return $this->belongsTo('App\Personal','registrador_id','id');
     }
-    public function Ubicacion(){
+    public function ubicacion(){
         return $this->belongsTo('App\Ubicacion','ubicacion_id','id');
     }
 
     public function solicitud280(){
         return $this->hasOne('App\Solicitud280','ubicacion_id','id');
     }
+
 }

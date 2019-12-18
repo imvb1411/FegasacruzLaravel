@@ -20,7 +20,7 @@
         <div class="col-md-6">
             <label class="form-control-label" for="actividad_id">Actividad</label>
             <select class="form-control" name="actividad_id" id="actividad_id" required>              
-                <option value="0" disabled>Seleccione</option>   
+                <option value="0" >Seleccione</option>   
                 @foreach($actividades as $act)
                     <option value="{{$act->id}}"> {{$act->codigo}} {{$act->nombre}} </option>
                 @endforeach
@@ -35,21 +35,20 @@
     <div class="form-group row">
         <div class="col-md-6">
             <label class="form-control-label" for="nro_hectareas">Nro. Hectareas</label>
-            <input type="number" step="0.01" class="form-control" id="nro_hectareas" name="nro_hectareas" required placeholder="Detalle el rubro">    
+            <input type="number" step="0.01" class="form-control" id="nro_hectareas" name="nro_hectareas" required placeholder="">    
         </div>
         
         <div class="col-md-6">
             <label class="form-control-label" for="nro_orden">Nro. Orden</label>
-            <input type="number" class="form-control" id="nro_orden" name="nro_orden" required placeholder="Detalle el rubro">    
+            <input type="number" class="form-control" id="nro_orden" name="nro_orden" required placeholder="">    
         </div>
     </div>
-
 
     <div class="form-group row">
         <div class="col-md-6">
             <label class="form-control-label" for="ubicacion_id">Ubicacion</label>
             <select class="form-control" name="ubicacion_id" id="ubicacion_id" required>              
-                <option value="0" disabled>Seleccione</option>   
+                <option value="0">Seleccione</option>   
                 @foreach($ubicaciones as $ubi)
                     <option value="{{$ubi->id}}">{{$ubi->nombre}}</option>
                 @endforeach
@@ -61,7 +60,7 @@
         <div class="col-md-12">
             <label class="form-control-label" for="tipo_solicitud">Tipo Formulario</label>
             <select class="form-control" name="tipo_solicitud" id="tipo_solicitud" onChange="formulario(this.value);" required>              
-                <option value="0" disabled>Seleccione Formulario</option>   
+                <option value="0" >Seleccione Formulario</option>   
                 <option value="form280">Formulario 280</option>
                 <option value="form701">Formulario 701</option>
             </select>

@@ -31,6 +31,10 @@
                 $("#form280").hide();
                 $("#form701").show();
             }
+            if (formValue == "0") {
+                $("#form280").hide();
+                $("#form701").hide();
+            }
         }
 
         function validate(input){
@@ -118,7 +122,8 @@
             $('#edit').find('.modal-body #nit_dependencia').val($solicitud.nit_dependencia);
             $('#edit').find('.modal-body #nro_documento').val($solicitud.nro_documento);
             $('#edit').find('.modal-body #nro_boletapago').val($solicitud.nro_boletapago);
-
+            $('#edit').find('.modal-body #documento_empresa').val($solicitud.documento_empresa);
+            
             $('#edit').find('.modal-body #ddjj_original').val($solicitud.ddjj_original);
             $('#edit').find('.modal-body #folio').val($solicitud.folio);
             $('#edit').find('.modal-body #nro_titulopropiedad').val($solicitud.nro_titulopropiedad);
