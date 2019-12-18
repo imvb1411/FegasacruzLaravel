@@ -61,13 +61,6 @@
     var _iMethod='';
     $('#new').click(function () {
         action=1;
-
-        var form= document.getElementById('ubicacionForm');
-        form.action='{{route('ubicacion.store')}}';
-        form.method='post';
-        var inputMethod=document.getElementsByName('_method');
-
-
         var form= document.getElementById('userForm');
         form.action='{{route('actividad.store')}}';
         form.method='post';
@@ -85,16 +78,6 @@
 
     });
 
-    function changeTipo() {
-        var x = document.getElementById("tipo").value;
-        if (x==1){
-            document.getElementById("divDep").style.display = "none";
-        }else{
-            document.getElementById("divDep").style.display = "block";
-        }
-        document.getElementById('htitle').innerText='Nueva Actividad';
-        document.getElementById('btn').innerText='Guardar'
-    }
     function editar($actividad) {
         console.log($actividad);
         action = 2;

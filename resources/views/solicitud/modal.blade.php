@@ -1,11 +1,14 @@
 <script>
         var action=1;
+        var formValue=0;
         $(function () {
-            $("#rubroTable").DataTable();
+            $("#solicitudTable").DataTable();
         });
         var inputs=document.querySelectorAll('input:not([type="submit"])');
         var flag=true;
         var submit = document.getElementById('btn');
+        console.log('prueba de submit')
+        console.log(inputs);
         for (var i=0;i<inputs.length;i++){
             inputs[i].addEventListener('keyup',function () {
                 validate(this);
@@ -18,10 +21,22 @@
             }
         });
 
+        function formulario(num){
+        formValue= num;
+            if (formValue == "form280") {
+                $("#form280").show();
+                $("#form701").hide();
+            }
+            if (formValue == "form701") {
+                $("#form280").hide();
+                $("#form701").show();
+            }
+        }
+
         function validate(input){
             switch (input.id) {
-                case 'descripcion':
-                    if(input.value.match(/[a-z0-9._%+-]*$/)){
+                case 'nro_hectareas':
+                    if(input.value.match(/[0-9]+$/)){
                         input.className='form-control is-valid';
                         flag=true;
                     }else{
@@ -29,8 +44,17 @@
                         input.className='form-control is-invalid';
                     }
                     break;
+                case 'nro_orden':
+                if(input.value.match(/[0-9]+$/)){
+                    input.className='form-control is-valid';
+                    flag=true;
+                }else{
+                    flag=false;
+                    input.className='form-control is-invalid';
+                }
+                break;
                 default:
-                    if(input.value.match(/^[A-Za-z\s]*$/)){
+                    if(input.value.match(/[0-9]+$/)){
                         input.className='form-control is-valid';
                         flag=true;
                     }else{
@@ -52,36 +76,53 @@
         $('#new').click(function () {
             action=1;
             var form= document.getElementById('userForm');
-            form.action='{{route('rubros.store')}}';
+            form.action='{{route('solicitudes.store')}}';
             form.method='post';
             var inputMethod=document.getElementsByName('_method');
-
             for(var i=0;i<inputMethod.length;i++){
                 if(inputMethod[i].value==='PUT'){
                     _iMethod=inputMethod[i];
                     inputMethod[i].value='POST';
                 }
             }
-            document.getElementById('htitle').innerText='Nuevo Rubro';
+            document.getElementById('htitle').innerText='Nueva Solicitud';
             document.getElementById('btn').innerText='Guardar'
 
         });
 
-        function editar($rubro){
-            console.log($rubro);
+        function editar($solicitud){
+            console.log($solicitud);
             action=2;
             var form= document.getElementById('userForm');
-            form.action='{{route('rubros.update',0)}}';
+            // var formSolicitud= document.getElementById('userForm');
+            form.action='{{route('solicitudes.update',0)}}';
             form.method='post';
             //if(_iMethod.toString().length>0){
             _iMethod.value='PUT';
             console.log(_iMethod.value);
             //}
             $('#edit').modal('show');
-            document.getElementById('htitle').innerText='Editar Rubro';
+            document.getElementById('htitle').innerText='Editar Solicitud';
             document.getElementById('btn').innerText='Editar';
-            $('#edit').find('.modal-body #nombre').val($rubro.nombre);
-            $('#edit').find('.modal-body #descripcion').val($rubro.descripcion);
-            $('#edit').find('.modal-body #id').val($rubro.id);
+            $('#edit').find('.modal-body #actividad_id').val($solicitud.actividad_id);
+            $('#edit').find('.modal-body #cliente_id').val($solicitud.cliente_id);
+            $('#edit').find('.modal-body #registrador_id').val($solicitud.registrador_id);
+            $('#edit').find('.modal-body #ubicacion_id').val($solicitud.ubicacion_id);
+            $('#edit').find('.modal-body #tipo_solicitud').val($solicitud.tipo_solicitud);
+            $('#edit').find('.modal-body #nro_orden').val($solicitud.nro_orden);
+            $('#edit').find('.modal-body #gestion').val($solicitud.gestion);
+            $('#edit').find('.modal-body #nro_hectareas').val($solicitud.nro_hectareas);
+            $('#edit').find('.modal-body #fecha_solicitud').val($solicitud.fecha_solicitud);
+            $('#edit').find('.modal-body #fecha_finalizacion').val($solicitud.fecha_finalizacion);
+
+            $('#edit').find('.modal-body #nit_dependencia').val($solicitud.nit_dependencia);
+            $('#edit').find('.modal-body #nro_documento').val($solicitud.nro_documento);
+            $('#edit').find('.modal-body #nro_boletapago').val($solicitud.nro_boletapago);
+
+            $('#edit').find('.modal-body #ddjj_original').val($solicitud.ddjj_original);
+            $('#edit').find('.modal-body #folio').val($solicitud.folio);
+            $('#edit').find('.modal-body #nro_titulopropiedad').val($solicitud.nro_titulopropiedad);
+
+            $('#edit').find('.modal-body #id').val($solicitud.id);
         }
     </script>

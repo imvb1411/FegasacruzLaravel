@@ -11,5 +11,6 @@ class Configuracion extends Model
 
     public function ui(){
         return $this->hasOne('\App\UI','id','ui_id');
+
     }
 }
