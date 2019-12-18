@@ -18,7 +18,7 @@ class ActividadController extends Controller
         $view=Vista::where('nombre','=','actividad')->first();
         $view->vistas=$view->vistas+1;
         $view->update();
-        $actividades = Actividad::all()->where('estado', 1);
+        $actividades = Actividad::all()->where('estado', 1)->sortBy('id');
         $configuracion=Configuracion::where('personal_id','=',Auth::user()->id)->where('estado',1)->first();
         if ($configuracion == null) {
             $configuracion = Configuracion::where('personal_id', '=', 0)->first();
@@ -47,7 +47,7 @@ class ActividadController extends Controller
             Session::put('danger', 'Ocurrio un problema al crear la actividad ' . $request->nombre);
             DB::rollBack();
         }
-        return redirect()->route('actividades.index');
+        return redirect()->route('actividad.index');
     }
 
     public function update(Request $request)
@@ -65,7 +65,7 @@ class ActividadController extends Controller
             Session::put('danger', 'Ocurrio un problema al actualizar la actividad ' . $request->nombre);
             DB::rollBack();
         }
-        return redirect()->route('actividades.index');
+        return redirect()->route('actividad.index');
     }
 
     public function destroy($id)
