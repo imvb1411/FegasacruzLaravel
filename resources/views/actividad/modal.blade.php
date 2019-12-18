@@ -13,13 +13,13 @@
     }
     submit.addEventListener('click', function() {
         for (var i = 0; i < inputs.length; i++) {
-            validate(inputs[i]);
+            validate(inputs[i]); 
         }
     });
     function validate(input){
         switch (input.id) {
             case 'descrpcion':
-                if(input.value.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)){
+                if(input.value.match(/[a-z0-9A-Za-z\s]{2,4}$/)){
                     input.className='form-control is-valid';
                     flag=true;
                 }else{
@@ -28,7 +28,7 @@
                 }
                 break;
             case 'nombre':
-                if(input.value.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)){
+                if(input.value.match(/[a-z0-9._%+-]{2,4}$/)){
                     input.className='form-control is-valid';
                     flag=true;
                 }else{
