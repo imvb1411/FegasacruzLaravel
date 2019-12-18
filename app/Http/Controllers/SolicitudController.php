@@ -15,7 +15,8 @@ use App\Actividad;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-
+use App;
+use PDF;
 class SolicitudController extends Controller
 {
     //
@@ -146,11 +147,9 @@ class SolicitudController extends Controller
         }
         if($solicitud->tipo_solicitud == '280')
         {
-            $solicitud280=Solicitud280::where('solicitud_id',$id)->first();
-            // $titulo=Titulo::where('solicitud_')
-            // return $solicitud;
-            return view('solicitud.show280', compact('solicitud', 'solicitud280','configuracion'));
-            // return $solicitudes280;
+            $solicitud280=Solicitud280::where('solicitud_id',$id)->first();            
+            $pdf=PDF::loadView('solicitud.solicitudimpresion',compact('solicitud', 'solicitud280','configuracion'));            
+            return $pdf->stream();
         }else{
             $solicitudes701=Solicitud701::all()->where('solicitud_id',$id);
             return $solicitudes701;

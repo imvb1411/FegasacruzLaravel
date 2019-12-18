@@ -56,4 +56,35 @@ class ReporteController extends Controller
         return view('reportes.rpt_top_actividades', compact('chart'),compact('configuracion'));
         }
     }
+    public function topsolicitudes(Request $request)
+    { 
+        
+        $configuracion=Configuracion::tema()->first();
+        if ($configuracion == null) {
+            $configuracion = Configuracion::default()->first();
+        }
+        $solicitudes=DB::table('solicitud')
+            ->join('actividad','solicitud.actividad_id','=','actividad.id')
+            ->select(DB::raw('actividad.nombre, count(actividad.nombre) as cantidad'))
+            ->groupBy('solicitud.actividad_id','actividad.nombre')
+            ->get();
+                            //dd($actividades);
+        if(count($actividades)>0 ){
+            $array=array();
+            $array1=array();
+        foreach ($actividades as $actividade){
+            array_push($array, $actividade->nombre);
+            array_push($array1, $actividade->cantidad);
+        }
+        $chart = new BarChart;
+        //$chart->type('bar');
+        $chart->labels($array);
+        //$chart->dataset('Cantidad', 'bar', $array1);    
+        $dataset = $chart->dataset('bar');
+        $dataset->backgroundColor(collect(['#CD6155','#229954', '#7D3C98']));
+        $dataset->color(collect(['#CD6155','#229954', '#7D3C98']));
+       // dd($chart);
+        //return view('reportes.rpt_top_actividades', compact('chart'),compact('configuracion'));
+        }
+    }
 }
