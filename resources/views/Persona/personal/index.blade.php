@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title', 'Usuarios')
-    @section('header-title','Listado de usuarios')
+@section('header-title','Listado de usuarios')
 @section('header-content')
     <div class="row">
         <div class="col-3">
@@ -23,37 +23,38 @@
     </div>
 @endsection
 @section('content')
-        <table id="userTable" class="table table-bordered table-hover">
-            <thead>
+    <table id="personalTable" class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>NICK</th>
+            <th>ROL</th>
+            <th>EMPLEADO</th>
+            <th>OPERACIONES</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($personales as $user)
             <tr>
-                <th>ID</th>
-                <th>NICK</th>
-                <th>ROL</th>
-                <th>EMPLEADO</th>
-                <th>OPERACIONES</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($personales as $user)
-                <tr>
                 <td>{{$user->id}}</td>
                 <td>{{$user->nick}}</td>
                 <td>{{$user->rol}}</td>
                 <td>{{$user->persona->nombre}} {{$user->persona->apellido_pat}} {{$user->persona->apellido_mat}}</td>
-                <td >
+                <td>
                     <a class="btn btn-info"
                        data-toggle="modal" id="btnedit" data-target="#edit" onclick="editClick();">
                         Edit
                     </a>
                     {!! Form::open(['route' => ['users.destroy',$user->id],'method'=>'DELETE','style'=>'display: inline']) !!}
                     {{Form::token()}}
-                    <button onclick="return confirm('¿Are you sure?')" type="submit" class="btn btn-danger">Delete</button>
+                    <button onclick="return confirm('¿Are you sure?')" type="submit" class="btn btn-danger">Delete
+                    </button>
                     {!! Form::close() !!}
                 </td>
-            @endforeach
-                </tr>
-            </tbody>
-        </table>
+                @endforeach
+            </tr>
+        </tbody>
+    </table>
 
     <div id="edit" class="modal fade" role="dialog">
         {!! Form::open(['route' => ['users.update','0'],'method'=>'PUT','id'=>"userForm"]) !!}
@@ -66,40 +67,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                    <div class="modal-body">
-                        <input type="hidden" name="iduser" id="iduser" class="form-control">
-                        <div class="row">
-                            <div class="col-4">
-                                <label for="personid">EMPLEADO</label>
-                                <select name="personid" id="personid" class="form-control">
-                                    @foreach($personas as $person)
-                                        <option value="{{$person->id}}">{{$person->nombre}} {{$person->apellido_pat}} {{$person->apellido_mat}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col-4">
-                                <label for="role">ROL</label>
-                                <select name="role" id="role" class="form-control">
-                                    <option value="ADMINISTRADOR">Administrador</option>
-                                    <option value="ASISTENTE">Asistente</option>
-                                </select>
-                            </div>
-                            <div class="col-4">
-                                <label for="packing">NICK</label>
-                                <input type="text" name="nick" id="nick" class="form-control" placeholder="Ingrese el nick" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-4">
-                                <label for="packing">CONTRASEÑA</label>
-                                <input type="password" name="password" id="password" class="form-control" placeholder="Ingrese la contraseña" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" id="btn">Editar</button>
-                    </div>
+                @include('Persona.personal.form')
             </div>
         </div>
         {!! Form::close() !!}
@@ -108,104 +76,106 @@
         {{--<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>--}}
         {{--{!! JsValidator::formRequest('App\Http\Requests\UserRequest', '#userForm'); !!}--}}
         <script>
-            var action=1;
+            var action = 1;
             $(function () {
                 $("#userTable").DataTable();
             });
-            var inputs=document.querySelectorAll('input:not([type="submit"])');
-            var flag=true;
+            var inputs = document.querySelectorAll('input:not([type="submit"])');
+            var flag = true;
             var submit = document.getElementById('btn');
-            for (var i=0;i<inputs.length;i++){
-                inputs[i].addEventListener('keyup',function () {
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].addEventListener('keyup', function () {
                     validate(this);
                 });
             }
 
-            submit.addEventListener('click', function() {
+            submit.addEventListener('click', function () {
                 for (var i = 0; i < inputs.length; i++) {
                     validate(inputs[i]);
                 }
             });
 
-            function validate(input){
+            function validate(input) {
                 switch (input.id) {
                     case 'password':
-                        if(!input.value.match(/[\!\@\#\$\%\^\&\*]/g) &&input.value.length>=3){
-                            input.className='form-control is-valid';
-                            flag=true;
-                        }else{
-                            flag=false;
-                            input.className='form-control is-invalid';
+                        if (!input.value.match(/[\!\@\#\$\%\^\&\*]/g) && input.value.length >= 3) {
+                            input.className = 'form-control is-valid';
+                            flag = true;
+                        } else {
+                            flag = false;
+                            input.className = 'form-control is-invalid';
                         }
                         break;
                     case 'nick':
-                        if(input.value.match(/^[a-zA-Z0-9]+$/)){
-                            input.className='form-control is-valid';
-                            flag=true;
-                        }else{
-                            flag=false;
-                            input.className='form-control is-invalid';
+                        if (input.value.match(/^[a-zA-Z0-9]+$/)) {
+                            input.className = 'form-control is-valid';
+                            flag = true;
+                        } else {
+                            flag = false;
+                            input.className = 'form-control is-invalid';
                         }
                         break;
                     default:
-                        if(input.value.match(/^[A-Za-z\s]*$/)){
-                            input.className='form-control is-valid';
-                            flag=true;
-                        }else{
-                            flag=false;
-                            input.className='form-control is-invalid';
+                        if (input.value.match(/^[A-Za-z\s]*$/)) {
+                            input.className = 'form-control is-valid';
+                            flag = true;
+                        } else {
+                            flag = false;
+                            input.className = 'form-control is-invalid';
                         }
                         break;
                 }
                 validateSubmit();
             }
-            function validateSubmit(){
-                if(flag===false) {
-                    submit.style.display='none';
-                }else{
-                    submit.style.display='inline';
+
+            function validateSubmit() {
+                if (flag === false) {
+                    submit.style.display = 'none';
+                } else {
+                    submit.style.display = 'inline';
                 }
             }
-            var _iMethod='';
-            $('#new').click(function () {
-                action=1;
-                var form= document.getElementById('userForm');
-                form.action='{{route('users.store')}}';
-                form.method='post';
-                var inputMethod=document.getElementsByName('_method');
 
-                for(var i=0;i<inputMethod.length;i++){
-                    if(inputMethod[i].value==='PUT'){
-                        _iMethod=inputMethod[i];
-                        inputMethod[i].value='POST';
+            var _iMethod = '';
+            $('#new').click(function () {
+                action = 1;
+                var form = document.getElementById('userForm');
+                form.action = '{{route('users.store')}}';
+                form.method = 'post';
+                var inputMethod = document.getElementsByName('_method');
+
+                for (var i = 0; i < inputMethod.length; i++) {
+                    if (inputMethod[i].value === 'PUT') {
+                        _iMethod = inputMethod[i];
+                        inputMethod[i].value = 'POST';
                     }
                 }
-                document.getElementById('htitle').innerText='Nuevo usuario';
-                document.getElementById('btn').innerText='Guardar'
+                document.getElementById('htitle').innerText = 'Nuevo usuario';
+                document.getElementById('btn').innerText = 'Guardar'
 
             });
 
-            function editClick(){
-                action=2;
-                var form= document.getElementById('userForm');
-                form.action='{{route('users.update',0)}}';
-                form.method='post';
+            function editClick() {
+                action = 2;
+                var form = document.getElementById('userForm');
+                form.action = '{{route('users.update',0)}}';
+                form.method = 'post';
                 //if(_iMethod.toString().length>0){
-                _iMethod.value='PUT';
+                _iMethod.value = 'PUT';
                 console.log(_iMethod.value);
                 //}
-                document.getElementById('htitle').innerText='Editar usuario';
-                document.getElementById('btn').innerText='Editar';
+                document.getElementById('htitle').innerText = 'Editar usuario';
+                document.getElementById('btn').innerText = 'Editar';
             }
 
-            $('#edit').on('show.bs.modal',function(event){
-                if(action===2) {
+            $('#edit').on('show.bs.modal', function (event) {
+                if (action === 2) {
                     var button = $(event.relatedTarget);
                     var iduser = button.data('iduser');
                     var personid = button.data('personid');
                     var nick = button.data('nick');
                     var password = button.data('password');
-                    var fullname=button.data('name');
+                    var fullname = button.data('name');
                     var modal = $(this);
                     modal.find('.modal-body #iduser').val(iduser);
                     modal.find('.modal-body #nick').val(nick);
@@ -213,7 +183,7 @@
                     modal.find('.modal-body #password').val(password);
                     $("#personid").children('option:first').remove();
                     $("#personid").append(new Option(fullname, personid));
-                }else{
+                } else {
                     var modal = $(this);
                     modal.find('.modal-body #iduser').val('');
                     modal.find('.modal-body #nick').val('');
