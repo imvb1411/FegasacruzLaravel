@@ -23,20 +23,20 @@ class SolicitudController extends Controller
     {       $view=Vista::where('nombre','=','solicitud')->first();
             $view->vistas=$view->vistas+1;
             $view->update();
-            $solicitudes=Solicitud::all()->where('estado',1);
+            $solicitudes=Solicitud::active()->get();
             $clientes = Persona::all()->where('estado', 1)->where('tipo_persona', 'CLI');
             $personales=Personal::all()->where('estado',1);
             $ubicaciones=Ubicacion::all()->where('estado',1)->where('tipo',1);
             $actividades = Actividad::all()->where('estado', 1);
-            $configuracion = Configuracion::where('personal_id', '=', Auth::user()->id)->where('estado', 1)->first();
+            $configuracion = Configuracion::tema()->first();
             if ($configuracion == null) {
-                $configuracion = Configuracion::where('personal_id', '=', 0)->first();
+                $configuracion = Configuracion::default()->first();
             }
             return view('solicitud.index',compact('solicitudes','view','clientes','personales','ubicaciones','actividades', 'configuracion'));
     }
 
     public function buscar($texto){
-        $solicitude=Solicitud::where('estado',1)->where('nro_orden','ilike','%'.$texto.'%')->get();
+        $solicitude=Solicitud::active()->search($texto)->get();
         return view('solicitud.index',compact('solicitudes'));
     }
 

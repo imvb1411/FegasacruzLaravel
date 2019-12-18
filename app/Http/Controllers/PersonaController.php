@@ -23,10 +23,10 @@ class PersonaController extends Controller
         $view=Vista::where('nombre','=','cliente')->first();
         $view->vistas=$view->vistas+1;
         $view->update();
-        $clientes = Persona::all()->where('estado', 1)->where('tipo_persona', 'CLI');
-        $configuracion=Configuracion::where('personal_id','=',Auth::user()->id)->where('estado',1)->first();
+        $clientes = Persona::clientActive()->get();
+        $configuracion=Configuracion::tema()->first();
         if ($configuracion == null) {
-            $configuracion = Configuracion::where('personal_id', '=', 0)->first();
+            $configuracion = Configuracion::default()->first();
         }
         return view('Persona.persona.index', compact('clientes', 'configuracion','view'));
     }
@@ -34,9 +34,9 @@ class PersonaController extends Controller
     public function buscar($texto)
     {
         $view=Vista::where('nombre','=','cliente')->first();
-        $configuracion=Configuracion::where('personal_id','=',Auth::user()->id)->where('estado',1)->first();
+        $configuracion=Configuracion::tema()->first();
         if ($configuracion == null) {
-            $configuracion = Configuracion::where('personal_id', '=', 0)->first();
+            $configuracion = Configuracion::default()->first();
         }
         $clientes = Persona::where('estado', 1)->where('tipo_persona', 'like', 'CLI')->where('nombre', 'ilike', '%' . $texto . '%')->get();
         return view('Persona.persona.index', compact('clientes','view','configuracion'));
@@ -112,15 +112,6 @@ class PersonaController extends Controller
      */
     public function update(Request $request)
     {
-        // $persona= Persona::findOrFail($request->id);
-        // $persona->ci = $request->ci;
-        // $persona->nombre = $request->nombre;
-        // $persona->apellido_pat = $request->apellido_pat;
-        // $persona->apellido_mat = $request->apellido_mat;
-        // $persona->telefono = $request->telefono;
-        // $persona->email = $request->email;
-        // $persona->save();
-        // return Redirect::to("cliente");
         try {
             DB::beginTransaction();
             $persona = Persona::findOrFail($request->id);

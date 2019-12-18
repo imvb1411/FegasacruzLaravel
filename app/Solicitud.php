@@ -12,7 +12,28 @@ class Solicitud extends Model implements Searchable
     protected $table='solicitud';
     public $timestamps = false;
 
-    
+    protected $fillable = [
+        'actividad_id',
+        'cliente_id',
+        'registrador_id',
+        'ubicacion_id',
+        'tipo_solicitud',
+        'nro_orden',
+        'gestion',
+        'nro_hectareas',
+        'fecha_solicitud',
+        'fecha_finalizacion',
+        'estado'
+    ];
+
+    public function scopeActive($consulta){
+        return $consulta->where('estado', 1);
+    }
+
+    public function scopeSearch($consulta, $texto){
+        $consulta->where('nro_orden','ilike','%'.$texto.'%');
+    }
+
     public function getSearchResult(): SearchResult
     {
         //$url = route('cliente.index',$this->nombre);
