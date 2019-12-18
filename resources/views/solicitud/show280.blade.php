@@ -1,6 +1,13 @@
 @extends('layouts.master')
 @section('title', 'Solicitudes')
     @section('header-title','Listado de Solicitudes')
+    @section('header-content')
+    <div class="row">
+        <div class="col-3">
+        <a href="{{URL::action('SolicitudController@print',$solicitud->id)}}" class="btn btn-warning">Imprimir</a>
+        </div>
+    </div>
+@endsection
 @section('vistas')
     <div class="row">
         <div class="col-md-3 col-sm-6 col-12 float-sm-right">
