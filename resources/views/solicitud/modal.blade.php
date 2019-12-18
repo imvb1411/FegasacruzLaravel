@@ -37,6 +37,10 @@
             }
         }
 
+        function departamento(num){
+            
+        }
+
         function validate(input){
             switch (input.id) {
                 case 'nro_hectareas':

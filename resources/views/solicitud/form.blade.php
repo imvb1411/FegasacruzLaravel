@@ -45,7 +45,19 @@
     </div>
 
     <div class="form-group row">
-        <div class="col-md-2">
+        <div class="col-md-3">
+            <label class="form-control-label" for="ubicacion_id">Ubicacion</label>
+            <select class="form-control" name="ubicacion_id" id="ubicacion_id" onChange="departamento(this.value);" required>              
+                <option value="0">Seleccione</option>   
+                @foreach($ubicaciones as $ubi)
+                    {{-- @if (value=(valor del departamento))
+                        <option value="{{$ubi->id}}">{{$ubi->nombre}}</option>
+                    @endif --}}
+                    <option value="{{$ubi->id}}">{{$ubi->nombre}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col-md-3">
             <label class="form-control-label" for="ubicacion_id">Ubicacion</label>
             <select class="form-control" name="ubicacion_id" id="ubicacion_id" required>              
                 <option value="0">Seleccione</option>   
