@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Configuracion;
 use Illuminate\Http\Request;
 use App\Vista;
 use App\Plano;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Solicitud;
-use App\Configuracion;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 
 class PlanoController extends Controller
 {
@@ -22,11 +22,11 @@ class PlanoController extends Controller
         $planos=Plano::all()->where('estado',1);
         $solicitudes=Solicitud::all()->where('estado',1);
         $configuracion=Configuracion::where('personal_id','=',Auth::user()->id)->where('estado',1)->first();
-        if ($configuracion == null) {
-            $configuracion = Configuracion::where('personal_id', '=', 0)->first();
+        if($configuracion==null){
+            $configuracion=Configuracion::where('personal_id','=',0)->first();
         }
         // return $solicitudes;
-        return view('plano.index',compact('planos','solicitudes','configuracion','view'));
+        return view('plano.index',compact('planos','solicitudes','view','configuracion'));
     }
 
     public function buscar($texto){

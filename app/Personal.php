@@ -13,7 +13,7 @@ class Personal extends Model implements AuthenticatableContract
     protected $table="personal";
 
     public function persona(){
-        return $this->belongsTo('App\Persona','persona_id',id);
+        return $this->belongsTo('App\Persona','personaid','id');
     }
 
     protected $hidden = [

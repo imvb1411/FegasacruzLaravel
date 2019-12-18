@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Configuracion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Titulo;
 use Illuminate\Support\Facades\Session;
@@ -17,8 +19,12 @@ class TituloController extends Controller
         $view->update();
         $titulos=Titulo::all()->where('estado',1);
         $solicitudes=Solicitud::all()->where('estado',1);
+        $configuracion=Configuracion::where('personal_id','=',Auth::user()->id)->where('estado',1)->first();
+        if($configuracion==null){
+            $configuracion=Configuracion::where('personal_id','=',0)->first();
+        }
         // return $solicitudes;
-        return view('titulo.index',compact('titulos','solicitudes','view'));
+        return view('titulo.index',compact('titulos','solicitudes','view','configuracion'));
     }
 
     public function buscar($texto){

@@ -8,9 +8,15 @@ use Spatie\Searchable\SearchResult;
 
 class Persona extends Model implements Searchable
 {
+
     protected $table='persona';
 
     public $timestamps = false;
+
+    public static function all($columns = ['*'])
+    {
+        return parent::all($columns)->where('tipo_persona','LIKE','CLI');
+    }
 
     public function getSearchResult(): SearchResult
     {

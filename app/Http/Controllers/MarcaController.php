@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Configuracion;
 use Illuminate\Http\Request;
 use App\Marca;
 use App\Solicitud;
 use App\Vista;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -19,8 +21,12 @@ class MarcaController extends Controller
         $view->update();
         $marcas=Marca::all()->where('estado',1);
         $solicitudes=Solicitud::all()->where('estado',1);
+        $configuracion=Configuracion::where('personal_id','=',Auth::user()->id)->where('estado',1)->first();
+        if($configuracion==null){
+            $configuracion=Configuracion::where('personal_id','=',0)->first();
+        }
         // return $solicitudes;
-        return view('marca.index',compact('marcas','solicitudes','view'));
+        return view('marca.index',compact('marcas','solicitudes','view','configuracion'));
     }
 
     public function buscar($texto){
