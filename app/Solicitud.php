@@ -51,10 +51,18 @@ class Solicitud extends Model implements Searchable
     public function actividad(){
         return $this->belongsTo('App\Actividad','actividad_id','id');
     }
+
+    public function titulo(){
+        return $this->hasOne(Titulo::class);
+    }
     public function Personal(){
         return $this->belongsTo('App\Personal','registrador_id','id');
     }
     public function Ubicacion(){
         return $this->belongsTo('App\Ubicacion','ubicacion_id','id');
+    }
+
+    public function solicitud280(){
+        return $this->hasOne('App\Solicitud280','ubicacion_id','id');
     }
 }
