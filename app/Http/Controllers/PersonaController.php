@@ -33,8 +33,13 @@ class PersonaController extends Controller
 
     public function buscar($texto)
     {
+        $view=Vista::where('nombre','=','cliente')->first();
+        $configuracion=Configuracion::where('personal_id','=',Auth::user()->id)->where('estado',1)->first();
+        if ($configuracion == null) {
+            $configuracion = Configuracion::where('personal_id', '=', 0)->first();
+        }
         $clientes = Persona::where('estado', 1)->where('tipo_persona', 'like', 'CLI')->where('nombre', 'ilike', '%' . $texto . '%')->get();
-        return view('Persona.persona.index', compact('clientes'));
+        return view('Persona.persona.index', compact('clientes','view','configuracion'));
     }
 
     /**

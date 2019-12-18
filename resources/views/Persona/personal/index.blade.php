@@ -34,23 +34,18 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($users as $user)
+            @foreach($personales as $user)
                 <tr>
-                <td>{{$user->iduser}}</td>
+                <td>{{$user->id}}</td>
                 <td>{{$user->nick}}</td>
-                <td>{{$user->role}}</td>
-                <td>{{$user->person->firstname}} {{$user->person->lastname}}</td>
+                <td>{{$user->rol}}</td>
+                <td>{{$user->persona->nombre}} {{$user->persona->apellido_pat}} {{$user->persona->apellido_mat}}</td>
                 <td >
                     <a class="btn btn-info"
-                       data-iduser="{{$user->iduser}}"
-                       data-personid="{{$user->personid}}"
-                       data-nick="{{$user->nick}}"
-                       data-password="{{$user->password}}"
-                       data-name="{{$user->person->firstname}} {{$user->person->lastname}}"
                        data-toggle="modal" id="btnedit" data-target="#edit" onclick="editClick();">
                         Edit
                     </a>
-                    {!! Form::open(['route' => ['users.destroy',$user->iduser],'method'=>'DELETE','style'=>'display: inline']) !!}
+                    {!! Form::open(['route' => ['users.destroy',$user->id],'method'=>'DELETE','style'=>'display: inline']) !!}
                     {{Form::token()}}
                     <button onclick="return confirm('¿Are you sure?')" type="submit" class="btn btn-danger">Delete</button>
                     {!! Form::close() !!}
@@ -77,8 +72,8 @@
                             <div class="col-4">
                                 <label for="personid">EMPLEADO</label>
                                 <select name="personid" id="personid" class="form-control">
-                                    @foreach($people as $person)
-                                        <option value="{{$person->person->idperson}}">{{$person->person->firstname}} {{$person->person->lastname}}</option>
+                                    @foreach($personas as $person)
+                                        <option value="{{$person->id}}">{{$person->nombre}} {{$person->apellido_pat}} {{$person->apellido_mat}}</option>
                                     @endforeach
                                 </select>
                             </div>

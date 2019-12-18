@@ -66,6 +66,6 @@ Route::get('/search/{s}',function($s){
             ->registerModel(Ubicacion::class, 'nombre')
             ->registerModel(Rubro::class, 'nombre')
             ->search($s);
-    //dd(Response::json($searchResults));
-        return Response::json($searchResults);;
+    //dd(response()->json($searchResults));
+        return response()->json($searchResults);
 })->name('search');
