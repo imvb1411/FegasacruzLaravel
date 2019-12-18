@@ -62,6 +62,7 @@ Route::get('/buscar_solicitud/{t}','SolicitudController@buscar')->name('solicitu
 
 Route::get('/rpt_cliente_solicitud', 'ReporteController@solicitudcliente');
 Route::get('/rpt_top_actividades', 'ReporteController@topactividad');
+
 Route::get('/search/{s}',function($s){
     $searchResults = (new Search())
             ->registerModel(Persona::class, 'nombre')
