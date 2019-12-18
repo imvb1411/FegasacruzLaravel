@@ -139,11 +139,18 @@ class SolicitudController extends Controller
     }
 
     public function show($id){
-        $solicitudes=Solicitud::findOrFail($id);
-        if($solicitudes->tipo_solicitud == '280')
+        $solicitud=Solicitud::findOrFail($id);
+        $configuracion = Configuracion::tema()->first();
+        if ($configuracion == null) {
+            $configuracion = Configuracion::default()->first();
+        }
+        if($solicitud->tipo_solicitud == '280')
         {
-            $solicitudes280=Solicitud280::all()->where('solicitud_id',$id);
-            return $solicitudes280;
+            $solicitud280=Solicitud280::where('solicitud_id',$id)->first();
+            // $titulo=Titulo::where('solicitud_')
+            // return $solicitud;
+            return view('solicitud.show280', compact('solicitud', 'solicitud280','configuracion'));
+            // return $solicitudes280;
         }else{
             $solicitudes701=Solicitud701::all()->where('solicitud_id',$id);
             return $solicitudes701;
