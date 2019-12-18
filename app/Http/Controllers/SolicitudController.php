@@ -21,31 +21,13 @@ class SolicitudController extends Controller
     {       $view=Vista::where('nombre','=','solicitud')->first();
             $view->vistas=$view->vistas+1;
             $view->update();
-
-            $configuracion=Configuracion::where('personal_id','=',Auth::user()->id)->where('estado',1)->first();
-            if ($configuracion == null) {
-                $configuracion = Configuracion::where('personal_id', '=', 0)->first();
-            }
-            
             $solicitudes=Solicitud::all()->where('estado',1);
             $clientes = Persona::all()->where('estado', 1)->where('tipo_persona', 'CLI');
             $personales=Personal::all()->where('estado',1);
             $ubicaciones=Ubicacion::all()->where('estado',1)->where('tipo',1);
             $actividades = Actividad::all()->where('estado', 1);
             // return $solicitudes;
-            return view('solicitud.index',compact('solicitudes','view','clientes','personales','ubicaciones','actividades', 'configuracion'));
-    }
-
-     public function show($id){
-        $solicitudes=Solicitud::findOrFail($id);
-        if($solicitudes->tipo_solicitud == '280')
-        {
-            $solicitudes280=Solicitud280::all()->where('solicitud_id',$id);
-            return $solicitudes280;
-        }else{
-            $solicitudes701=Solicitud701::all()->where('solicitud_id',$id);
-            return $solicitudes701;
-        }
+            return view('solicitud.index',compact('solicitudes','view','clientes','personales','ubicaciones','actividades'));
     }
 
     public function buscar($texto){
