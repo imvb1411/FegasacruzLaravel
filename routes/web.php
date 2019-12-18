@@ -60,9 +60,14 @@ Route::get('/buscar_actividad/{t}','ActividadController@buscar')->name('activida
 Route::resource('solicitudes', 'SolicitudController');
 Route::get('/buscar_solicitud/{t}','SolicitudController@buscar')->name('solicitud.buscar');
 
+<<<<<<< HEAD
 Route::name('rpt_cliente_solicitud')->get('/rpt_cliente_solicitud', 'ReporteController@solicitudcliente');
 Route::name('rpt_top_actividades')->get('/rpt_top_actividades', 'ReporteController@topactividad');
 
+=======
+Route::get('/rpt_cliente_solicitud', 'ReporteController@solicitudcliente');
+Route::get('/rpt_top_actividades', 'ReporteController@topactividad');
+>>>>>>> bd405db34d8f8b469f43214e12b1c44d60c92c42
 
 Route::get('/search/{s}',function($s){
     $searchResults = (new Search())

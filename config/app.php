@@ -174,7 +174,11 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+<<<<<<< HEAD
         Barryvdh\DomPDF\ServiceProvider::class,
+=======
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
+>>>>>>> bd405db34d8f8b469f43214e12b1c44d60c92c42
     ],
 
     /*

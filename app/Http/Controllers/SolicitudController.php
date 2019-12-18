@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Configuracion;
 use Illuminate\Http\Request;
 use App\Solicitud;
-use App\solicitud280;
-use App\solicitud701;
+use App\Solicitud280;
+use App\Solicitud701;
 use App\Vista;
 use App\Persona;
 use App\Personal;
@@ -15,8 +15,13 @@ use App\Actividad;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+<<<<<<< HEAD
 use App;
 use PDF;
+=======
+use App\Titulo;
+
+>>>>>>> bd405db34d8f8b469f43214e12b1c44d60c92c42
 class SolicitudController extends Controller
 {
     //
@@ -62,7 +67,10 @@ class SolicitudController extends Controller
                 $form280->nro_documento = $request->nro_documento;
                 $form280->nro_boletapago = $request->nro_boletapago;
                 $form280->solicitud_id = $solicitud->id;
+                $form280->nro_titulopropiedad = $request->nro_titulopropiedad1;
+                $form280->documento_empresa = $request->documento_empresa;
                 $form280->save();
+
                 Session::put('success','Solicitud creada correctamente');
                 DB::commit();
             }elseif ($request->tipo_solicitud === 'form701') {
@@ -71,6 +79,7 @@ class SolicitudController extends Controller
                 $form701 = new Solicitud701();
                 $form701->solicitud_id = $solicitud->id;
                 $form701->save();
+
                 Session::put('success','Solicitud creada correctamente');
                 DB::commit();
             }else{
@@ -103,6 +112,8 @@ class SolicitudController extends Controller
                 $form280->nro_documento = $request->nro_documento;
                 $form280->nro_boletapago = $request->nro_boletapago;
                 $form280->solicitud_id = $solicitud->id;
+                $form280->nro_titulopropiedad = $request->nro_titulopropiedad;
+                $form280->documento_empresa = $request->documento_empresa;
                 $form280->save();
                 Session::put('success','Solicitud actualizada correctamente');
                 DB::commit();
