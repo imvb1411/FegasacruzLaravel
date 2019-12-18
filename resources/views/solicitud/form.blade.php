@@ -45,7 +45,7 @@
     </div>
 
     <div class="form-group row">
-        <div class="col-md-6">
+        <div class="col-md-2">
             <label class="form-control-label" for="ubicacion_id">Ubicacion</label>
             <select class="form-control" name="ubicacion_id" id="ubicacion_id" required>              
                 <option value="0">Seleccione</option>   

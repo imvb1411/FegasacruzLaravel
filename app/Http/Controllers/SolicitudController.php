@@ -62,7 +62,7 @@ class SolicitudController extends Controller
                 $form280->nro_documento = $request->nro_documento;
                 $form280->nro_boletapago = $request->nro_boletapago;
                 $form280->solicitud_id = $solicitud->id;
-                $form280->nro_titulopropiedad = $request->nro_titulopropiedad;
+                $form280->nro_titulopropiedad = $request->nro_titulopropiedad1;
                 $form280->documento_empresa = $request->documento_empresa;
                 $form280->save();
 

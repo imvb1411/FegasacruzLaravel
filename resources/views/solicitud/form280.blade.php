@@ -6,7 +6,7 @@
         </div>
         <div class="col-md-6">
             <label class="form-control-label" for="nro_titulopropiedad">N° Titulo de Propiedad</label>
-            <input type="text" class="form-control" id="nro_titulopropiedad" name="nro_titulopropiedad"  placeholder=""> 
+            <input type="text" class="form-control" id="nro_titulopropiedad1" name="nro_titulopropiedad1"  placeholder=""> 
     </div>
     </div>
 
