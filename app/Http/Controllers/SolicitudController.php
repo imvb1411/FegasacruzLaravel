@@ -15,13 +15,8 @@ use App\Actividad;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-<<<<<<< HEAD
 use App;
 use PDF;
-=======
-use App\Titulo;
-
->>>>>>> bd405db34d8f8b469f43214e12b1c44d60c92c42
 class SolicitudController extends Controller
 {
     //
