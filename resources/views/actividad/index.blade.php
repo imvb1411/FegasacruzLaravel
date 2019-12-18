@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title', 'Actividad')
-@section('header-title','Listado de actividades')
+    @section('header-title','Listado de actividad')
 @section('vistas')
     <div class="row">
         <div class="col-md-3 col-sm-6 col-12 float-sm-right">
@@ -13,7 +13,6 @@
                     <div class="progress">
                         <div class="progress-bar" style="width: 70%"></div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -27,36 +26,36 @@
     </div>
 @endsection
 @section('content')
-    <table id="actividadTable" class="table table-bordered table-hover">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>CODIGO</th>
-            <th>NOMBRE</th>
-            <th>DESCRIPCION</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($actividades as $actividad)
+        <table id="actividadTable" class="table table-bordered table-hover">
+            <thead>
             <tr>
-                <td>{{$actividad->id}}</td>
-                <td>{{$actividad->codigo}}</td>
-                <td>{{$actividad->nombre}}</td>
-                <td>{{$actividad->descripcion}}</td>
-                <td >
-                    <a class="btn btn-info"
-                       onclick='editar({{ json_encode($actividad) }})'>
-                        Edit
-                    </a>
-                    {!! Form::open(['route' => ['actividad.destroy',$actividad->id],'method'=>'DELETE','style'=>'display: inline']) !!}
-                    {{Form::token()}}
-                    <button onclick="return confirm('¿Estas seguro?')" type="submit" class="btn btn-danger">Delete</button>
-                    {!! Form::close() !!}
-                </td>
-                @endforeach
+                <th>ID</th>
+                <th>CODIGO</th>
+                <th>NOMBRE</th>
+                <th>DESCRIPCION</th>
             </tr>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach($actividades as $actividad)
+                <tr>
+                    <td>{{$actividad->id}}</td>
+                    <td>{{$actividad->codigo}}</td>
+                    <td>{{$actividad->nombre}}</td>
+                    <td>{{$actividad->descripcion}}</td>
+                    <td >
+                        <a class="btn btn-info"
+                           onclick='editar({{ json_encode($actividad) }})'>
+                            Edit
+                        </a>
+                        {!! Form::open(['route' => ['actividad.destroy',$actividad->id],'method'=>'DELETE','style'=>'display: inline']) !!}
+                        {{Form::token()}}
+                        <button onclick="return confirm('¿Estas seguro?')" type="submit" class="btn btn-danger">Delete</button>
+                        {!! Form::close() !!}
+                    </td>
+                @endforeach
+                </tr>
+            </tbody>
+        </table>
     <div id="edit" class="modal fade" role="dialog">
         {!! Form::open(['route' => ['actividad.update','0'],'method'=>'PUT','id'=>"actividadForm"]) !!}
         {{Form::token()}}
@@ -68,13 +67,11 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                @include('actividad.form')
-
+                    @include('actividad.form')
             </div>
         </div>
         {!! Form::close() !!}
     </div>
-
     @push('scripts')
         @include('actividad.modal')
     @endpush
