@@ -30,14 +30,13 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>NRO ORDEN</th>
+                <th>NRO <br> ORDEN</th>
                 <th>CLIENTE</th>
                 <th>REGISTRADOR</th>
                 <th>GESTION</th>
-                <th>HECTAREAS</th>
                 <th>FECHA  <br> SOLICITUD</th>
-                <th>FECHA <br> FINALIZACION</th>
                 <th>TIPO <br> SOLICITUD</th>
+                <th>ACCION</th>
             </tr>
             </thead>
             <tbody>
@@ -46,13 +45,14 @@
                     <td>{{$solicitud->id}}</td>
                     <td>{{$solicitud->nro_orden}}</td>
                     <td>{{$solicitud->cliente->nombre}}</td>
-                    <td>{{$solicitud->registrador_id}}</td>
+                    <td>{{$solicitud->personal->nick}}</td>
                     <td>{{$solicitud->gestion}}</td>
-                    <td>{{$solicitud->nro_hectareas}}</td>
-                    <td>{{$solicitud->fecha_solicitud}}</td>
-                    <td>{{$solicitud->fecha_finalizacion}}</td>
+                    <td>{{$solicitud->fecha_solicitud}}</td>  
                     <td>{{$solicitud->tipo_solicitud}}</td>
                     <td >
+                        <a href="{{URL::action('SolicitudController@show',$solicitud->id)}}" class="btn btn-warning">
+                             Info
+                        </a>
                         <a class="btn btn-info"
                            onclick='editar({{ json_encode($solicitud) }})'>
                             Edit
