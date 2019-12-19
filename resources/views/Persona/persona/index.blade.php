@@ -1,6 +1,6 @@
 @extends('layouts.master')
-@section('title', 'Clientes')
-    @section('header-title','Listado de clientes')
+@section('title', 'Productores')
+    @section('header-title','Listado de Productores')
 @section('vistas')
     <div class="row">
         <div class="col-md-3 col-sm-6 col-12 float-sm-right">

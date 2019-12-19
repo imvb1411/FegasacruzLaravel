@@ -103,6 +103,7 @@
         }
         var _iMethod='';
         $('#new').click(function () {
+            $('.select2').select2()
             action=1;
             var form= document.getElementById('userForm');
             form.action='{{route('solicitudes.store')}}';
@@ -120,6 +121,7 @@
         });
 
         function editar($solicitud){
+            $('.select2').select2()
             console.log($solicitud);
             action=2;
             var form= document.getElementById('userForm');
