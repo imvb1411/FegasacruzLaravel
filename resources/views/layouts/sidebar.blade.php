@@ -23,7 +23,7 @@
                 <li class="nav-item">
                     <a href="{{route('clientes.index')}}" class="nav-link">
                         <i class="fas fa-users"></i>
-                        <p>Clientes</p>
+                        <p>Productores</p>
                     </a>
                 </li>
             </ul>

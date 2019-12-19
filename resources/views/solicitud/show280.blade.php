@@ -65,7 +65,7 @@
             <input type="text" class="form-control" name="registrador_id" id="registrador_id" placeholder="{{$solicitud->cliente->telefono}}" disabled="">
         </div>
         <div class="col-md-6">
-                <label class="form-control-label" for="registrador_id">GESTION: </label>
+                <label class="form-control-label" for="registrador_id">EMAIL: </label>
                 <input type="text" class="form-control" name="registrador_id" id="registrador_id" placeholder="{{$solicitud->cliente->email}}" disabled="">
         </div>
     </div>

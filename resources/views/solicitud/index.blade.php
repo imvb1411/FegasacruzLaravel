@@ -31,7 +31,7 @@
         <tr>
             <th>ID</th>
             <th>NRO ORDEN</th>
-            <th>CLIENTE</th>
+            <th>PRODUCTOR</th>
             <th>REGISTRADOR</th>
             <th>GESTION</th>
             <th>HECTAREAS</th>

@@ -14,6 +14,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Font Awesome Icons -->
     
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('css/select2.min.css')}}">
     {{--<link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">--}}
     {{--<!-- Theme style -->--}}
     {{--<link rel="stylesheet" href="dist/css/adminlte.min.css">--}}
@@ -249,7 +250,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{asset('js/datatables/jquery.dataTables.js')}}"></script>
 <script src="{{asset('js/datatables/dataTables.bootstrap4.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
-
+<script src="{{asset('js/select2/select2.full.min.js')}}"></script>
 <script>
     var sidebar = document.getElementById('sidebar');
     var navbar = document.getElementById('navbar');
@@ -275,10 +276,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         input.value = 'green';
     });
 </script>
-{{--<script src="/plugins/jquery/jquery.min.js"></script>--}}
+{{-- <script src="/plugins/jquery/jquery.min.js"></script> --}} --}}
 {{--<!-- Bootstrap 4 -->--}}
-{{--<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>--}}
+{{-- <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script> --}}
 {{--<!-- AdminLTE App -->--}}
-{{--<script src="dist/js/adminlte.min.js"></script>--}}
+{{-- <script src="dist/js/adminlte.min.js"></script> --}}
 </body>
 </html>
