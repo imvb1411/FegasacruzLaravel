@@ -11,7 +11,13 @@ class Personal extends Model implements AuthenticatableContract
     use Notifiable;
 
     protected $table="personal";
-
+    protected $fillable=[
+        'nick',
+        'password',
+        'tipo_personal',
+        'rol'
+    ];
+    public $timestamps=false;
     public function persona(){
         return $this->belongsTo('App\Persona','personaid','id');
     }

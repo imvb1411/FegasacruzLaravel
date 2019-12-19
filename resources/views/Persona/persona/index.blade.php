@@ -49,14 +49,6 @@
                     <td>{{$person->email}}</td>
                     <td >
                         <a class="btn btn-info"
-                        {{--data-idcliente="{{$person->id}}"--}}
-                        {{--data-ci="{{$person->ci}}" --}}
-                        {{--data-nombre="{{$person->nombre}}"--}}
-                        {{--data-apellido_pat="{{$person->apellido_pat}}"--}}
-                        {{--data-apellido_mat="{{$person->apellido_mat}}"--}}
-                        {{--data-telefono="{{$person->telefono}}"--}}
-                        {{--data-email="{{$person->email}}"--}}
-                        {{--data-toggle="modal" id="btnedit" data-target="#edit" --}}
                            onclick='editar({{ json_encode($person) }})'>
                             Edit
                         </a>

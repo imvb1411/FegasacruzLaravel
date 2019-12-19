@@ -45,17 +45,55 @@
     </div>
 
     <div class="form-group row">
-        <div class="col-md-2">
+        <div class="col-md-3">
             <label class="form-control-label" for="ubicacion_id">Ubicacion</label>
-            <select class="form-control" name="ubicacion_id" id="ubicacion_id" required>              
+            <select class="form-control" name="ubicacion_id" id="ubicacion_id" required onchange="getUbicaciones('provincia_id',this.value)">
                 <option value="0">Seleccione</option>   
                 @foreach($ubicaciones as $ubi)
                     <option value="{{$ubi->id}}">{{$ubi->nombre}}</option>
                 @endforeach
             </select>
         </div>
+        <div class="col-md-3">
+            <label class="form-control-label" for="provincia_id">Provincia</label>
+            <select class="form-control" name="provincia_id" id="provincia_id" required onchange="getUbicaciones('municipio_id',this.value)">
+                <option value="0">Seleccione</option>
+
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label class="form-control-label" for="municipio_id">Municipio</label>
+            <select class="form-control" name="municipio_id" id="municipio_id" required onchange="getUbicaciones('zona_id',this.value)">
+                <option value="0">Seleccione</option>
+
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label class="form-control-label" for="zona_id">Zona</label>
+            <select class="form-control" name="zona_id" id="zona_id" required onchange="getUbicaciones('subzona_id',this.value)">
+                <option value="0">Seleccione</option>
+
+            </select>
+        </div>
     </div>
-    
+
+    <div class="form-group row">
+        <div class="col-md-3">
+            <label class="form-control-label" for="subzona_id">Sub zona</label>
+            <select class="form-control" name="subzona_id" id="subzona_id" required onchange="getUbicaciones('sitio_id',this.value)">
+                <option value="0">Seleccione</option>
+
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label class="form-control-label" for="sitio_id">Sitio</label>
+            <select class="form-control" name="sitio_id" id="sitio_id" required>
+                <option value="0">Seleccione</option>
+
+            </select>
+        </div>
+    </div>
+
     <div class="form-group row">
         <div class="col-md-12">
             <label class="form-control-label" for="tipo_solicitud">Tipo Formulario</label>

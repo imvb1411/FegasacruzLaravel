@@ -4,6 +4,27 @@
         $(function () {
             $("#solicitudTable").DataTable();
         });
+
+        function getUbicaciones($select,$ubicacion_id){
+            console.log($ubicacion_id);
+            var xhttp=new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    console.log(JSON.parse(this.responseText));
+                    var select=document.getElementById($select);
+                    var data = JSON.parse(this.responseText);
+                    data.forEach(function (item) {
+                        var option = document.createElement("option");
+                        option.text = item.nombre;
+                        option.value =item.id;
+                        select.add(option);
+                    });
+                }
+            };
+            xhttp.open('GET', '/getUbicaciones/' + $ubicacion_id, true);
+            xhttp.send();
+        }
+
         var inputs=document.querySelectorAll('input:not([type="submit"])');
         var flag=true;
         var submit = document.getElementById('btn');
