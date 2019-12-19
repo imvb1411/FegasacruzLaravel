@@ -13,6 +13,10 @@ class Marca extends Model implements Searchable
 
     public $timestamps = false;
 
+    public function solicitud(){
+        return $this->belongsTo('\App\Solicitud','solicitud_id','id');
+    }
+
     public function getSearchResult(): SearchResult
     {
     $url=route('marca.buscar',$this->descripcion);
@@ -24,7 +28,5 @@ class Marca extends Model implements Searchable
         );
     }
 
-    public function solicitud(){
-        return $this->belongsTo('App\Solicitud','solicitud_id','id');
-    }
+
 }

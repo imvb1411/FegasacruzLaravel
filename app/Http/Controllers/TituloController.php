@@ -28,8 +28,14 @@ class TituloController extends Controller
     }
 
     public function buscar($texto){
+        $view=Vista::where('nombre','=','titulo')->first();
         $titulos=Titulo::where('estado',1)->where('descripcion','ilike','%'.$texto.'%')->get();
-        return view('titulo.index',compact('titulos'));
+        $solicitudes=Solicitud::all()->where('estado',1);
+        $configuracion=Configuracion::where('personal_id','=',Auth::user()->id)->where('estado',1)->first();
+        if($configuracion==null){
+            $configuracion=Configuracion::where('personal_id','=',0)->first();
+        }
+        return view('titulo.index',compact('titulos','solicitudes','view','configuracion'));
     }
 
     public function showImg($id)

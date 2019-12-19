@@ -29,6 +29,7 @@
             </ul>
         </li>
 
+        @if(\Illuminate\Support\Facades\Auth::user()->getRole()==='ADMINISTRADOR')
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
                 <i class="fas fa-book-open"></i>
@@ -51,7 +52,7 @@
                 </li>
             </ul>
         </li>
-        {{--@endif--}}
+        @endif
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
                 <i class="fas fa-store-alt"></i>

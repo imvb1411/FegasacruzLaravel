@@ -37,8 +37,17 @@ class SolicitudController extends Controller
     }
 
     public function buscar($texto){
-        $solicitude=Solicitud::active()->search($texto)->get();
-        return view('solicitud.index',compact('solicitudes'));
+        $view=Vista::where('nombre','=','solicitud')->first();
+        $solicitudes=Solicitud::active()->search($texto)->get();
+        $clientes = Persona::all()->where('estado', 1)->where('tipo_persona', 'CLI');
+        $personales=Personal::all()->where('estado',1);
+        $ubicaciones=Ubicacion::all()->where('estado',1)->where('tipo',1);
+        $actividades = Actividad::all()->where('estado', 1);
+        $configuracion = Configuracion::tema()->first();
+        if ($configuracion == null) {
+            $configuracion = Configuracion::default()->first();
+        }
+        return view('solicitud.index',compact('solicitudes','view','clientes','personales','ubicaciones','actividades', 'configuracion'));
     }
 
     public function store(Request $request)

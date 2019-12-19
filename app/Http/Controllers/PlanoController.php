@@ -30,8 +30,14 @@ class PlanoController extends Controller
     }
 
     public function buscar($texto){
+        $view=Vista::where('nombre','=','plano')->first();
         $planos=Plano::where('estado',1)->where('descripcion','ilike','%'.$texto.'%')->get();
-        return view('plano.index',compact('planos'));
+        $solicitudes=Solicitud::all()->where('estado',1);
+        $configuracion=Configuracion::where('personal_id','=',Auth::user()->id)->where('estado',1)->first();
+        if($configuracion==null){
+            $configuracion=Configuracion::where('personal_id','=',0)->first();
+        }
+        return view('plano.index',compact('planos','solicitudes','view','configuracion'));
     }
 
     public function showImg($id)

@@ -20,6 +20,7 @@ class MarcaController extends Controller
         $view->vistas=$view->vistas+1;
         $view->update();
         $marcas=Marca::all()->where('estado',1);
+        //dd($marcas->first()->solicitud->nro_orden);
         $solicitudes=Solicitud::all()->where('estado',1);
         $configuracion=Configuracion::where('personal_id','=',Auth::user()->id)->where('estado',1)->first();
         if($configuracion==null){
@@ -30,8 +31,14 @@ class MarcaController extends Controller
     }
 
     public function buscar($texto){
+        $view=Vista::where('nombre','=','marca')->first();
         $marcas=Marca::where('estado',1)->where('descripcion','ilike','%'.$texto.'%')->get();
-        return view('marca.index',compact('marcas'));
+        $solicitudes=Solicitud::all()->where('estado',1);
+        $configuracion=Configuracion::where('personal_id','=',Auth::user()->id)->where('estado',1)->first();
+        if($configuracion==null){
+            $configuracion=Configuracion::where('personal_id','=',0)->first();
+        }
+        return view('marca.index',compact('marcas','solicitudes','view','configuracion'));
     }
 
     public function showImg($id)

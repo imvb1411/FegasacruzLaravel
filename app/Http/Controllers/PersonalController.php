@@ -26,17 +26,21 @@ class PersonalController extends Controller
         $view->update();
         $personales=Personal::all()->where('estado',1);
         $configuracion=Configuracion::where('personal_id','=',Auth::user()->id)->where('estado',1)->first();
-        $personas = Persona::
-        wherenotin('id',
-            function($query){
-                $query->select('personaid')
-                    ->from('personal')
-                    ->where('estado', '=', 1)->where('tipo_persona','like','PER');
-            })->get();
         if ($configuracion == null) {
             $configuracion = Configuracion::where('personal_id', '=', 0)->first();
         }
-        return view('Persona.personal.index',compact('personales','personas','view','configuracion'));
+        return view('Persona.personal.index',compact('personales','view','configuracion'));
+    }
+
+    public function buscar($texto)
+    {
+        $view=Vista::where('nombre','=','personal')->first();
+        $personales=Personal::where('estado',1)->where('nick', 'ilike', '%' . $texto . '%')->get();
+        $configuracion=Configuracion::tema()->first();
+        if ($configuracion == null) {
+            $configuracion = Configuracion::default()->first();
+        }
+        return view('Persona.personal.index', compact('personales','personas','view','configuracion'));
     }
 
     /**
