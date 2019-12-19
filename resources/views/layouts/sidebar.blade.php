@@ -110,9 +110,9 @@
             </ul>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="" class="nav-link active">
+                    <a href="{{route('rpt_top_solicitudes')}}" class="nav-link active">
                         <i class="fas fa-chart-bar"></i>
-                        <p>Cliente Frecuente</p>
+                        <p>Cantidad de solicitudes</p>
                     </a>
                 </li>
             </ul>

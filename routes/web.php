@@ -63,6 +63,7 @@ Route::get('/imprimir/{t}','SolicitudController@print')->name('solicitud.imprimi
 
 Route::name('rpt_cliente_solicitud')->get('/rpt_cliente_solicitud', 'ReporteController@solicitudcliente');
 Route::name('rpt_top_actividades')->get('/rpt_top_actividades', 'ReporteController@topactividad');
+Route::name('rpt_top_solicitudes')->get('/rpt_top_solicitudes', 'ReporteController@topsolicitudes');
 
 
 Route::get('/search/{s}',function($s){
