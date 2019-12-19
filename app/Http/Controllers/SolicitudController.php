@@ -68,10 +68,11 @@ class SolicitudController extends Controller
 
                 Session::put('success','Solicitud creada correctamente');
                 DB::commit();
+                
             }elseif ($request->tipo_solicitud === 'form701') {
                 $solicitud->tipo_solicitud = 701;
                 $solicitud->save();
-                $form701 = new Solicitud701();
+                $form701 = new Solicitud701($request->all());
                 $form701->solicitud_id = $solicitud->id;
                 $form701->save();
 
@@ -107,14 +108,14 @@ class SolicitudController extends Controller
                 $form280->nro_documento = $request->nro_documento;
                 $form280->nro_boletapago = $request->nro_boletapago;
                 $form280->solicitud_id = $solicitud->id;
-                $form280->nro_titulopropiedad = $request->nro_titulopropiedad;
+                $form280->nro_titulopropiedad = $request->nro_titulopropiedad1;
                 $form280->documento_empresa = $request->documento_empresa;
                 $form280->save();
                 Session::put('success','Solicitud actualizada correctamente');
                 DB::commit();
             }elseif ($request->tipo_solicitud === '701') {
                 $solicitud->save();
-                $form701 = new Solicitud701();
+                $form701 = new Solicitud701($request->all());
                 $form701->solicitud_id = $solicitud->id;
                 $form701->save();
                 Session::put('success','Solicitud actualizada correctamente');
