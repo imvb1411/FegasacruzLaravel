@@ -81,16 +81,70 @@
         document.getElementById('htitle').innerText='Editar Ubicacion';
         document.getElementById('btn').innerText='Editar';
         $('#edit').find('.modal-body #id').val($ubicacion.id);
-        $('#edit').find('.modal-body #ubicacion_id').val($ubicacion.ubicacion_id);
+        //$('#edit').find('.modal-body #ubicacion_id').val($ubicacion.ubicacion_id);
         $('#edit').find('.modal-body #nombre').val($ubicacion.nombre);
         $('#edit').find('.modal-body #tipo').val($ubicacion.tipo);
     }
+
+    function getUbicaciones($select,$ubicacion_id){    
+            console.log($ubicacion_id);
+            var xhttp=new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    console.log(JSON.parse(this.responseText));
+                    var select=document.getElementById($select);
+                    
+                    var length = select.options.length;
+                    for (i = length-1; i >= 1; i--) {
+                    select.options[i] = null;
+                    }               
+                    var data = JSON.parse(this.responseText);
+                    data.forEach(function (item) {
+                        var option = document.createElement("option");
+                        option.text = item.nombre;
+                        option.value =item.id;
+                        select.add(option);
+                    });
+                }
+            };
+            xhttp.open('GET', '/getUbicaciones/' + $ubicacion_id, true);
+            xhttp.send();
+        }
+    
     function changeTipo() {
         var x = document.getElementById("tipo").value;
         if (x==1){
             document.getElementById("divDep").style.display = "none";
-        }else{
+        }else if (x==2){            
             document.getElementById("divDep").style.display = "block";
+            document.getElementById("divProv").style.display = "none";
+            document.getElementById("divMun").style.display = "none";
+            document.getElementById("divZon").style.display = "none";
+            document.getElementById("divSub").style.display = "none";
+        }else if (x==3){
+            document.getElementById("divDep").style.display = "block";
+            document.getElementById("divProv").style.display = "block";
+            document.getElementById("divMun").style.display = "none";
+            document.getElementById("divZon").style.display = "none";
+            document.getElementById("divSub").style.display = "none";
+        }else if (x==4){
+            document.getElementById("divDep").style.display = "block";
+            document.getElementById("divProv").style.display = "block";
+            document.getElementById("divMun").style.display = "block";
+            document.getElementById("divZon").style.display = "none";
+            document.getElementById("divSub").style.display = "none";
+        }else if (x==5){
+            document.getElementById("divDep").style.display = "block";
+            document.getElementById("divProv").style.display = "block";
+            document.getElementById("divMun").style.display = "block";
+            document.getElementById("divZon").style.display = "block";
+            document.getElementById("divSub").style.display = "none";
+        }else if (x==6){
+            document.getElementById("divDep").style.display = "block";
+            document.getElementById("divProv").style.display = "block";
+            document.getElementById("divMun").style.display = "block";
+            document.getElementById("divZon").style.display = "block";
+            document.getElementById("divSub").style.display = "block";
         }
     }
 </script>

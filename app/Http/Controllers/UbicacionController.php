@@ -8,7 +8,8 @@ use App\Vista;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use test\Mockery\TestIncreasedVisibilityChild;
-
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 class UbicacionController extends Controller
 {
     /**
@@ -56,17 +57,27 @@ class UbicacionController extends Controller
     public function store(Request $request)
     {
         $ubicacion=new Ubicacion($request->all());
+        //dd($ubicacion);
         $ubicacion->tipo=$request->tipo;
+        
         if($ubicacion->tipo==1){
             $ubicacion->ubicacion_id=0;
-        }else{
+        }else if($ubicacion->tipo==2){
             $ubicacion->ubicacion_id=$request->ubicacion_id;
+        }else if($ubicacion->tipo==3){
+            $ubicacion->ubicacion_id=$request->provincia_id;
+        }else if($ubicacion->tipo==4){
+            $ubicacion->ubicacion_id=$request->municipio_id;
+        }else if($ubicacion->tipo==5){
+            $ubicacion->ubicacion_id=$request->zona_id;
+        }else if($ubicacion->tipo==6){
+            $ubicacion->ubicacion_id=$request->subzona_id;
         }
         $ubicacion->nombre=$request->nombre;
         if($ubicacion->save()){
-         //   Session::put('success','Producto '.$ubicacion->nombre.' creado correctamente');
+            Session::put('success','Producto '.$ubicacion->nombre.' creado correctamente');
         }else{
-           // Session::put('danger','Ocurrio un error al crear el producto '.$ubicacion->productname);
+            Session::put('danger','Ocurrio un error al crear el producto '.$ubicacion->productname);
         }
         return redirect()->route('ubicacion.index');
     }
@@ -103,13 +114,14 @@ class UbicacionController extends Controller
     public function update(Request $request)
     {
         $ubicacion=Ubicacion::findOrFail($request->id);
-        $ubicacion->tipo=$request->tipo;
-        $ubicacion->ubicacion_id=$request->ubicacion_id;
+        /*$ubicacion->tipo=$request->tipo;
+        $ubicacion->ubicacion_id=$request->ubicacion_id;*/
+        //dd($request);
         $ubicacion->nombre=$request->nombre;
         if($ubicacion->update()){
-           // Session::put('success','Producto '.$ubicacion->productname.' actualizado correctamente');
+            Session::put('success','Producto '.$ubicacion->productname.' actualizado correctamente');
         }else{
-            //Session::put('danger','Ocurrio un error al actualizar el producto '.$ubicacion->productname);
+            Session::put('danger','Ocurrio un error al actualizar el producto '.$ubicacion->productname);
         }
         return redirect()->route('ubicacion.index');
     }

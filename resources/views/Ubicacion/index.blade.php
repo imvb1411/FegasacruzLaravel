@@ -68,13 +68,13 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            @include('Ubicacion.form')
+            @include('ubicacion.form')
         </div>
     </div>
     {!! Form::close() !!}
 </div>
 @push('scripts')
-    @include('Ubicacion.modal')
+    @include('ubicacion.modal')
 @endpush
 
 @endsection

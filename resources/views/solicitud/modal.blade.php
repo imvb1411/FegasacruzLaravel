@@ -12,6 +12,10 @@
                 if (this.readyState === 4 && this.status === 200) {
                     console.log(JSON.parse(this.responseText));
                     var select=document.getElementById($select);
+                    var length = select.options.length;
+                    for (i = length-1; i >= 1; i--) {
+                    select.options[i] = null;
+                    }   
                     var data = JSON.parse(this.responseText);
                     data.forEach(function (item) {
                         var option = document.createElement("option");
