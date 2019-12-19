@@ -77,7 +77,7 @@ class SolicitudController extends Controller
 
                 Session::put('success','Solicitud creada correctamente');
                 DB::commit();
-                
+
             }elseif ($request->tipo_solicitud === 'form701') {
                 $solicitud->tipo_solicitud = 701;
                 $solicitud->save();
@@ -169,7 +169,7 @@ class SolicitudController extends Controller
             // return $solicitudes280;
         }else{
             $solicitudes701=Solicitud701::all()->where('solicitud_id',$id);
-            return $solicitudes701;
+            return view('solicitud.show701', compact('solicitud', 'solicitud701','configuracion'));
         }
     }
     public function print($id){
