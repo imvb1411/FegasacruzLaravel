@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title', 'Solicitudes')
-    @section('header-title','Listado de Solicitudes')
+@section('header-title','Listado de Solicitudes')
 @section('vistas')
     <div class="row">
         <div class="col-md-3 col-sm-6 col-12 float-sm-right">
@@ -26,48 +26,51 @@
     </div>
 @endsection
 @section('content')
-        <table id="solicitudTable" class="table table-bordered table-hover">
-            <thead>
+    <table id="solicitudTable" class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>NRO ORDEN</th>
+            <th>CLIENTE</th>
+            <th>REGISTRADOR</th>
+            <th>GESTION</th>
+            <th>HECTAREAS</th>
+            <th>FECHA <br> SOLICITUD</th>
+            <th>TIPO <br> SOLICITUD</th>
+            <th>ACCIONES</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($solicitudes as $solicitud)
             <tr>
-                <th>ID</th>
-                <th>NRO ORDEN</th>
-                <th>CLIENTE</th>
-                <th>REGISTRADOR</th>
-                <th>GESTION</th>
-                <th>HECTAREAS</th>
-                <th>FECHA  <br> SOLICITUD</th>
-                <th>TIPO <br> SOLICITUD</th>
-                <th>ACCIONES</th>
-            </tr>
-            </thead>
-            <tbody>
-                @foreach($solicitudes as $solicitud)
-                <tr>
-                    <td>{{$solicitud->id}}</td>
-                    <td>{{$solicitud->nro_orden}}</td>
-                    <td>{{$solicitud->cliente->nombre}}</td>
-                    <td>{{$solicitud->registrador_id}}</td>
-                    <td>{{$solicitud->gestion}}</td>
-                    <td>{{$solicitud->nro_hectareas}}</td>
-                    <td>{{$solicitud->fecha_solicitud}}</td>
-                    <td>{{$solicitud->tipo_solicitud}}</td>
-                    <td >
-                        <a href="{{URL::action('SolicitudController@show',$solicitud->id)}}" class="btn btn-warning">
-                            Info
-                       </a>
-                        <a class="btn btn-info"
-                           onclick='editar({{ json_encode($solicitud) }})'>
-                            Edit
-                        </a>
+                <td>{{$solicitud->id}}</td>
+                <td>{{$solicitud->nro_orden}}</td>
+                <td>{{$solicitud->cliente->nombre}}</td>
+                <td>{{$solicitud->registrador_id}}</td>
+                <td>{{$solicitud->gestion}}</td>
+                <td>{{$solicitud->nro_hectareas}}</td>
+                <td>{{$solicitud->fecha_solicitud}}</td>
+                <td>{{$solicitud->tipo_solicitud}}</td>
+                <td>
+                    <a href="{{URL::action('SolicitudController@show',$solicitud->id)}}" class="btn btn-warning">
+                        Info
+                    </a>
+                    <a class="btn btn-info"
+                       onclick='editar({{ json_encode($solicitud) }})'>
+                        Edit
+                    </a>
+                    @if(\Illuminate\Support\Facades\Auth::user()->getRole()==='ADMINISTRADOR')
                         {!! Form::open(['route' => ['solicitudes.destroy',$solicitud->id],'method'=>'DELETE','style'=>'display: inline']) !!}
                         {{Form::token()}}
-                        <button onclick="return confirm('¿Estas seguro?')" type="submit" class="btn btn-danger">Delete</button>
+                        <button onclick="return confirm('¿Estas seguro?')" type="submit" class="btn btn-danger">Delete
+                        </button>
                         {!! Form::close() !!}
-                    </td>
+                    @endif
+                </td>
                 @endforeach
-                </tr>
-            </tbody>
-        </table>
+            </tr>
+        </tbody>
+    </table>
     <div id="edit" class="modal fade" role="dialog">
         {!! Form::open(['route' => ['solicitudes.update','0'],'method'=>'PUT','id'=>"userForm"]) !!}
         {{Form::token()}}
@@ -79,7 +82,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                    @include('solicitud.form')
+                @include('solicitud.form')
             </div>
         </div>
         {!! Form::close() !!}

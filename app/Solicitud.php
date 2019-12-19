@@ -37,11 +37,11 @@ class Solicitud extends Model implements Searchable
     public function getSearchResult(): SearchResult
     {
         //$url = route('cliente.index',$this->nombre);
-        $url=route('solicitud.buscar',$this->id);
+        $url=route('solicitud.buscar',$this->nro_orden);
 
         return new \Spatie\Searchable\SearchResult(
             $this,
-            $this->descripcion,
+            $this->nro_orden,
             $url
         );
     }
@@ -66,4 +66,7 @@ class Solicitud extends Model implements Searchable
         return $this->hasOne('App\Solicitud280','ubicacion_id','id');
     }
 
+    public function marca(){
+        return $this->hasOne('App\Marca','id','solicitud_id');
+    }
 }
