@@ -60,6 +60,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('solicitudes', 'SolicitudController');
     Route::get('/buscar_solicitud/{t}', 'SolicitudController@buscar')->name('solicitud.buscar');
+    Route::get('/imprimir/{t}','SolicitudController@print')->name('solicitud.imprimir');
 
     Route::name('rpt_cliente_solicitud')->get('/rpt_cliente_solicitud', 'ReporteController@solicitudcliente');
     Route::name('rpt_top_actividades')->get('/rpt_top_actividades', 'ReporteController@topactividad');

@@ -94,4 +94,8 @@ class Personal extends Model implements AuthenticatableContract
     {
         return $this->rememberTokenName;
     }
+
+    public function getRole(){
+        return $this->rol;
+    }
 }
