@@ -1,7 +1,7 @@
 <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
         data-accordion="false">
-        {{--@if(\Illuminate\Support\Facades\Auth::user()->getRole()==='ADMINISTRADOR')--}}
+
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link active">
                 <i class="fas fa-shield-alt"></i>
@@ -9,6 +9,7 @@
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
+            @if(\Illuminate\Support\Facades\Auth::user()->getRole()==='ADMINISTRADOR')
             <ul class="nav nav-treeview">
                 <li class="nav-item">
                     <a href="{{route('users.index')}}" class="nav-link">
@@ -17,6 +18,7 @@
                     </a>
                 </li>
             </ul>
+            @endif
             <ul class="nav nav-treeview">
                 <li class="nav-item">
                     <a href="{{route('clientes.index')}}" class="nav-link">
@@ -27,6 +29,7 @@
             </ul>
         </li>
 
+        @if(\Illuminate\Support\Facades\Auth::user()->getRole()==='ADMINISTRADOR')
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
                 <i class="fas fa-book-open"></i>
@@ -49,7 +52,7 @@
                 </li>
             </ul>
         </li>
-        {{--@endif--}}
+        @endif
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
                 <i class="fas fa-store-alt"></i>

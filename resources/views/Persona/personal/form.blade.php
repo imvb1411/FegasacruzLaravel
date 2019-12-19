@@ -1,5 +1,5 @@
 <div class="modal-body">
-    <input type="hidden" name="id" id="id" class="form-control">
+
     <div class="form-group row">
         <div class="col-md-4">
             <label for="ci">NRO. CI</label>
@@ -11,7 +11,7 @@
             <input type="text" name="nombre" id="nombre" class="form-control" required placeholder="Ingrese el nombre">
         </div>
     </div>
-
+    <input type="hidden" name="id" id="id" class="form-control">
     <div class="form-group row">
         <div class="col-md-6">
             <label class="form-control-label" for="apellido_pat">Apellido Paterno</label>
@@ -36,11 +36,10 @@
             <input type="email" class="form-control" id="email" name="email" required placeholder="Ingrese el email">
         </div>
     </div>
-    <input type="hidden" name="iduser" id="iduser" class="form-control">
     <div class="row">
         <div class="col-4">
             <label for="role">ROL</label>
-            <select name="role" id="role" class="form-control">
+            <select name="rol" id="rol" class="form-control">
                 <option value="ADMINISTRADOR">Administrador</option>
                 <option value="ASISTENTE">Asistente</option>
             </select>
@@ -52,7 +51,7 @@
         <div class="col-4">
             <label for="packing">CONTRASEÑA</label>
             <input type="password" name="password" id="password" class="form-control"
-                   placeholder="Ingrese la contraseña" required>
+                   placeholder="************" required>
         </div>
     </div>
 </div>

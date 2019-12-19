@@ -47,6 +47,15 @@
                     input.className='form-control is-invalid';
                 }
                 break;
+            case 'password':
+                if(input.value.match(/^[a-zA-Z0-9]+$/)){
+                    input.className='form-control is-valid';
+                    flag=true;
+                }else{
+                    flag=false;
+                    input.className='form-control is-invalid';
+                }
+                break;
             default:
                 if(input.value.match(/^[A-Za-z\s]*$/)){
                     input.className='form-control is-valid';
@@ -70,7 +79,7 @@
     $('#new').click(function () {
         action=1;
         var form= document.getElementById('userForm');
-        form.action='{{route('clientes.store')}}';
+        form.action='{{route('users.store')}}';
         form.method='post';
         var inputMethod=document.getElementsByName('_method');
 
@@ -85,36 +94,32 @@
 
     });
 
-    function editClick(){
+    function editPersonalClick($personal){
+        console.log($personal);
         action=2;
         var form= document.getElementById('userForm');
-        form.action='{{route('clientes.update',0)}}';
+        form.action='{{route('users.update',0)}}';
         form.method='post';
-        //if(_iMethod.toString().length>0){
-        _iMethod.value='PUT';
-        console.log(_iMethod.value);
-        //}
         document.getElementById('htitle').innerText='Editar Cliente';
         document.getElementById('btn').innerText='Editar';
+        var id = $personal.id;
+        var ci = $personal.persona.ci;
+        var nombre = $personal.persona.nombre;
+        var apellido_pat = $personal.persona.apellido_pat;
+        var apellido_mat = $personal.persona.apellido_mat;
+        var telefono = $personal.persona.telefono;
+        var email = $personal.persona.email;
+        var modal = $('#editPersonal');
+        modal.modal('show');
+        modal.find('.modal-body #ci').val(ci);
+        modal.find('.modal-body #nombre').val(nombre);
+        modal.find('.modal-body #apellido_pat').val(apellido_pat);
+        modal.find('.modal-body #apellido_mat').val(apellido_mat);
+        modal.find('.modal-body #telefono').val(telefono);
+        modal.find('.modal-body #email').val(email);
+        modal.find('.modal-body #nick').val($personal.nick);
+        modal.find('.modal-body #role').val($personal.rol);
+        modal.find('.modal-body #id').val(id);
     }
 
-    $('#edit').on('show.bs.modal',function(event){
-        if(action===2) {
-            var button = $(event.relatedTarget);
-            var id= button.data('idcliente')
-            var ci = button.data('ci')
-            var nombre = button.data('nombre')
-            var apellido_pat = button.data('apellido_pat')
-            var apellido_mat = button.data('apellido_mat')
-            var telefono = button.data('telefono')
-            var email = button.data('email')
-            var modal = $(this);
-            modal.find('.modal-body #ci').val(ci);
-            modal.find('.modal-body #nombre').val(nombre);
-            modal.find('.modal-body #apellido_pat').val(apellido_pat);
-            modal.find('.modal-body #apellido_mat').val(apellido_mat);
-            modal.find('.modal-body #telefono').val(telefono);
-            modal.find('.modal-body #email').val(email);
-            modal.find('modal-body $id').val(id);
-    })
 </script>

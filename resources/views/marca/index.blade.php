@@ -44,9 +44,10 @@
                 @foreach($marcas as $marca)
                 <tr>
                     <td>{{$marca->id}}</td>
-                    <td>{{$marca->solicitud->id}}</td>
+                    <td>{{$marca->solicitud->nro_orden}}</td>
                     <td> 
-                        <a href="marca/img/{{ $marca->id }}" target="_blank"><img src="data:{{$marca->mime}};base64, {{$marca->data}}" width="100"> </td></a>
+                        <a href="marca/img/{{ $marca->id }}" target="_blank"><img src="data:{{$marca->mime}};base64, {{$marca->data}}" width="100"> </a>
+                    </td>
                     <td>{{$marca->descripcion}}</td>
                     <td >
                         <a class="btn btn-info"

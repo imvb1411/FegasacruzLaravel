@@ -48,11 +48,6 @@ class Persona extends Model implements Searchable
         return strtoupper($value);
     }
 
-    public static function all($columns = ['*'])
-    {
-        return parent::all($columns)->where('tipo_persona','LIKE','CLI');
-    }
-
     public function getSearchResult(): SearchResult
     {
         //$url = route('cliente.index',$this->nombre);

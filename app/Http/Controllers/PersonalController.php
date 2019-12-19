@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\Vista;
+use SebastianBergmann\Environment\Console;
 
 class PersonalController extends Controller
 {
@@ -25,17 +26,21 @@ class PersonalController extends Controller
         $view->update();
         $personales=Personal::all()->where('estado',1);
         $configuracion=Configuracion::where('personal_id','=',Auth::user()->id)->where('estado',1)->first();
-        $personas = Persona::
-        wherenotin('id',
-            function($query){
-                $query->select('personaid')
-                    ->from('personal')
-                    ->where('estado', '=', 1)->where('tipo_persona','like','PER');
-            })->get();
         if ($configuracion == null) {
             $configuracion = Configuracion::where('personal_id', '=', 0)->first();
         }
-        return view('Persona.personal.index',compact('personales','personas','view','configuracion'));
+        return view('Persona.personal.index',compact('personales','view','configuracion'));
+    }
+
+    public function buscar($texto)
+    {
+        $view=Vista::where('nombre','=','personal')->first();
+        $personales=Personal::where('estado',1)->where('nick', 'ilike', '%' . $texto . '%')->get();
+        $configuracion=Configuracion::tema()->first();
+        if ($configuracion == null) {
+            $configuracion = Configuracion::default()->first();
+        }
+        return view('Persona.personal.index', compact('personales','personas','view','configuracion'));
     }
 
     /**
@@ -56,20 +61,26 @@ class PersonalController extends Controller
      */
     public function store(Request $request)
     {
-        DB::beginTransaction();
         try {
+            DB::beginTransaction();
             $persona=new Persona($request->all());
+            $persona->tipo_persona='PER';
             $persona->save();
-            $personal=new Personal($request->all());
-            $personal->persona_id=$persona->id;
+            $personal=new Personal();
+            $personal->nick=$request->nick;
+            $personal->rol=$request->rol;
+            $personal->password=$request->password;
+            $personal->personaid=$persona->id;
+            $personal->tipo_personal='Auxilidar';
             $personal->save();
             Session::put('success','Usuario '.$personal->nick.' creado correctamente');
             DB::commit();
         }catch (\Exception $exception) {
+            dd($exception);
             Session::put('danger','Ocurrio un problema al crear el usuario '.$personal->nick);
             DB::rollBack();
         }
-        return redirect()->route('personales.index');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -106,18 +117,26 @@ class PersonalController extends Controller
         try{
             DB::beginTransaction();
             $personal=Personal::findOrFail($request->id);
+            $persona=Persona::where('id','=',$personal->personaid)->first();
+            $persona->ci=$request->ci;
+            $persona->nombre=$request->nombre;
+            $persona->apellido_pat=$request->apellido_pat;
+            $persona->apellido_mat=$request->apellido_mat;
+            $persona->telefono=$request->telefono;
+            $persona->email=$request->email;
+            $persona->update();
             $personal->nick=$request->nick;
             $personal->password=$request->password;
-            $personal->persona_id=$request->persona_id;
-            $personal->tipo_personal=$request->tipo_personal;
-            $personal->role=$request->role;
+            $personal->tipo_personal='Auxilidar';
+            $personal->rol=$request->rol;
+            $personal->update();
             Session::put('success','Usuario '.$personal->nick.' actualizado correctamente');
             DB::commit();
         }catch (\Exception $exception){
             Session::put('danger','Ocurrio un problema al actualizar al usuario '.$personal->nick);
             DB::rollBack();
         }
-        return redirect()->route('personales.index');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -131,7 +150,7 @@ class PersonalController extends Controller
         try{
             DB::beginTransaction();
             $personal=Personal::findOrFail($id);
-            $persona=Persona::findOrFail($personal->persona_id);
+            $persona=Persona::findOrFail($personal->personaid);
             $persona->estado=0;
             $persona->update();
             $personal->estado=0;
@@ -142,7 +161,7 @@ class PersonalController extends Controller
             Session::put('danger','Ocurrio un problema al actualizar al usuario '.$personal->nick);
             DB::rollBack();
         }
-        return redirect()->route('personales.index');
+        return redirect()->route('users.index');
     }
 
     public function login(Request $request) {

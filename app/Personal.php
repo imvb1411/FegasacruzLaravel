@@ -5,13 +5,21 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 
-class Personal extends Model implements AuthenticatableContract
+class Personal extends Model implements AuthenticatableContract,Searchable
 {
     use Notifiable;
 
     protected $table="personal";
-
+    protected $fillable=[
+        'nick',
+        'password',
+        'tipo_personal',
+        'rol'
+    ];
+    public $timestamps=false;
     public function persona(){
         return $this->belongsTo('App\Persona','personaid','id');
     }
@@ -87,5 +95,20 @@ class Personal extends Model implements AuthenticatableContract
     public function getRememberTokenName()
     {
         return $this->rememberTokenName;
+    }
+
+    public function getRole(){
+        return $this->rol;
+    }
+
+    public function getSearchResult(): SearchResult
+    {
+        $url=route('user.buscar',$this->nick);
+
+        return new \Spatie\Searchable\SearchResult(
+            $this,
+            $this->nick,
+            $url
+        );
     }
 }
