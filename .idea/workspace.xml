@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6cb3871f-16de-4ad9-8760-6c88a37b3b33" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SolicitudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SolicitudController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/solicitud701.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/solicitud701.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/solicitud/form701.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/solicitud/form701.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/solicitud/rubro1a.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/solicitud/rubro1a.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/solicitud/rubro1b.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/solicitud/rubro1b.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/solicitud/rubro1c.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/solicitud/rubro1c.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/solicitud/show701.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/solicitud/show701.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/solicitud/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/solicitud/index.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,13 +37,13 @@
           <entry key="js" value="9" />
           <entry key="json" value="8" />
           <entry key="lock" value="1" />
-          <entry key="php" value="323" />
+          <entry key="php" value="324" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key=".env file" value="3" />
-          <entry key="Blade" value="90" />
+          <entry key="Blade" value="91" />
           <entry key="JSON" value="9" />
           <entry key="JavaScript" value="9" />
           <entry key="PHP" value="233" />
@@ -61,8 +56,8 @@
           <entry key="env" value="64" />
           <entry key="htaccess" value="1" />
           <entry key="json" value="10" />
-          <entry key="php" value="10996" />
-          <entry key="txt" value="420" />
+          <entry key="php" value="11003" />
+          <entry key="txt" value="422" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -70,8 +65,8 @@
           <entry key=".env file" value="64" />
           <entry key="Blade" value="5258" />
           <entry key="JSON" value="10" />
-          <entry key="PHP" value="5738" />
-          <entry key="PLAIN_TEXT" value="420" />
+          <entry key="PHP" value="5745" />
+          <entry key="PLAIN_TEXT" value="422" />
           <entry key="htaccess" value="1" />
         </counts>
       </usages-collector>
@@ -79,14 +74,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SolicitudController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3196">
-              <caret line="188" column="85" selection-start-line="188" selection-start-column="85" selection-end-line="188" selection-end-column="85" />
+            <state relative-caret-position="510">
+              <caret line="57" column="133" selection-start-line="57" selection-start-column="133" selection-end-line="57" selection-end-column="133" />
               <folding>
                 <element signature="e#40#66#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/solicitud/index.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="427">
+              <caret line="60" column="28" lean-forward="true" selection-start-line="57" selection-start-column="24" selection-end-line="60" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -143,8 +147,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/solicitud/form701.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="41" column="41" lean-forward="true" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="49" />
+            <state relative-caret-position="-15">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -163,15 +167,6 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/solicitud/rubro1c.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="33" column="41" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/solicitud/rubro1b.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="546">
               <caret line="33" column="41" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
@@ -285,7 +280,6 @@
         <option value="$PROJECT_DIR$/resources/views/solicitud/rubro1.blade.php" />
         <option value="$PROJECT_DIR$/app/Rubro.php" />
         <option value="$PROJECT_DIR$/resources/views/solicitud/rubro2.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/solicitud/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/solicitud/form.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/solicitud/form701.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/solicitud/rubro1a.blade.php" />
@@ -294,6 +288,7 @@
         <option value="$PROJECT_DIR$/app/solicitud701.php" />
         <option value="$PROJECT_DIR$/resources/views/solicitud/show701.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SolicitudController.php" />
+        <option value="$PROJECT_DIR$/resources/views/solicitud/index.blade.php" />
       </list>
     </option>
   </component>
@@ -539,7 +534,7 @@
       <workItem from="1576206024941" duration="2377000" />
       <workItem from="1576633884856" duration="3005000" />
       <workItem from="1576709272757" duration="11058000" />
-      <workItem from="1576795210235" duration="11471000" />
+      <workItem from="1576795210235" duration="12043000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'master' of https://github.com/imvb1411/FegasacruzLaravel&#10;&#10;# Conflicts:&#10;#&#9;resources/views/cliente/index.blade.php&#10;#&#9;resources/views/cliente/update.blade.php&#10;#&#9;resources/views/layouts/master.blade.php">
       <created>1576038031813</created>
@@ -594,7 +589,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94392000" />
+    <option name="totallyTimeSpent" value="94964000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
@@ -860,13 +855,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/solicitud/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="76" column="41" selection-start-line="76" selection-start-column="41" selection-end-line="76" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/solicitud/form280.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -915,16 +903,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/solicitud/form701.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="41" column="41" lean-forward="true" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="49" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/solicitud701.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -965,13 +943,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/solicitud/form701.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-15">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SolicitudController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3196">
-          <caret line="188" column="85" selection-start-line="188" selection-start-column="85" selection-end-line="188" selection-end-column="85" />
+        <state relative-caret-position="510">
+          <caret line="57" column="133" selection-start-line="57" selection-start-column="133" selection-end-line="57" selection-end-column="133" />
           <folding>
             <element signature="e#40#66#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/solicitud/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="60" column="28" lean-forward="true" selection-start-line="57" selection-start-column="24" selection-end-line="60" selection-end-column="28" />
         </state>
       </provider>
     </entry>
