@@ -259,21 +259,47 @@
                 </div>
                 <div class="row">
                     <div class="card-body">
-                        <div class="row"></div>
                         <table>
                             <tr>
                                 <td class="bg-secondary disabled color-palette">
                                    1
                                 </td>
-                                <td>
-                                    Propiedad <br> Agricola
+                                <td class="text-center">
+                                    Propiedad Agricola
                                 </td>
                                 <td class="bg-secondary disabled color-palette">
                                     Cod. <br> 013
                                  </td>
-                                 <td style="width: 250px" class="text-center">
+                                 <td class="text-center">
                                     <div class="col-12">
-                                        <div class="row bg-info color-palette">Extension total del predio segun titulo de propiedad, expendiente de dotacion o consolidacion</div>
+                                        <div class="row bg-info color-palette"> <div class="col-12">Extension total del predio segun titulo de propiedad, expendiente de dotacion o consolidacion <br> <br></div></div>
+                                        valor
+                                    </div>
+                                 </td>
+                                 <td class="bg-secondary disabled color-palette">
+                                    Cod. <br> 026
+                                 </td>
+                                 <td class="text-center">
+                                    <div class="col-12">
+                                        <div class="row bg-info color-palette"> <div class="col-12"> Area no Aprovechable <br> <br></div></div>
+                                        valor
+                                    </div>
+                                 </td>
+                                 <td class="bg-secondary disabled color-palette">
+                                    Cod. <br> 070
+                                 </td>
+                                 <td class="text-center">
+                                    <div class="col-12">
+                                        <div class="row bg-info color-palette"> <div class="col-12">ALICUOTA (En Bolivianos) <br></div></div>
+                                        valor
+                                    </div>
+                                 </td>
+                                 <td class="bg-secondary disabled color-palette">
+                                    Cod. <br> 043
+                                 </td>
+                                 <td  class="text-center">
+                                    <div class="col-12">
+                                        <div class="row bg-info color-palette"> <div class="col-12">  IMPORTE TOTAL DEL ___ (Cod.013 - Cod 026) * Cod 043<br></div></div>
                                         valor
                                     </div>
                                  </td>
@@ -281,20 +307,339 @@
                         </table>
                     </div>
                 </div>
-                <div class="row"><div class="col-12"><div class="card-header"></div></div></div>
+
                 <div class="row">
                     <div class="card-body">
-                        fila 2
+                        <table>
+                            <tr>
+                                <td class="bg-secondary disabled color-palette">
+                                   2
+                                </td>
+                                <td class="text-center">
+                                    Propiedad Pecuaria
+                                </td>
+                                <td class="bg-secondary disabled color-palette">
+                                    Cod. <br> 039
+                                 </td>
+                                 <td class="text-center">
+                                    <div class="col-12">
+                                        <div class="row bg-info color-palette"> <div class="col-12">Extension total del predio segun titulo de propiedad, expendiente de dotacion o consolidacion <br> <br></div></div>
+                                        valor
+                                    </div>
+                                 </td>
+                                 <td class="bg-secondary disabled color-palette">
+                                    Cod. <br> 042
+                                 </td>
+                                 <td class="text-center">
+                                    <div class="col-12">
+                                        <div class="row bg-info color-palette"> <div class="col-12"> Area no Aprovechable <br> <br></div></div>
+                                        valor
+                                    </div>
+                                 </td>
+                                 <td class="bg-secondary disabled color-palette">
+                                    Cod. <br> 080
+                                 </td>
+                                 <td class="text-center">
+                                    <div class="col-12">
+                                        <div class="row bg-info color-palette"> <div class="col-12">ALICUOTA (En Bolivianos) <br></div></div>
+                                        valor
+                                    </div>
+                                 </td>
+                                 <td class="bg-secondary disabled color-palette">
+                                    Cod. <br> 055
+                                 </td>
+                                 <td  class="text-center">
+                                    <div class="col-12">
+                                        <div class="row bg-info color-palette"> <div class="col-12">  IMPORTE TOTAL DEL ___ (Cod.039 - Cod 055) * Cod 042<br></div></div>
+                                        valor
+                                    </div>
+                                 </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
-                <div class="row"><div class="col-12"><div class="card-header"></div></div></div>
+
                 <div class="row">
                     <div class="card-body">
-                        fila 3
+                        <table>
+                            <tr>
+                                <td class="bg-secondary disabled color-palette">
+                                   3
+                                </td>
+                                <td class="text-center" style="width: 20%">
+                                    Otras propiedades(Dedicada a la Avicultura, Apicultura, Floricultura, Cunicultura, o Piscicultura)
+                                </td>
+                                <td class="bg-secondary disabled color-palette">
+                                    Cod. <br> 071
+                                 </td>
+                                 <td class="text-center">
+                                    <div class="col-12">
+                                        <div class="row bg-info color-palette"> <div class="col-12">Extension total del predio segun titulo de propiedad, expendiente de dotacion o consolidacion <br> <br></div></div>
+                                        valor
+                                    </div>
+                                 </td>
+                                 <td class="bg-secondary disabled color-palette">
+                                    Cod. <br> 090
+                                 </td>
+                                 <td class="text-center">
+                                    <div class="col-12">
+                                        <div class="row bg-info color-palette"> <div class="col-12">ALICUOTA (En Bolivianos) <br></div></div>
+                                        valor
+                                    </div>
+                                 </td>
+                                 <td class="bg-secondary disabled color-palette">
+                                    Cod. <br> 060
+                                 </td>
+                                 <td  class="text-center">
+                                    <div class="col-12">
+                                        <div class="row bg-info color-palette"> <div class="col-12">  IMPORTE TOTAL DEL ___ (Cod.039 - Cod 055) * Cod 042<br></div></div>
+                                        valor
+                                    </div>
+                                 </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    Rubro 2 (ID)
+                </div>
+                <div class="card-header">
+                    DETERMINACION DEL SALDO
+                </div>
+                <div class="row">
+                    <div class="card-body">
+                        <table>
+                            <tr>
+                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                   4
+                                </td>
+                                <td style="width: 78%" class="bg-primary disabled color-palette">
+                                    Impuesto determinado (C043+C055+C060)
+                                </td>
+                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                    909
+                                 </td>
+                                 <td style="width: 18%" class="bg-primary disabled color-palette text-center">
+                                     2793
+                                 </td>
+                            </tr>
+                            <tr>
+                                <td class="bg-secondary color-palette"" style="width: 2%">
+                                   5
+                                </td>
+                                <td style="width: 78%" class="bg-primary color-palette">
+                                    Pagos a Cuenta Realizados en DD.JJ. y/o en Boletas de Pago correspondientes a la gestión que se declara
+                                </td>
+                                <td class="bg-secondary color-palette"" style="width: 2%">
+                                    622
+                                 </td>
+                                 <td style="width: 18%" class="bg-primary color-palette text-center">
+                                     2793
+                                 </td>
+                            </tr>
+
+                            <tr>
+                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                   6
+                                </td>
+                                <td style="width: 78%" class="bg-primary disabled color-palette">
+                                    Saldo de Pagos a Cuenta del periodo anterior a compensar (C408 del Formulario del periodo anterior)
+                                </td>
+                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                    640
+                                 </td>
+                                 <td style="width: 18%" class="bg-primary disabled color-palette text-center">
+                                     2793
+                                 </td>
+                            </tr>
+                            <tr>
+                                <td class="bg-secondary color-palette"" style="width: 2%">
+                                   7
+                                </td>
+                                <td style="width: 78%" class="bg-primary color-palette">
+                                    Saldo a Favor del Contribuyente (C622+C640-909)
+                                </td>
+                                <td class="bg-secondary color-palette"" style="width: 2%">
+                                    408
+                                 </td>
+                                 <td style="width: 18%" class="bg-primary color-palette text-center">
+                                     2793
+                                 </td>
+                            </tr>
+
+                            <tr>
+                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                   8
+                                </td>
+                                <td style="width: 78%" class="bg-primary disabled color-palette">
+                                    Saldo a Favor del Fisco(C909 - C622 - C640); Si >0
+                                </td>
+                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                    996
+                                 </td>
+                                 <td style="width: 18%" class="bg-primary disabled color-palette text-center">
+                                     2793
+                                 </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    Rubro 3 (ID)
+                </div>
+                <div class="card-header">
+                    DETERMINACION DE LA DEUDA TRIBUTARIA
+                </div>
+                <div class="row">
+                    <div class="card-body">
+                        <table>
+                            <tr>
+                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                   9
+                                </td>
+                                <td style="width: 78%" class="bg-primary disabled color-palette">
+                                    Tributo Omitido(C996)
+                                </td>
+                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                    924
+                                 </td>
+                                 <td style="width: 18%" class="bg-primary disabled color-palette text-center">
+                                     2793
+                                 </td>
+                            </tr>
+                            <tr>
+                                <td class="bg-secondary color-palette"" style="width: 2%">
+                                   10
+                                </td>
+                                <td style="width: 78%" class="bg-primary color-palette">
+                                    Actualizacion de Valor sobre el Tributo Omitido
+                                </td>
+                                <td class="bg-secondary color-palette"" style="width: 2%">
+                                    925
+                                 </td>
+                                 <td style="width: 18%" class="bg-primary color-palette text-center">
+                                     7
+                                 </td>
+                            </tr>
+
+                            <tr>
+                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                   11
+                                </td>
+                                <td style="width: 78%" class="bg-primary disabled color-palette">
+                                    Intereses sobre Tributo Omitido Actualizado
+                                </td>
+                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                    938
+                                 </td>
+                                 <td style="width: 18%" class="bg-primary disabled color-palette text-center">
+                                     22
+                                 </td>
+                            </tr>
+                            <tr>
+                                <td class="bg-secondary color-palette"" style="width: 2%">
+                                   12
+                                </td>
+                                <td style="width: 78%" class="bg-primary color-palette">
+                                    Multa por incumplimiento al Deber Formal(IDF) por presentacion fuera de plazo
+                                </td>
+                                <td class="bg-secondary color-palette"" style="width: 2%">
+                                    954
+                                 </td>
+                                 <td style="width: 18%" class="bg-primary color-palette text-center">
+                                     115
+                                 </td>
+                            </tr>
+
+                            <tr>
+                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                   13
+                                </td>
+                                <td style="width: 78%" class="bg-primary disabled color-palette">
+                                    Total Deuda Tributaria (C924+C925+C938+C954; Si >0)
+                                </td>
+                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                    955
+                                 </td>
+                                 <td style="width: 18%" class="bg-primary disabled color-palette text-center">
+                                     2937
+                                 </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    Rubro 4 (ID)
+                </div>
+                <div class="card-header">
+                    IMPORTE DE PAGO
+                </div>
+                <div class="row">
+                    <div class="card-body">
+                        <table>
+                            <tr>
+                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                   14
+                                </td>
+                                <td style="width: 78%" class="bg-primary disabled color-palette">
+                                    Pago de valores (Sujeto a verificación y confirmación por el SIN)
+                                </td>
+                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                    577
+                                 </td>
+                                 <td style="width: 18%" class="bg-primary disabled color-palette text-center">
+                                     0
+                                 </td>
+                            </tr>
+                            <tr>
+                                <td class="bg-secondary color-palette"" style="width: 2%">
+                                   15
+                                </td>
+                                <td style="width: 78%" class="bg-primary color-palette">
+                                    Pago en Efectivo (C996 o C955); si > 0; según corresponda
+                                </td>
+                                <td class="bg-secondary color-palette"" style="width: 2%">
+                                    576
+                                 </td>
+                                 <td style="width: 18%" class="bg-primary color-palette text-center">
+                                     7
+                                 </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <SCRIPT>
+		var a=document.getElementsByClassName("color1");
+		for (var i=0; i<a.length; i++) a[i].className="bg-primary disabled color-palette";
+
+        var b=document.getElementsByClassName("color2");
+		for (var i=0; i<b.length; i++) b[i].className="bg-secondary disabled color-palette";
+    </SCRIPT>
 @endsection
