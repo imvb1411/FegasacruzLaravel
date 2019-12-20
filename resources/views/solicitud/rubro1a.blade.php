@@ -15,7 +15,7 @@
             @for ($i = 0; $i < 2; $i++)
                 <div class="col-md-6">
                     <input type="number" class="form-control" id="{{$rubros[0]->detalle[$i]->id}}"
-                           name="{{$rubros[0]->detalle[$i]->id}}" placeholder="">
+                           name="detalle[{{$rubros[0]->detalle[$i]->id}}]" placeholder="">
                 </div>
             @endfor
         </div>
@@ -31,7 +31,7 @@
             @for ($i = 2; $i < 4; $i++)
                 <div class="col-md-6">
                     <input type="number" class="form-control" id="{{$rubros[0]->detalle[$i]->id}}"
-                           name="{{$rubros[0]->detalle[$i]->id}}" placeholder="">
+                           name="detalle[{{$rubros[0]->detalle[$i]->id}}]" placeholder="">
                 </div>
             @endfor
         </div>
