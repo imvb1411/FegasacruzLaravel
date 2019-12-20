@@ -41,7 +41,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            CAROLINA BALCAZAR DE AÑEZ
+                            {{$solicitud->cliente->nombre}} {{$solicitud->cliente->apellido_pat}} {{$solicitud->cliente->apellido_mat}}
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -51,7 +51,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            7026656264
+                            {{$solicitud->nro_orden}}
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    3156489465
+                                    {{$solicitud->cliente->ci}}
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -76,7 +76,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    2017
+                                    {{$solicitud->gestion}}
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -92,7 +92,7 @@
                                          
                                         </div>
                                         <div class="col-8 row">
-                                            1555566
+                                            {{$solicitud701->ddjj_original}}
                                         </div>
                                     </div>
                                 </div>
@@ -106,7 +106,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            Numero Folio
+                            {{$solicitud701->folio}}
                         </div>
                     </div>
                 </div>
@@ -133,7 +133,7 @@
                                  <div class="row"><code>Cod <br> 518</code> </div> 
                                 </div>
                                 <div class="col-10">
-                                    1555566
+
                                 </div>
                             </div>
                         </div>
@@ -151,7 +151,7 @@
                                  
                                 </div>
                                 <div class="col-8 row">
-                                    1555566
+
                                 </div>
                             </div>
                         </div>
@@ -179,7 +179,7 @@
                                  
                                 </div>
                                 <div class="col-8 row">
-                                    1555566
+
                                 </div>
                             </div>
                         </div>
@@ -202,7 +202,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            786512224533265
+                            {{$solicitud701->nro_titulopropiedad}}
                         </div>
                     </div>
                     <div class="col-md-2">
@@ -214,7 +214,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            SUBTROPICAL
+                            {{$solicitud->ubicacion->nombre}}
                         </div>
                     </div>
                     <div class="col-md-2">
@@ -273,7 +273,7 @@
                                  <td class="text-center">
                                     <div class="col-12">
                                         <div class="row bg-info color-palette"> <div class="col-12">Extension total del predio segun titulo de propiedad, expendiente de dotacion o consolidacion <br> <br></div></div>
-                                        valor
+                                        {{$solicitud701->clienteSolicitud[0]->valor}}
                                     </div>
                                  </td>
                                  <td class="bg-secondary disabled color-palette">
@@ -282,7 +282,7 @@
                                  <td class="text-center">
                                     <div class="col-12">
                                         <div class="row bg-info color-palette"> <div class="col-12"> Area no Aprovechable <br> <br></div></div>
-                                        valor
+                                        {{$solicitud701->clienteSolicitud[1]->valor}}
                                     </div>
                                  </td>
                                  <td class="bg-secondary disabled color-palette">
@@ -291,7 +291,7 @@
                                  <td class="text-center">
                                     <div class="col-12">
                                         <div class="row bg-info color-palette"> <div class="col-12">ALICUOTA (En Bolivianos) <br></div></div>
-                                        valor
+                                        {{$solicitud701->clienteSolicitud[2]->valor}}
                                     </div>
                                  </td>
                                  <td class="bg-secondary disabled color-palette">
@@ -300,7 +300,7 @@
                                  <td  class="text-center">
                                     <div class="col-12">
                                         <div class="row bg-info color-palette"> <div class="col-12">  IMPORTE TOTAL DEL ___ (Cod.013 - Cod 026) * Cod 043<br></div></div>
-                                        valor
+                                        {{$solicitud701->clienteSolicitud[3]->valor}}
                                     </div>
                                  </td>
                             </tr>
@@ -324,7 +324,7 @@
                                  <td class="text-center">
                                     <div class="col-12">
                                         <div class="row bg-info color-palette"> <div class="col-12">Extension total del predio segun titulo de propiedad, expendiente de dotacion o consolidacion <br> <br></div></div>
-                                        valor
+                                        {{$solicitud701->clienteSolicitud[4]->valor}}
                                     </div>
                                  </td>
                                  <td class="bg-secondary disabled color-palette">
@@ -333,7 +333,7 @@
                                  <td class="text-center">
                                     <div class="col-12">
                                         <div class="row bg-info color-palette"> <div class="col-12"> Area no Aprovechable <br> <br></div></div>
-                                        valor
+                                        {{$solicitud701->clienteSolicitud[5]->valor}}
                                     </div>
                                  </td>
                                  <td class="bg-secondary disabled color-palette">
@@ -342,7 +342,7 @@
                                  <td class="text-center">
                                     <div class="col-12">
                                         <div class="row bg-info color-palette"> <div class="col-12">ALICUOTA (En Bolivianos) <br></div></div>
-                                        valor
+                                        {{$solicitud701->clienteSolicitud[6]->valor}}
                                     </div>
                                  </td>
                                  <td class="bg-secondary disabled color-palette">
@@ -351,7 +351,7 @@
                                  <td  class="text-center">
                                     <div class="col-12">
                                         <div class="row bg-info color-palette"> <div class="col-12">  IMPORTE TOTAL DEL ___ (Cod.039 - Cod 055) * Cod 042<br></div></div>
-                                        valor
+                                        {{$solicitud701->clienteSolicitud[7]->valor}}
                                     </div>
                                  </td>
                             </tr>
@@ -375,7 +375,7 @@
                                  <td class="text-center">
                                     <div class="col-12">
                                         <div class="row bg-info color-palette"> <div class="col-12">Extension total del predio segun titulo de propiedad, expendiente de dotacion o consolidacion <br> <br></div></div>
-                                        valor
+                                        {{$solicitud701->clienteSolicitud[8]->valor}}
                                     </div>
                                  </td>
                                  <td class="bg-secondary disabled color-palette">
@@ -384,7 +384,7 @@
                                  <td class="text-center">
                                     <div class="col-12">
                                         <div class="row bg-info color-palette"> <div class="col-12">ALICUOTA (En Bolivianos) <br></div></div>
-                                        valor
+                                        {{$solicitud701->clienteSolicitud[9]->valor}}
                                     </div>
                                  </td>
                                  <td class="bg-secondary disabled color-palette">
@@ -393,7 +393,7 @@
                                  <td  class="text-center">
                                     <div class="col-12">
                                         <div class="row bg-info color-palette"> <div class="col-12">  IMPORTE TOTAL DEL ___ (Cod.039 - Cod 055) * Cod 042<br></div></div>
-                                        valor
+                                        {{$solicitud701->clienteSolicitud[10]->valor}}
                                     </div>
                                  </td>
                             </tr>
@@ -428,7 +428,7 @@
                                     909
                                  </td>
                                  <td style="width: 18%" class="bg-primary disabled color-palette text-center">
-                                     2793
+                                     {{$solicitud701->clienteSolicitud[11]->valor}}
                                  </td>
                             </tr>
                             <tr>
@@ -442,7 +442,7 @@
                                     622
                                  </td>
                                  <td style="width: 18%" class="bg-primary color-palette text-center">
-                                     2793
+                                     {{$solicitud701->clienteSolicitud[12]->valor}}
                                  </td>
                             </tr>
 
@@ -457,7 +457,7 @@
                                     640
                                  </td>
                                  <td style="width: 18%" class="bg-primary disabled color-palette text-center">
-                                     2793
+                                     {{$solicitud701->clienteSolicitud[13]->valor}}
                                  </td>
                             </tr>
                             <tr>
@@ -471,7 +471,7 @@
                                     408
                                  </td>
                                  <td style="width: 18%" class="bg-primary color-palette text-center">
-                                     2793
+                                     {{$solicitud701->clienteSolicitud[14]->valor}}
                                  </td>
                             </tr>
 
@@ -486,7 +486,7 @@
                                     996
                                  </td>
                                  <td style="width: 18%" class="bg-primary disabled color-palette text-center">
-                                     2793
+                                     {{$solicitud701->clienteSolicitud[15]->valor}}
                                  </td>
                             </tr>
                         </table>
@@ -519,7 +519,7 @@
                                     924
                                  </td>
                                  <td style="width: 18%" class="bg-primary disabled color-palette text-center">
-                                     2793
+                                     {{$solicitud701->clienteSolicitud[16]->valor}}
                                  </td>
                             </tr>
                             <tr>
@@ -533,7 +533,7 @@
                                     925
                                  </td>
                                  <td style="width: 18%" class="bg-primary color-palette text-center">
-                                     7
+                                     {{$solicitud701->clienteSolicitud[17]->valor}}
                                  </td>
                             </tr>
 
@@ -548,7 +548,7 @@
                                     938
                                  </td>
                                  <td style="width: 18%" class="bg-primary disabled color-palette text-center">
-                                     22
+                                     {{$solicitud701->clienteSolicitud[18]->valor}}
                                  </td>
                             </tr>
                             <tr>
@@ -562,7 +562,7 @@
                                     954
                                  </td>
                                  <td style="width: 18%" class="bg-primary color-palette text-center">
-                                     115
+                                     {{$solicitud701->clienteSolicitud[19]->valor}}
                                  </td>
                             </tr>
 
@@ -577,7 +577,7 @@
                                     955
                                  </td>
                                  <td style="width: 18%" class="bg-primary disabled color-palette text-center">
-                                     2937
+                                     {{$solicitud701->clienteSolicitud[20]->valor}}
                                  </td>
                             </tr>
                         </table>
@@ -610,7 +610,7 @@
                                     577
                                  </td>
                                  <td style="width: 18%" class="bg-primary disabled color-palette text-center">
-                                     0
+                                     {{$solicitud701->clienteSolicitud[21]->valor}}
                                  </td>
                             </tr>
                             <tr>
@@ -624,7 +624,7 @@
                                     576
                                  </td>
                                  <td style="width: 18%" class="bg-primary color-palette text-center">
-                                     7
+                                     {{$solicitud701->clienteSolicitud[22]->valor}}
                                  </td>
                             </tr>
 

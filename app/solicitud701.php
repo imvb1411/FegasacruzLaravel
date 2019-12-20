@@ -19,6 +19,6 @@ class solicitud701 extends Model
     ];
     
     public function clienteSolicitud(){
-        return $this->hasMany('App\Cliente_solicitud');
+        return $this->hasMany('App\Cliente_solicitud')->orderBy('detallerubro_id','asc');
     }
 }
