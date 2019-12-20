@@ -23,4 +23,8 @@ class Rubro extends Model implements Searchable
             $url
         );
     }
+
+    public function detalle(){
+        return $this->hasMany('App\detalle_rubro','rubro_id','id')->orderBy('id','asc');
+    }
 }

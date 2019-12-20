@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Configuracion;
+use App\Rubro;
 use Illuminate\Http\Request;
 use App\Solicitud;
 use App\Solicitud280;
@@ -29,11 +30,13 @@ class SolicitudController extends Controller
             $personales=Personal::all()->where('estado',1);
             $ubicaciones=Ubicacion::all()->where('estado',1)->where('tipo',1);
             $actividades = Actividad::all()->where('estado', 1);
+            $rubros=Rubro::where('estado',1)->orderBy('id','asc')->get();
+            //dd($rubros[0]->detalle);
             $configuracion = Configuracion::tema()->first();
             if ($configuracion == null) {
                 $configuracion = Configuracion::default()->first();
             }
-            return view('solicitud.index',compact('solicitudes','view','clientes','personales','ubicaciones','actividades', 'configuracion'));
+            return view('solicitud.index',compact('solicitudes','view','clientes','personales','ubicaciones','actividades', 'rubros','configuracion'));
     }
 
     public function buscar($texto){

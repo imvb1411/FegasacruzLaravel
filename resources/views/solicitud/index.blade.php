@@ -74,7 +74,7 @@
     <div id="edit" class="modal fade" role="dialog">
         {!! Form::open(['route' => ['solicitudes.update','0'],'method'=>'PUT','id'=>"userForm"]) !!}
         {{Form::token()}}
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="htitle">Editar Solicitud</h4>
