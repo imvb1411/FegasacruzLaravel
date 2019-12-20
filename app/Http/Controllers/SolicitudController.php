@@ -203,16 +203,10 @@ class SolicitudController extends Controller
             $solicitud280 = Solicitud280::where('solicitud_id', $id)->first();
             $pdf = PDF::loadView('solicitud.solicitudimpresion', compact('solicitud', 'solicitud280', 'configuracion'));
             return $pdf->stream();
-<<<<<<< HEAD
         }else{
             $solicitud280=Solicitud280::where('solicitud_id',$id)->first();            
             $pdf=PDF::loadView('solicitud.solicitudimpresion701',compact('solicitud', 'solicitud280','configuracion'))->setPaper('legal', 'portrait');;            
             return $pdf->stream();
-=======
-        } else {
-            $solicitudes701 = Solicitud701::all()->where('solicitud_id', $id);
-            return $solicitudes701;
->>>>>>> 3fdcc4858b25e577946b6b7c4ff99ffdc6f74512
         }
     }
 }
