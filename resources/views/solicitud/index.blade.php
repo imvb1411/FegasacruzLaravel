@@ -55,10 +55,10 @@
                     <a href="{{URL::action('SolicitudController@show',$solicitud->id)}}" class="btn btn-warning">
                         Info
                     </a>
-                    <a class="btn btn-info"
-                       onclick='editar({{ json_encode($solicitud) }})'>
-                        Edit
-                    </a>
+                    {{--<a class="btn btn-info"--}}
+                       {{--onclick='editar({{ json_encode($solicitud) }})'>--}}
+                        {{--Edit--}}
+                    {{--</a>--}}
                     @if(\Illuminate\Support\Facades\Auth::user()->getRole()==='ADMINISTRADOR')
                         {!! Form::open(['route' => ['solicitudes.destroy',$solicitud->id],'method'=>'DELETE','style'=>'display: inline']) !!}
                         {{Form::token()}}

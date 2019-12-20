@@ -39,7 +39,7 @@
                             <label class="form-control-label">{{$det2->correlativo}}. Cód. {{$det2->codigo}}
                                 - {{$det2->nombre}}</label>
                             <input type="number" class="form-control" id="{{$det2->id}}"
-                                   name="{{$det2->id}}" placeholder="">
+                                   name="detalle[{{$det2->id}}]" placeholder="">
                         </div>
                     @endforeach
                 </div>
