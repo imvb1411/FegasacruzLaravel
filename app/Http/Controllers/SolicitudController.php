@@ -204,8 +204,8 @@ class SolicitudController extends Controller
             $pdf = PDF::loadView('solicitud.solicitudimpresion', compact('solicitud', 'solicitud280', 'configuracion'));
             return $pdf->stream();
         }else{
-            $solicitud280=Solicitud280::where('solicitud_id',$id)->first();            
-            $pdf=PDF::loadView('solicitud.solicitudimpresion701',compact('solicitud', 'solicitud280','configuracion'))->setPaper('legal', 'portrait');;            
+            $solicitud701 = Solicitud701::all()->where('solicitud_id', $id)->first();          
+            $pdf=PDF::loadView('solicitud.solicitudimpresion701',compact('solicitud', 'solicitud701','configuracion'))->setPaper('legal', 'portrait');;            
             return $pdf->stream();
         }
     }
