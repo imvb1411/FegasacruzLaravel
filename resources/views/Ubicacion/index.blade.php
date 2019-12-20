@@ -42,7 +42,21 @@
         <td>{{$ubicacion->id}}</td>
         <td>{{$ubicacion->ubicacion_id}}</td>
         <td>{{$ubicacion->nombre}}</td>
-        <td>{{$ubicacion->tipo}}</td>
+        <td>
+                @if($ubicacion->tipo == 1)
+                    Departamento 
+                @elseif($ubicacion->tipo == 2)
+                    Provincia
+                @elseif($ubicacion->tipo == 3)
+                    Municipio
+                @elseif($ubicacion->tipo == 4)
+                    Zona
+                @elseif($ubicacion->tipo == 5)
+                    SubZona
+                @elseif($ubicacion->tipo == 6)
+                    Sitio
+                @endif
+        </td>
         <td >
             <a class="btn btn-info"
                onclick='editar({{ json_encode($ubicacion) }})'>
