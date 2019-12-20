@@ -22,7 +22,7 @@
         <table id="solicitudTable" class="table table-bordered table-hover">
             <thead>
             <tr>
-                <th>CLIENTE</th>
+                <th>PRODUCTOR</th>
                 <th>NRO SOLICITUD</th>
                 <th>ACTIVIDAD</th>
             </tr>
