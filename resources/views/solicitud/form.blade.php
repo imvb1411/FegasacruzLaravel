@@ -9,7 +9,7 @@
                     tabindex="-1" aria-hidden="true" 
                     name="cliente_id" id="cliente_id" 
                     required >
-                <option selected="selected" data-select2-id="0" value="0">Seleccione Productor</option>
+                <option selected="selected" data-select2-id="" value="">Seleccione Productor</option>
                     @foreach($clientes as $cli)
                         <option value="{{$cli->id}}" >
                             {{$cli->apellido_pat}} {{$cli->apellido_mat}} {{$cli->nombre}}
@@ -26,7 +26,7 @@
         <div class="col-md-6">
             <label class="form-control-label" for="actividad_id">Actividad</label>
             <select class="form-control" name="actividad_id" id="actividad_id" required>              
-                <option value="0" >Seleccione</option>   
+                <option value="" >Seleccione</option>   
                 @foreach($actividades as $act)
                     <option value="{{$act->id}}"> {{$act->codigo}} {{$act->nombre}} </option>
                 @endforeach
@@ -54,7 +54,7 @@
         <div class="col-md-3">
             <label class="form-control-label" for="ubicacion_id">Ubicacion</label>
             <select class="form-control" name="ubicacion_id" id="ubicacion_id" required onchange="getUbicaciones('provincia_id',this.value)">
-                <option value="0">Seleccione</option>   
+                <option value="">Seleccione</option>   
                 @foreach($ubicaciones as $ubi)
                     <option value="{{$ubi->id}}">{{$ubi->nombre}}</option>
                 @endforeach
@@ -63,21 +63,21 @@
         <div class="col-md-3">
             <label class="form-control-label" for="provincia_id">Provincia</label>
             <select class="form-control" name="provincia_id" id="provincia_id" required onchange="getUbicaciones('municipio_id',this.value)">
-                <option value="0">Seleccione</option>
+                <option value="">Seleccione</option>
 
             </select>
         </div>
         <div class="col-md-3">
             <label class="form-control-label" for="municipio_id">Municipio</label>
             <select class="form-control" name="municipio_id" id="municipio_id" required onchange="getUbicaciones('zona_id',this.value)">
-                <option value="0">Seleccione</option>
+                <option value="">Seleccione</option>
 
             </select>
         </div>
         <div class="col-md-3">
             <label class="form-control-label" for="zona_id">Zona</label>
             <select class="form-control" name="zona_id" id="zona_id" required onchange="getUbicaciones('subzona_id',this.value)">
-                <option value="0">Seleccione</option>
+                <option value="">Seleccione</option>
 
             </select>
         </div>
@@ -87,14 +87,14 @@
         <div class="col-md-3">
             <label class="form-control-label" for="subzona_id">Sub zona</label>
             <select class="form-control" name="subzona_id" id="subzona_id" required onchange="getUbicaciones('sitio_id',this.value)">
-                <option value="0">Seleccione</option>
+                <option value="">Seleccione</option>
 
             </select>
         </div>
         <div class="col-md-3">
             <label class="form-control-label" for="sitio_id">Sitio</label>
             <select class="form-control" name="sitio_id" id="sitio_id" required>
-                <option value="0">Seleccione</option>
+                <option value="">Seleccione</option>
 
             </select>
         </div>
@@ -104,7 +104,7 @@
         <div class="col-md-12">
             <label class="form-control-label" for="tipo_solicitud">Tipo Formulario</label>
             <select class="form-control" name="tipo_solicitud" id="tipo_solicitud" onChange="formulario(this.value);" required>              
-                <option value="0" >Seleccione Formulario</option>   
+                <option value="" >Seleccione Formulario</option>   
                 <option value="form280">Formulario 280</option>
                 <option value="form701">Formulario 701</option>
             </select>

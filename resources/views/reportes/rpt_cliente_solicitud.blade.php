@@ -19,6 +19,11 @@
     </div>
 @endsection
 @section('content')
+<div class="row">
+        <div class="col-3">
+        <a href="{{URL::action('ReporteController@printsolicitud')}}" class="btn btn-warning">Imprimir</a>
+        </div>
+</div>
         <table id="solicitudTable" class="table table-bordered table-hover">
             <thead>
             <tr>

@@ -10,11 +10,13 @@ use Illuminate\Support\Facades\Session;
 use App\Solicitud;
 use App\Configuracion;
 use App\Charts\BarChart;
+use App;
+use PDF;
 class ReporteController extends Controller
 { 
     public function solicitudcliente(Request $request)
     { 
-    $view=Vista::where('nombre','=','solicitud')->first();
+    $view=Vista::where('nombre','=','reportes')->first();
     $view->vistas=$view->vistas+1;
     $view->update();
     $solicitudes=Solicitud::active()->orderBy('cliente_id')->get();
@@ -23,6 +25,19 @@ class ReporteController extends Controller
         $configuracion = Configuracion::default()->first();
     }
     return view('reportes.rpt_cliente_solicitud', compact('solicitudes','view','configuracion'));
+    }
+    public function printsolicitud(Request $request)
+    { 
+    $view=Vista::where('nombre','=','reportes')->first();
+    $view->vistas=$view->vistas+1;
+    $view->update();
+    $solicitudes=Solicitud::active()->orderBy('cliente_id')->get();
+    $configuracion = Configuracion::tema()->first();
+    if ($configuracion == null) {
+        $configuracion = Configuracion::default()->first();
+    }
+            $pdf = PDF::loadView('reportes.impresion_rpt_cliente_solicitud', compact('solicitudes','view','configuracion'));
+            return $pdf->stream();
     }
 
     public function topactividad(Request $request)

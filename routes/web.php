@@ -71,6 +71,7 @@ Route::middleware('auth')->group(function () {
 Route::name('rpt_cliente_solicitud')->get('/rpt_cliente_solicitud', 'ReporteController@solicitudcliente');
 Route::name('rpt_top_actividades')->get('/rpt_top_actividades', 'ReporteController@topactividad');
 Route::name('rpt_top_solicitudes')->get('/rpt_top_solicitudes', 'ReporteController@topsolicitudes');
+Route::name('imprimir_rpt_cliente_solicitud')->get('/imprimir', 'ReporteController@printsolicitud');
 
     Route::get('/getUbicaciones/{dep}', function ($dep) {
         $provincias = Ubicacion::where('estado', 1)->where('ubicacion_id', $dep)->get();
