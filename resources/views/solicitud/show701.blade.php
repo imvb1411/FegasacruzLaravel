@@ -418,13 +418,13 @@
                     <div class="card-body">
                         <table>
                             <tr>
-                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                <td class="bg-secondary disabled color-palette" style="width: 2%">
                                    4
                                 </td>
                                 <td style="width: 78%" class="bg-primary disabled color-palette">
                                     Impuesto determinado (C043+C055+C060)
                                 </td>
-                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                <td class="bg-secondary disabled color-palette" style="width: 2%">
                                     909
                                  </td>
                                  <td style="width: 18%" class="bg-primary disabled color-palette text-center">
@@ -432,13 +432,13 @@
                                  </td>
                             </tr>
                             <tr>
-                                <td class="bg-secondary color-palette"" style="width: 2%">
+                                <td class="bg-secondary color-palette" style="width: 2%">
                                    5
                                 </td>
                                 <td style="width: 78%" class="bg-primary color-palette">
                                     Pagos a Cuenta Realizados en DD.JJ. y/o en Boletas de Pago correspondientes a la gestión que se declara
                                 </td>
-                                <td class="bg-secondary color-palette"" style="width: 2%">
+                                <td class="bg-secondary color-palette" style="width: 2%">
                                     622
                                  </td>
                                  <td style="width: 18%" class="bg-primary color-palette text-center">
@@ -447,13 +447,13 @@
                             </tr>
 
                             <tr>
-                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                <td class="bg-secondary disabled color-palette" style="width: 2%">
                                    6
                                 </td>
                                 <td style="width: 78%" class="bg-primary disabled color-palette">
                                     Saldo de Pagos a Cuenta del periodo anterior a compensar (C408 del Formulario del periodo anterior)
                                 </td>
-                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                <td class="bg-secondary disabled color-palette" style="width: 2%">
                                     640
                                  </td>
                                  <td style="width: 18%" class="bg-primary disabled color-palette text-center">
@@ -461,13 +461,13 @@
                                  </td>
                             </tr>
                             <tr>
-                                <td class="bg-secondary color-palette"" style="width: 2%">
+                                <td class="bg-secondary color-palette" style="width: 2%">
                                    7
                                 </td>
                                 <td style="width: 78%" class="bg-primary color-palette">
                                     Saldo a Favor del Contribuyente (C622+C640-909)
                                 </td>
-                                <td class="bg-secondary color-palette"" style="width: 2%">
+                                <td class="bg-secondary color-palette" style="width: 2%">
                                     408
                                  </td>
                                  <td style="width: 18%" class="bg-primary color-palette text-center">
@@ -476,13 +476,13 @@
                             </tr>
 
                             <tr>
-                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                <td class="bg-secondary disabled color-palette" style="width: 2%">
                                    8
                                 </td>
                                 <td style="width: 78%" class="bg-primary disabled color-palette">
                                     Saldo a Favor del Fisco(C909 - C622 - C640); Si >0
                                 </td>
-                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                <td class="bg-secondary disabled color-palette" style="width: 2%">
                                     996
                                  </td>
                                  <td style="width: 18%" class="bg-primary disabled color-palette text-center">
@@ -509,13 +509,13 @@
                     <div class="card-body">
                         <table>
                             <tr>
-                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                <td class="bg-secondary disabled color-palette" style="width: 2%">
                                    9
                                 </td>
                                 <td style="width: 78%" class="bg-primary disabled color-palette">
                                     Tributo Omitido(C996)
                                 </td>
-                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                <td class="bg-secondary disabled color-palette" style="width: 2%">
                                     924
                                  </td>
                                  <td style="width: 18%" class="bg-primary disabled color-palette text-center">
@@ -523,13 +523,13 @@
                                  </td>
                             </tr>
                             <tr>
-                                <td class="bg-secondary color-palette"" style="width: 2%">
+                                <td class="bg-secondary color-palette" style="width: 2%">
                                    10
                                 </td>
                                 <td style="width: 78%" class="bg-primary color-palette">
                                     Actualizacion de Valor sobre el Tributo Omitido
                                 </td>
-                                <td class="bg-secondary color-palette"" style="width: 2%">
+                                <td class="bg-secondary color-palette" style="width: 2%">
                                     925
                                  </td>
                                  <td style="width: 18%" class="bg-primary color-palette text-center">
@@ -538,13 +538,13 @@
                             </tr>
 
                             <tr>
-                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                <td class="bg-secondary disabled color-palette" style="width: 2%">
                                    11
                                 </td>
                                 <td style="width: 78%" class="bg-primary disabled color-palette">
                                     Intereses sobre Tributo Omitido Actualizado
                                 </td>
-                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                <td class="bg-secondary disabled color-palette" style="width: 2%">
                                     938
                                  </td>
                                  <td style="width: 18%" class="bg-primary disabled color-palette text-center">
@@ -552,13 +552,13 @@
                                  </td>
                             </tr>
                             <tr>
-                                <td class="bg-secondary color-palette"" style="width: 2%">
+                                <td class="bg-secondary color-palette" style="width: 2%">
                                    12
                                 </td>
                                 <td style="width: 78%" class="bg-primary color-palette">
                                     Multa por incumplimiento al Deber Formal(IDF) por presentacion fuera de plazo
                                 </td>
-                                <td class="bg-secondary color-palette"" style="width: 2%">
+                                <td class="bg-secondary color-palette" style="width: 2%">
                                     954
                                  </td>
                                  <td style="width: 18%" class="bg-primary color-palette text-center">
@@ -567,13 +567,13 @@
                             </tr>
 
                             <tr>
-                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                <td class="bg-secondary disabled color-palette" style="width: 2%">
                                    13
                                 </td>
                                 <td style="width: 78%" class="bg-primary disabled color-palette">
                                     Total Deuda Tributaria (C924+C925+C938+C954; Si >0)
                                 </td>
-                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                <td class="bg-secondary disabled color-palette" style="width: 2%">
                                     955
                                  </td>
                                  <td style="width: 18%" class="bg-primary disabled color-palette text-center">
@@ -600,13 +600,13 @@
                     <div class="card-body">
                         <table>
                             <tr>
-                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                <td class="bg-secondary disabled color-palette" style="width: 2%">
                                    14
                                 </td>
                                 <td style="width: 78%" class="bg-primary disabled color-palette">
                                     Pago de valores (Sujeto a verificación y confirmación por el SIN)
                                 </td>
-                                <td class="bg-secondary disabled color-palette"" style="width: 2%">
+                                <td class="bg-secondary disabled color-palette" style="width: 2%">
                                     577
                                  </td>
                                  <td style="width: 18%" class="bg-primary disabled color-palette text-center">
@@ -614,13 +614,13 @@
                                  </td>
                             </tr>
                             <tr>
-                                <td class="bg-secondary color-palette"" style="width: 2%">
+                                <td class="bg-secondary color-palette" style="width: 2%">
                                    15
                                 </td>
                                 <td style="width: 78%" class="bg-primary color-palette">
                                     Pago en Efectivo (C996 o C955); si > 0; según corresponda
                                 </td>
-                                <td class="bg-secondary color-palette"" style="width: 2%">
+                                <td class="bg-secondary color-palette" style="width: 2%">
                                     576
                                  </td>
                                  <td style="width: 18%" class="bg-primary color-palette text-center">

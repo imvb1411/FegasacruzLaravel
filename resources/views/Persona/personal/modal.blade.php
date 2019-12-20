@@ -89,7 +89,7 @@
                 inputMethod[i].value='POST';
             }
         }
-        document.getElementById('htitle').innerText='Nuevo Cliente';
+        document.getElementById('htitle').innerText='Nuevo Usuario-Personal';
         document.getElementById('btn').innerText='Guardar'
 
     });
@@ -100,7 +100,7 @@
         var form= document.getElementById('userForm');
         form.action='{{route('users.update',0)}}';
         form.method='post';
-        document.getElementById('htitle').innerText='Editar Cliente';
+        document.getElementById('htitle').innerText='Editar Personal';
         document.getElementById('btn').innerText='Editar';
         var id = $personal.id;
         var ci = $personal.persona.ci;

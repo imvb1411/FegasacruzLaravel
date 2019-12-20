@@ -18,15 +18,7 @@
     });
     function validate(input){
         switch (input.id) {
-            case 'descrpcion':
-                if(input.value.match(/[a-z0-9A-Za-z\s]{2,4}$/)){
-                    input.className='form-control is-valid';
-                    flag=true;
-                }else{
-                    flag=false;
-                    input.className='form-control is-invalid';
-                }
-                break;
+        
                 case 'nombre':
                 if(input.value.match(/^[a-zA-Z 0-9\s]+$/)){
                     input.className='form-control is-valid';
@@ -37,7 +29,7 @@
                 }
                 break;
                 case 'codigo':
-                if(input.value.match(/[a-z0-9._%+-]$/)){
+                if(input.value.match(/^[0-9]+$/)){
                     input.className='form-control is-valid';
                     flag=true;
                 }else{
@@ -46,7 +38,7 @@
                 }
                 break;
             default:
-                if(input.value.match(/^[A-Za-z\s]*$/)){
+                if(input.value.match(/[a-z0-9. ,_%+-]+$/)){
                     input.className='form-control is-valid';
                     flag=true;
                 }else{
