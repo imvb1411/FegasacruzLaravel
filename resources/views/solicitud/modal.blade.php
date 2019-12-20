@@ -68,6 +68,10 @@
 
         function validate(input){
             switch (input.id) {
+                case 'registrador_id':
+                        input.className='form-control is-valid';
+                        flag=true;
+                    break;
                 case 'nro_hectareas':
                     if(input.value.match(/[0-9]+$/)){
                         input.className='form-control is-valid';

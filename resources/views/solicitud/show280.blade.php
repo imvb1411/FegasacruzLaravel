@@ -30,7 +30,7 @@
     <input type="hidden" name="id" id="id" class="form-control">
     <h2 class="text-center">FORMULARIO 280V.3 SOLICITUD DE CERTIFICADO DE NO IMPONIBILIDAD RAU</h2><br/>
     <h3 class="text-center">DECLARACION JURADA</h3><br/>
-    <h4 class="text-center">DECLARACION JURADA</h4><br/><br/><br/>
+    <h4 class="text-center">R-1102</h4><br/><br/><br/>
     <div class="form-group row">
         <div class="col-md-6">
             <label class="form-control-label" for="cliente_id">NRO DE ORDEN: </label>
@@ -70,7 +70,7 @@
         </div>
     </div>
     <br>
-    <h3 class="text-center">DECLARACION JURADA</h3><br/><br>
+    <h3 class="text-center">UBICACION E IDENTIFICACION DEL PREDIO</h3><br/><br>
     <div class="form-group row">
         <div class="col-md-6">
             <label class="form-control-label" for="cliente_id">DEPARTAMENTO: </label>
