@@ -45,8 +45,8 @@
             <tr>
                 <td>{{$solicitud->id}}</td>
                 <td>{{$solicitud->nro_orden}}</td>
-                <td>{{$solicitud->cliente->nombre}}</td>
-                <td>{{$solicitud->registrador_id}}</td>
+                <td>{{$solicitud->cliente->nombre}} <br> {{$solicitud->cliente->apellido_pat}} <br> {{$solicitud->cliente->apellido_mat}}</td>
+                <td>{{$solicitud->personal->nick}}</td>
                 <td>{{$solicitud->gestion}}</td>
                 <td>{{$solicitud->nro_hectareas}}</td>
                 <td>{{$solicitud->fecha_solicitud}}</td>
