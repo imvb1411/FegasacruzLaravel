@@ -107,7 +107,9 @@
                     });
                 }
             };
-            xhttp.open('GET', '/getUbicaciones/' + $ubicacion_id, true);
+            var base_url={!! json_encode(url('/')) !!};
+            console.log({!! json_encode(url('/')) !!});
+            xhttp.open('GET', base_url+'/getUbicaciones/' + $ubicacion_id, true);
             xhttp.send();
         }
     
